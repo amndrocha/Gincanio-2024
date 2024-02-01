@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Gincanio-2024%20/static/css/main.770706ef.css",
+    "main.js": "/Gincanio-2024%20/static/js/main.c8fe9360.js",
+    "index.html": "/Gincanio-2024%20/index.html",
+    "main.770706ef.css.map": "/Gincanio-2024%20/static/css/main.770706ef.css.map",
+    "main.c8fe9360.js.map": "/Gincanio-2024%20/static/js/main.c8fe9360.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.770706ef.css",
+    "static/js/main.c8fe9360.js"
+  ]
+}
