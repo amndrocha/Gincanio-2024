@@ -8,6 +8,7 @@
     justify-content: center;
     gap: 30px;
     height: 6vh;
+    color: lime;
 }
 
 .navlink {
@@ -15,5 +16,5 @@
 }
 
 .navlink:hover {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid lime;
 }

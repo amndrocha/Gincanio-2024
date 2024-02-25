@@ -1,5 +1,8 @@
 html, body {
+    background-image: linear-gradient(to right,#032101, black, #032401);
+    color: lime;
     width: 100vw;
     height: 100%;
     margin: 0;
   }
+

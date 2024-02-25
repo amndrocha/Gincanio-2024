@@ -5,14 +5,22 @@ import Messages from './Messages'
 import Account from './Account'
 
 function App() {
-  const [current, setCurrent] = useState('map');
+  const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
+  
+  const handlePageChange = (page) => {
+    localStorage.setItem('page', page);
+    setCurrent(page);
+    if (page == 'map') {
+      location.reload();
+    }
+  }
 
   return (
     <div>
         <div className='menu'>
-            <div className='navlink' onClick={() => setCurrent('map')}>Mapa</div>
-            <div className='navlink' onClick={() => setCurrent('messages')}>Mensagens</div>
-            <div className='navlink' onClick={() => setCurrent('account')}>Conta</div>
+            <div className='navlink' onClick={() => handlePageChange('map')}>Mapa</div>
+            <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens</div>
+            <div className='navlink' onClick={() => handlePageChange('account')}>Conta</div>
         </div>       
         <div className='content'>
           <span className={current == 'map' ? 'visible' : 'none'}><Map/></span>
