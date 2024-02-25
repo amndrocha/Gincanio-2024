@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { supabase } from './supabaseClient';
 import './Account.css';
 
 function Account() {
@@ -9,48 +10,79 @@ function Account() {
     const [user, setUser] = useState('agente241');
     const [pass, setPass] = useState('');
 
+    async function signInWithEmail() {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: user,
+            password: pass,
+        });
+        if (error) {
+            document.getElementById('audio').play(); 
+            setLoginMessage('Credenciais inválidas.');  
+        } else {
+            console.log(data);
+            setLoginMessage('');
+            localStorage.setItem('user', user);
+            setAuth(localStorage.getItem('user'));
+            localStorage.setItem('id', data.user.id);
+            window.dispatchEvent(new Event('id'));
+        }
+      }
+    
+
     const handleRecover = () => {
         setPass('');
         setRecover(true);
     }
 
     const handleLogin = () => {
-        if (pass == '1940') {
-            setPass('');
-            setLoginMessage('');
-            setRecover(false);
-            localStorage.setItem('user', 'agente241');
-            setAuth(localStorage.getItem('user'));
-            console.log('acertou')
-            return;
-        }
-        else if (recover) {
-            if (pass != '') {
+        if (user == 'agente241') {
+            if (pass == '1940') {
                 setPass('');
-                setLoginMessage('Resposta incorreta. Tente Novamente.');   
-            } else {
-                setLoginMessage('Por favor, insira uma resposta.');
+                setLoginMessage('');
+                setRecover(false);
+                localStorage.setItem('user', 'agente241');
+                setAuth(localStorage.getItem('user'));
+                return;
             }
-        }
-        else if (user == 'agente241') {
-            if (pass != '') {
-                if (attempts < 2) {
-                    setLoginMessage('Senha incorreta. Tente Novamente.')
+            else if (recover) {
+                if (pass != '') {
                     setPass('');
-                    setAttempts(attempts+1);
+                    setLoginMessage('Resposta incorreta. Tente Novamente.');   
                 } else {
-                    setLoginMessage('')
-                    setPass('');
-                    setAttempts(attempts+1);
-                }                
+                    setLoginMessage('Por favor, insira uma resposta.');
+                }
+            }
+            else {
+                if (pass != '') {
+                    if (attempts < 2) {
+                        setLoginMessage('Senha incorreta. Tente Novamente.')
+                        setPass('');
+                        setAttempts(attempts+1);
+                    } else {
+                        setLoginMessage('')
+                        setPass('');
+                        setAttempts(attempts+1);
+                    }                
+                } else {
+                    setLoginMessage('Por favor, insira uma senha.')
+                }
+            }
+            document.getElementById('audio').play();            
+        } else {
+            if (pass != '') {
+                // Attempt to sign in with Supabase
+                signInWithEmail();
             } else {
-                setLoginMessage('Por favor, insira uma senha.')
+                document.getElementById('audio').play(); 
+                setLoginMessage('Por favor, insira uma senha.');
             }
         }
-        document.getElementById('audio').play();
-    }
+    } 
 
     const handleLogOff = () => {
+        if (user != 'agente241') {
+            supabase.auth.signOut();
+        }
         localStorage.clear();
         setAuth(false);
     }
@@ -67,14 +99,14 @@ function Account() {
             <audio id="audio"><source src="sounds/error.mp3" type="audio/mp3"></source></audio>
             
             <div className={auth ? 'box' : 'none'}>
-                <h2>SUA CONTA</h2>
+                <h2>AGENTE 241</h2>
                 <form>
                     <div className='input-box'>
-                        <input type='username' value={auth || ''} readOnly/>
+                        <input type='username' readOnly
+                        value={auth && auth !== 'agente241' ? auth : 'agente241@proton.me'}/>
                     </div>
                     <div className='login-message'></div>
                     <div className='login-btn' onClick={handleLogOff}>Sair</div>
-
                 </form>
 
             </div>

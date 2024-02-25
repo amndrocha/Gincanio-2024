@@ -3,8 +3,36 @@ import './App.css'
 import Map from './Map'
 import Messages from './Messages'
 import Account from './Account'
+import { supabase } from './supabaseClient'
 
 function App() {
+  
+  window.addEventListener('id', () => {
+    let ignore = false
+    async function getProfile() {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select(`email, countries, messages`)
+        .eq('id', localStorage.getItem('id'))
+        .single()
+
+      if (!ignore) {
+        if (error) {
+          console.warn(error)
+        } else if (data) {
+          console.log(data);
+        }
+      }
+    }
+
+    getProfile();
+    console.log('novo login');
+
+    return () => {
+      ignore = true
+    };
+  });
+  
   const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
   
   const handlePageChange = (page) => {
