@@ -9,18 +9,18 @@ function App() {
 
   return (
     <div>
+        <div className='menu'>
+            <div className='navlink' onClick={() => setCurrent('map')}>Mapa</div>
+            <div className='navlink' onClick={() => setCurrent('messages')}>Mensagens</div>
+            <div className='navlink' onClick={() => setCurrent('account')}>Conta</div>
+        </div>       
         <div className='content'>
           <span className={current == 'map' ? 'visible' : 'none'}><Map/></span>
           <span className={current == 'account' ? 'visible' : 'none'}><Account/></span>
           <span className={current == 'messages' ? 'visible' : 'none'}><Messages/></span>
           <span className={current == '' ? 'visible' : 'none'}></span>          
         </div>
-
-        <div className='menu'>
-            <div className='navlink' onClick={() => setCurrent('map')}>Mapa</div>
-            <div className='navlink' onClick={() => setCurrent('messages')}>Mensagens</div>
-            <div className='navlink' onClick={() => setCurrent('account')}>Conta</div>
-        </div>        
+       
     </div>
   )
 }

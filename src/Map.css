@@ -1,5 +1,5 @@
 .map-page {
-    background-color: #DDDDDD
+    background-color: rgba(0, 0, 0, 0.801);
 }
 
 .dark-map-page {
@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    border: 1px solid red;
+    border: 1px solid lime;
     width: 10px;
     height: 10px;
     border-radius: 100px;
@@ -26,7 +26,7 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    border: 1px solid red;
+    border: 1px solid lime;
     width: 10px;
     height: 10px;
     border-radius: 100px;
@@ -44,7 +44,7 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    border: 1px solid red;
+    border: 1px solid lime;
     width: 10px;
     height: 10px;
     border-radius: 100px;
@@ -52,7 +52,7 @@
     box-shadow: 0px 0px 15px 8px rgba(98, 176, 255, 0);
     /* @extend .locked-point; */
     border: none;
-    background-color: red;
+    background-color: lime;
     opacity: 1;
     transform: rotate(-135deg);
     z-index: 402;
@@ -66,7 +66,7 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    border: 1px solid red;
+    border: 1px solid lime;
     width: 10px;
     height: 10px;
     border-radius: 100px;
@@ -74,7 +74,7 @@
     box-shadow: 0px 0px 15px 8px rgba(98, 176, 255, 0);
     /* @extend .locked-point; */
     border: none;
-    background-color: red;
+    background-color: lime;
     opacity: 1;
     transform: rotate(-135deg);
     z-index: 402;
