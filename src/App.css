@@ -2,12 +2,12 @@
     display: none;
 }
 
-.header {
+.menu {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    height: 30px;
+    height: 6vh;
 }
 
 .navlink {
