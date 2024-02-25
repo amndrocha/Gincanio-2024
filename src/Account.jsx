@@ -19,10 +19,9 @@ function Account() {
             document.getElementById('audio').play(); 
             setLoginMessage('Credenciais inválidas.');  
         } else {
-            console.log(data);
             setLoginMessage('');
             localStorage.setItem('user', user);
-            setAuth(localStorage.getItem('user'));
+            setAuth(user);
             localStorage.setItem('id', data.user.id);
             window.dispatchEvent(new Event('id'));
         }
@@ -83,6 +82,8 @@ function Account() {
         if (user != 'agente241') {
             supabase.auth.signOut();
         }
+        setUser('');
+        setPass('');
         localStorage.clear();
         setAuth(false);
     }
@@ -116,12 +117,13 @@ function Account() {
                     <form>                        
                         <p className={recover ? 'visible' : 'none'}><b>Pergunta de segurança:</b> Qual foi o ano de fundação da minha universidade?</p>
                         <div className={recover ? 'none' : 'input-box'}>
-                            <input type='username'
+                            <input type='username' placeholder='Credencial' autoComplete="username"
                             value={user} onChange={(e) => setUser(e.target.value)}/>
                         </div>
                         <div className='input-box'>
                             <input type='password' placeholder='Senha' onKeyUp={(e) => handleKeyPress(e.key)}
-                            value={pass} onChange={(e) => setPass(e.target.value)}/>
+                            value={pass} onChange={(e) => setPass(e.target.value)}
+                            autoComplete="current-password"/>
                         </div>
                         <div className={attempts < 3 || recover ? 'login-message' : 'none'}>{loginMessage}</div>
                         <div className={!recover && attempts >= 3 ? 'login-message' : 'none'}>
