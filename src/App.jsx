@@ -1,34 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Map from './Map'
+import Messages from './Messages'
+import Account from './Account'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [current, setCurrent] = useState('account')
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+        <div className='header'>
+            <div className='navlink' onClick={() => setCurrent('map')}>Mapa</div>
+            <div className='navlink' onClick={() => setCurrent('messages')}>Mensagens</div>
+            <div className='navlink' onClick={() => setCurrent('account')}>Conta</div>
+        </div>
+        <span className={current == 'map' ? 'visible' : 'none'}><Map/></span>
+        <span className={current == 'account' ? 'visible' : 'none'}><Account/></span>
+        <span className={current == 'messages' ? 'visible' : 'none'}><Messages/></span>
+        <span className={current == '' ? 'visible' : 'none'}></span>        
+    </div>
   )
 }
 
