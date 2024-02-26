@@ -6,72 +6,6 @@ import Account from './Account'
 import { supabase } from './supabaseClient'
 
 function App() {
-
-  const initialCountries = [
-    {
-      locked: true,
-      id: '0',
-    },
-    {
-      locked: true,
-      id: '1',
-    },
-    {
-      locked: true,
-      id: '2',
-    },
-    {
-      locked: true,
-      id: '3',
-    },
-    {
-      locked: true,
-      id: '4',
-    },
-    {
-      locked: true,
-      id: '5',
-    },
-    {
-      locked: true,
-      id: '6',
-    },
-    {
-      locked: true,
-      id: '7',
-    },
-    {
-      locked: true,
-      id: '8',
-    },
-    {
-      locked: true,
-      id: '9',
-    },  
-  ];
-
-  const initialMessages = [
-    {
-      locked: true,
-      read: false,
-      id: '0',
-    },
-    {
-      locked: true,
-      read: false,
-      id: '1',
-    },
-    {
-      locked: true,
-      read: false,
-      id: '2',
-    },
-  ];
-
-  const [loading, setLoading] = useState(false);
-  const [newProfile, setNewProfile] = useState(false);
-
-  
   async function getProfile() {
     const { data, error } = await supabase
       .from('profiles')
@@ -87,7 +21,7 @@ function App() {
 
   window.addEventListener('id', () => {
     getProfile();
-})
+  });
   
   const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
 
@@ -117,4 +51,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

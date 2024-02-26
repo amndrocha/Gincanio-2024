@@ -1,12 +1,14 @@
 import { divIcon } from "leaflet";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { renderToString } from 'react-dom/server';
 import './Map.css'
+import { supabase } from "./supabaseClient";
 
 function Map() {
     const [openModal, setOpenModal] = useState(false);
     const [dark, setDark] = useState(false);
+    const [id, setId] = useState('');
     const [pass, setPass] = useState('');
     const [input, setInput] = useState('');
     const [countries, setCountries] = useState([
@@ -81,21 +83,84 @@ function Map() {
             id: '10',
         },  
     ]);
+    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('countries')));
 
-    const handleModal = (x) => {
+    const updateLocked = () => {
+        const updatedCountries = countries.map(country => {
+            const userDataItem = userData.find(item => item.id === country.id);
+            if (userDataItem) {
+                if (userDataItem.locked) {
+                    console.log(country.pass,userDataItem.locked);
+                    return {
+                        ...country,
+                        marker: dark ? 'dark-locked-point' : 'locked-point'
+                    };
+                } else {
+                    console.log(country.pass,userDataItem.locked);
+                    return {
+                        ...country,
+                        marker: dark ? 'dark-unlocked-point' : 'unlocked-point'
+                    };
+                }
+            } else {
+                return country;
+            }
+        });    
+        setCountries(updatedCountries);
+    };
+
+    useEffect(() => {
+        console.log('Countries updated: ', countries);
+    }, [countries]);
+    
+    
+
+    async function updateDatabase() {
+        const updatedData = userData.map(item => {
+            if (item.id == id) {
+                return { ...item, locked: false };
+            } else {
+                return item;
+            }
+        });
+        try {
+            const { data, error } = await supabase
+                .from('profiles')
+                .update({ countries: updatedData })
+                .eq('id', localStorage.getItem('id'));
+
+            if (error) {
+                console.error('Error updating Supabase row:', error.message);
+            } else {
+                console.log('Supabase updated:', data);
+                localStorage.setItem('countries', JSON.stringify(data.countries));
+                setUserData(JSON.parse(localStorage.getItem('countries')));
+                updateLocked();
+            }
+
+        } catch (error) {
+            console.error('Error updating Supabase row:', error.message);
+        }
+    }
+
+    const handleModal = (pass, id) => {
+        updateLocked();
         if (openModal) {
             setOpenModal(false);
             setPass('');
+            setId('');
         } else {
             setOpenModal(true);
-            setPass(x);
+            setPass(pass);
+            setId(id);
         }
     };
     const checkPass = () => {
         if (pass == input) {
             countries.map((country) => {
-                if (country.pass == pass) {
+                if (country.id == id && country.pass == pass) {
                     country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
+                    updateDatabase();
                 }
             })            
         }
@@ -189,7 +254,7 @@ function Map() {
                             })
                         }
                         eventHandlers={{
-                            click: () => handleModal(country.pass),
+                            click: () => handleModal(country.pass, country.id),
                         }}
                         key={country.name}
                         >
