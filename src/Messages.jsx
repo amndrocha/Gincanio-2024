@@ -7,34 +7,32 @@ function Messages() {
     const [current, setCurrent] = useState(0);
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const [unlocked, setUnlocked] = ['argentina'];
+    const [unlocked, setUnlocked] = useState(['argentina']);
     const [singUp, setSignUp] = useState(false);
     const [viewPassword, setViewPassword] = useState(false);
 
     async function signUpNewUser() {
-        const { data, error } = await supabase.auth.signUp({
-          email: email,
-          password: pass,
-          options: {
-            emailRedirectTo: 'https://gincanio.com.br/',
-          },
-        });
-      
-        if (error) {
-          console.log(error);
-          if (error.message.includes('email')) {
-            console.log('Invalid email address');
-          } else if (error.message.includes('password')) {
-            console.log('Invalid password');
-          } else {
-            console.log('An error occurred. Please try again later.');
-          }
+        try {
+            const { user, error } = await supabase.auth.signUp({
+                email: email,
+                password: pass,
+            });
+    
+            if (error) {
+                throw error;
+            }
+    
+            alert.log('User signed up successfully:', user);
+            return user;
+        } catch (error) {
+            alert.error('Error signing up user:', error.message);
+            throw error;
         }
       }
 
     const handleKeyPress = (key) => {
         if (key === "Enter") {
-            setSignUp(true);
+            signUpNewUser();
         }
     }
 
