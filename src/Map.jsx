@@ -258,7 +258,7 @@ function Map() {
                 </div>
             </div>
 
-            <MapContainer center={[0,0]} zoom={2} minZoom={2}>
+            <MapContainer center={[0,0]} zoom={2} minZoom={2} worldCopyJump={true}>
                 <TileLayer
                 attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
