@@ -1,34 +1,41 @@
 import { useState } from "react";
 import './Messages.css'
 import { supabase } from "./supabaseClient";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 function Messages() {
-    const [auth, setAuth] = useState(localStorage.getItem('id'));
+    //const [auth, setAuth] = useState(localStorage.getItem('id'));
     const [current, setCurrent] = useState(0);
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [unlocked, setUnlocked] = useState(['argentina']);
-    const [singUp, setSignUp] = useState(false);
+    const [signUp, setSignUp] = useState(false);
     const [viewPassword, setViewPassword] = useState(false);
+    
+    const [captchaToken, setCaptchaToken] = useState()
 
-    async function signUpNewUser() {
+    
+
+    async function signUpNewUser(event) {
+        event.preventDefault(); // Prevent form submission
         try {
             const { user, error } = await supabase.auth.signUp({
                 email: email,
                 password: pass,
+                options: { captchaToken },
             });
     
             if (error) {
                 throw error;
             }
     
-            alert.log('User signed up successfully:', user);
-            return user;
+            console.log('User signed up successfully:', user);
+            // You may want to handle successful signup, maybe close the modal
         } catch (error) {
-            alert.error('Error signing up user:', error.message);
-            throw error;
+            console.error('Error signing up user:', error.message);
+            // You may want to display the error message to the user
         }
-      }
+    }
 
     const handleKeyPress = (key) => {
         if (key === "Enter") {
@@ -39,15 +46,15 @@ function Messages() {
     
     return (
         <div className="messages-page">
-
-            <div className={singUp ? 'modal' : 'none'}>
+            
+            <div className={signUp ? 'modal' : 'none'}>
                 <div className="modal-window"
                 style={{height: 'fit-content'}}>
                     <div className="modal-header">
                         <div className="close-btn" onClick={() => setSignUp(false)}>fechar</div>
                     </div>
                     <div className="modal-content">
-                        <form>                       
+                        <form onSubmit={signUpNewUser}>                       
                             <p style={{textAlign: 'center'}}>Cuidado ao escolher novo email e senha!<br/>Não será possível alterá-los no futuro.</p>       
                             <div className='input-box'>
                                 <input type='email' placeholder='Email' autoComplete="email"
@@ -63,8 +70,11 @@ function Messages() {
                                 style={{width: '19px', height: '30px'}}
                                 className="viewPassword"></div>
                             </div>
-                            <button className="login-btn" style={{marginBottom: '20px'}}
-                            onClick={signUpNewUser}>Enviar</button>
+                            <HCaptcha
+                            sitekey="6227bd89-17fb-4463-9f53-f8c45b194205"
+                            onVerify={(token) => { setCaptchaToken(token) }}
+                            />
+                            <button className="login-btn" style={{marginBottom: '20px'}}>Enviar</button>
                         </form>                           
                     </div>
                 </div>
