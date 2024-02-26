@@ -54,7 +54,7 @@ function Messages() {
                         <div className="close-btn" onClick={() => setSignUp(false)}>fechar</div>
                     </div>
                     <div className="modal-content">
-                        <form onSubmit={signUpNewUser}>                       
+                        <form onSubmit={(e) => signUpNewUser(e)}>                       
                             <p style={{textAlign: 'center'}}>Cuidado ao escolher novo email e senha!<br/>Não será possível alterá-los no futuro.</p>       
                             <div className='input-box'>
                                 <input type='email' placeholder='Email' autoComplete="email"
