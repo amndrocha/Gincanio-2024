@@ -6,6 +6,7 @@ import './Map.css'
 import { supabase } from "./supabaseClient";
 
 function Map() {
+    const [loading, setLoading] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [dark, setDark] = useState(false);
     const [id, setId] = useState('');
@@ -17,70 +18,70 @@ function Map() {
             pass: 'brasil',
             position: [ -2.7562580015438476 , -48.17132509212502 ],
             marker: 'locked-point',
-            id: '1',
+            id: '0',
         },
         {
             name: 'argentina',
             pass: 'argentina',
             position: [ -40.77563875754914 , -69.2750762182338 ],
             marker: 'locked-point',
-            id: '2',
+            id: '1',
         },
         {
             name: 'eua',
             pass: 'eua',
             position: [ 33.71432359567805 , -86.95083968378019 ],
             marker: 'locked-point',
-            id: '3',
+            id: '2',
         },
         {
             name: 'polonia',
             pass: 'polonia',
             position: [ 51.57581250779703 , 20.601412987576932 ],
             marker: 'locked-point',
-            id: '4',
+            id: '3',
         },
         {
             name: 'turquia',
             pass: 'turquia',
             position: [ 39.87468079676904 , 35.40007298068552 ],
             marker: 'locked-point',
-            id: '5',
+            id: '4',
         },
         {
             name: 'mocambique',
             pass: 'mocambique',
             position: [ -9.915867897227745 , 27.67686458128958 ],
             marker: 'locked-point',
-            id: '6',
+            id: '5',
         },
         {
             name: 'arabia',
             pass: 'arabia',
             position: [ 25.73921961430858 , 42.000545531346155 ],
             marker: 'locked-point',
-            id: '7',
+            id: '6',
         },
         {
             name: 'india',
             pass: 'india',
             position: [ 21.16301794100615 , 79.60419371933031 ],
             marker: 'locked-point',
-            id: '8',
+            id: '7',
         },
         {
             name: 'indonesia',
             pass: 'indonesia',
             position: [ -0.396793751120472 , 101.92963933255506 ],
             marker: 'locked-point',
-            id: '9',
+            id: '8',
         },
         {
             name: 'turcomenistao',
             pass: 'turcomenistao',
             position: [ 39.4008965162013 , 58.422772177048984 ],
             marker: 'locked-point',
-            id: '10',
+            id: '9',
         },  
     ]);
     const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('countries')));
@@ -105,14 +106,21 @@ function Map() {
             } else {
                 return country;
             }
-        });    
+        });
         setCountries(updatedCountries);
+        window.dispatchEvent(new Event('one'));
+        setLoading(false);
     };
 
-    useEffect(() => {
-        console.log('Countries updated: ', countries);
-    }, [countries]);
-    
+    useEffect(()=>{
+        if (localStorage.getItem('id')) {
+            updateLocked();
+        }
+    }, [])
+ 
+    window.addEventListener('two', () => {
+        window.dispatchEvent(new Event('three'));        
+    });   
     
 
     async function updateDatabase() {
@@ -133,9 +141,15 @@ function Map() {
                 console.error('Error updating Supabase row:', error.message);
             } else {
                 console.log('Supabase updated:', data);
-                localStorage.setItem('countries', JSON.stringify(data.countries));
-                setUserData(JSON.parse(localStorage.getItem('countries')));
-                updateLocked();
+                const updatedCountries = data ? data.countries : []; // Check if data exists
+                if (updatedCountries === 0) {
+                    console.log('ERRO SUPABASE!!!!');
+                } else {
+                    console.log('ACERTO SUPABASE!!!!')
+                    //localStorage.setItem('countries', JSON.stringify(updatedCountries));
+                    setUserData(updatedCountries); // Update userData with updatedCountries
+                    updateLocked(); // Call updateLocked after updating userData
+                }
             }
 
         } catch (error) {
@@ -144,7 +158,6 @@ function Map() {
     }
 
     const handleModal = (pass, id) => {
-        updateLocked();
         if (openModal) {
             setOpenModal(false);
             setPass('');
@@ -155,17 +168,24 @@ function Map() {
             setId(id);
         }
     };
+
     const checkPass = () => {
+        let update = false;
         if (pass == input) {
             countries.map((country) => {
                 if (country.id == id && country.pass == pass) {
-                    country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
-                    updateDatabase();
+                    country.marker = dark ? "dark-unlocked-point" : "unlocked-point";     
+                    update = true;               
                 }
             })            
         }
+        if (update) {
+            setLoading(true);
+            updateDatabase();
+        }
         setInput('');
     };
+
     const handleDark = () => {
         setDark(!dark);
         setCountries(countries.map((country) => {
@@ -207,6 +227,7 @@ function Map() {
 
     return (
         <div className={dark ? 'dark-map-page' : 'map-page'} >
+            <div className={loading ? 'loading' : 'none'}><div className="loader"></div></div>
             <div className={ dark ? "lightBtnOff" : "lightBtnOn"} onClick={handleDark}><div className={ dark ? "lightBtnCircleOff" : "lightBtnCircleOn"}></div></div>
             <div className={openModal ? 'modal' : 'none'}>
                 <div className="modal-window">

@@ -22,7 +22,21 @@ function App() {
   window.addEventListener('id', () => {
     getProfile();
   });
+  useEffect(()=>{
+    if (localStorage.getItem('id')) {
+        getProfile();
+    }
+  }, []);
+
+  window.addEventListener('one', () => {
+    getProfile();
+    window.dispatchEvent(new Event('two'));
+  });
   
+  window.addEventListener('three', () => {
+    getProfile();
+  });
+
   const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
 
   const handlePageChange = (page) => {
@@ -32,6 +46,7 @@ function App() {
       location.reload();
     }
   }
+
 
   return (
     <div>
