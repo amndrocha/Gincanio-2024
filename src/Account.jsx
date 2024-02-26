@@ -40,7 +40,9 @@ function Account() {
                 setLoginMessage('');
                 setRecover(false);
                 localStorage.setItem('user', 'agente241');
+                localStorage.setItem('id', '');
                 setAuth(localStorage.getItem('user'));
+                location.reload();
                 return;
             }
             else if (recover) {
@@ -86,6 +88,7 @@ function Account() {
         setPass('');
         localStorage.clear();
         setAuth(false);
+        location.reload();
     }
 
     const handleKeyPress = (key) => {

@@ -2,8 +2,8 @@ import { divIcon } from "leaflet";
 import { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { renderToString } from 'react-dom/server';
-import './Map.css'
 import { supabase } from "./supabaseClient";
+import './Map.css';
 
 function Map() {
     const [loading, setLoading] = useState(false);
@@ -86,18 +86,25 @@ function Map() {
     ]);
     const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('countries')));
 
+    const fakeLoading = () => {
+        setLoading(true);
+        setTimeout(function() {
+            setLoading(false);
+        }, 5000);
+    };
+
     const updateLocked = () => {
         const updatedCountries = countries.map(country => {
             const userDataItem = userData.find(item => item.id === country.id);
             if (userDataItem) {
                 if (userDataItem.locked) {
-                    console.log(country.pass,userDataItem.locked);
+                    //console.log(country.pass,userDataItem.locked);
                     return {
                         ...country,
                         marker: dark ? 'dark-locked-point' : 'locked-point'
                     };
                 } else {
-                    console.log(country.pass,userDataItem.locked);
+                    //console.log(country.pass,userDataItem.locked);
                     return {
                         ...country,
                         marker: dark ? 'dark-unlocked-point' : 'unlocked-point'
@@ -143,9 +150,9 @@ function Map() {
                 console.log('Supabase updated:', data);
                 const updatedCountries = data ? data.countries : []; // Check if data exists
                 if (updatedCountries === 0) {
-                    console.log('ERRO SUPABASE!!!!');
+                    //console.log('ERRO SUPABASE!!!!');
                 } else {
-                    console.log('ACERTO SUPABASE!!!!')
+                    //console.log('ACERTO SUPABASE!!!!')
                     //localStorage.setItem('countries', JSON.stringify(updatedCountries));
                     setUserData(updatedCountries); // Update userData with updatedCountries
                     updateLocked(); // Call updateLocked after updating userData
@@ -178,10 +185,14 @@ function Map() {
                     update = true;               
                 }
             })            
+        } else {
+            setLoading(true);
         }
         if (update) {
             setLoading(true);
             updateDatabase();
+            setLoading(true);
+            alert('Parabéns, agente. Você desbloqueou mais um país. Fique atento, em breve o sistema se atualizará com as novas descobertas.');
         }
         setInput('');
     };
@@ -232,24 +243,26 @@ function Map() {
             <div className={openModal ? 'modal' : 'none'}>
                 <div className="modal-window">
                     <div className="modal-header">
-                        <div className="close-btn" onClick={handleModal}>X</div>
+                        <div className="close-btn" onClick={handleModal}>fechar</div>
                     </div>
                     <div className="modal-content">
                         {countries.map((country, i) => {
                             if (country.pass == pass) {
                                 if (country.marker == "unlocked-point" || country.marker == "dark-unlocked-point") {
                                     return(
-                                        <div key={country}>País desbloqueado!! [inserir charada do próximo país]</div>
+                                        <div key={country}>País investigado com sucesso.</div>
                                     )
                                 } else {
                                     return(
-                                        <div className="input-box" key={i}>
-                                            <input id="pass" type="text" value={input}
-                                            onChange={(e) => setInput(e.target.value)}
-                                            onKeyDown={(e) => {if (e.key === "Enter") checkPass()}}
-                                            />
-                                            <button onClick={checkPass}>Enviar</button>
-                                        </div>
+                                        <form key={i}>
+                                            <div className="input-box">
+                                                <input id="pass" type="text" value={input}
+                                                onChange={(e) => setInput(e.target.value)}
+                                                onKeyDown={(e) => {if (e.key === "Enter") checkPass()}}
+                                                placeholder="Resposta"/>
+                                            </div>                                            
+                                            <button className="send-btn" onClick={checkPass}>Enviar</button>
+                                        </form>
                                     )
                                 }
                             }

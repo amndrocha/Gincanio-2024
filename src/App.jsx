@@ -6,6 +6,7 @@ import Account from './Account'
 import { supabase } from './supabaseClient'
 
 function App() {
+  const [id, setId] = useState(localStorage.getItem('id') || '');
   async function getProfile() {
     const { data, error } = await supabase
       .from('profiles')
@@ -21,10 +22,13 @@ function App() {
 
   window.addEventListener('id', () => {
     getProfile();
+    setId(localStorage.getItem('id'));
   });
+  
   useEffect(()=>{
     if (localStorage.getItem('id')) {
         getProfile();
+        setId(localStorage.getItem('id'));
     }
   }, []);
 
@@ -35,7 +39,8 @@ function App() {
   
   window.addEventListener('three', () => {
     getProfile();
-  });
+  });  
+
 
   const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
 
@@ -51,7 +56,7 @@ function App() {
   return (
     <div>
         <div className='menu'>
-            <div className='navlink' onClick={() => handlePageChange('map')}>Mapa</div>
+            <div className={id == '' ? 'none' : 'navlink'} onClick={() => handlePageChange('map')}>Mapa</div>
             <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens</div>
             <div className='navlink' onClick={() => handlePageChange('account')}>Conta</div>
         </div>       

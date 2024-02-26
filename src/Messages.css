@@ -29,5 +29,21 @@
     border-bottom: 2px solid rgba(0,255,0,0.2);
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden; 
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.viewPassword {
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    margin-top: -39px;
+    margin-left: 278px;
+}
+.hidePassword {
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    margin-top: -37px;
+    margin-left: 282px;
 }
