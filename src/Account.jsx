@@ -3,7 +3,7 @@ import './Account.css';
 
 function Account() {
     const [recover, setRecover] = useState(false);
-    const [auth, setAuth] = useState(localStorage.getItem('auth') || false);
+    const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')) || false);
     const [attempts, setAttempts] = useState(0);
     const [loginMessage, setLoginMessage] = useState('');
     const [pass, setPass] = useState('');
@@ -78,10 +78,12 @@ function Account() {
 
     const handleLogin = () => {
         if (pass == '1940') {
+            if (!localStorage.getItem('countries')) {
+                localStorage.setItem('countries', JSON.stringify(countries));
+            }
             setPass('');
             setLoginMessage('');
             setRecover(false);
-            localStorage.setItem('data', JSON.stringify(countries));
             localStorage.setItem('auth', JSON.stringify(true));
             setAuth(true);
             return;
@@ -114,15 +116,19 @@ function Account() {
 
     const handleLogOff = () => {
         setPass('');
-        localStorage.clear();
+        localStorage.setItem('auth', JSON.stringify(false));
         setAuth(false);
-        location.reload();
     }
 
     const handleKeyPress = (key) => {
         if (key === "Enter") {
             handleLogin();
         }
+    }
+
+    const cleanSlate = () => {
+        localStorage.clear();
+        location.reload();
     }
 
 
@@ -137,7 +143,7 @@ function Account() {
                         <input type='username' value='agente241' readOnly/>
                     </div>
                     <div className='login-message'></div>
-                    <div className='login-btn' onClick={() => localStorage.clear()}>Apagar meus dados</div>
+                    <div className='login-btn' onClick={cleanSlate}>Apagar meus dados</div>
                     <div className='login-btn' onClick={handleLogOff}>Sair</div>
                 </form>
 

@@ -8,7 +8,7 @@ function App() {
 
 
   const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
-  const [newMessages, setNewMessages] = useState(localStorage.getItem('new-messages') || []);
+  const [newMessages, setNewMessages] = useState(JSON.parse(localStorage.getItem('newMessages')) || []);
 
   const handlePageChange = (page) => {
     localStorage.setItem('page', page);
@@ -17,20 +17,28 @@ function App() {
       location.reload();
     }
   }
+  window.addEventListener('news', () => {
+    setNewMessages(JSON.parse(localStorage.getItem('newMessages')));
+    console.log('chegou no app: ',newMessages);
+  });
+
+  window.addEventListener('remove', () => {
+    setNewMessages(JSON.parse(localStorage.getItem('newMessages')));
+  });
 
 
   return (
     <div>
         <div className='menu'>
             <div className='navlink' onClick={() => handlePageChange('map')}>Mapa</div>
-            <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens {newMessages > 0 ? '('+newMessages.length()+')' : ''}</div>
+            <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens {newMessages.length > 0 ? '('+newMessages.length+')' : ''}</div>
             <div className='navlink' onClick={() => handlePageChange('account')}>Conta</div>
         </div>       
         <div className='content'>
-          <span className={current == 'map' ? 'visible' : 'none'}><Map/></span>
-          <span className={current == 'account' ? 'visible' : 'none'}><Account/></span>
-          <span className={current == 'messages' ? 'visible' : 'none'}><Messages/></span>
-          <span className={current == '' ? 'visible' : 'none'}></span>          
+          <span className={current == 'map' ? 'visible' : 'invisible'}><Map/></span>
+          <span className={current == 'account' ? 'visible' : 'invisible'}><Account/></span>
+          <span className={current == 'messages' ? 'visible' : 'invisible'}><Messages/></span>
+          <span className={current == '' ? 'visible' : 'invisible'}></span>          
         </div>
        
     </div>

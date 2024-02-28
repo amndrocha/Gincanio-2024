@@ -8,9 +8,10 @@ function Map() {
     const [loading, setLoading] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [dark, setDark] = useState(false);
+    const [countryName, setCountryName] = useState('');
     const [pass, setPass] = useState('');
     const [input, setInput] = useState('');
-    const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('data')) || []);
+    const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
 
     const fakeLoading = () => {
         setLoading(true);
@@ -19,26 +20,34 @@ function Map() {
         }, 5000);
     };
 
-    const handleModal = (pass) => {
+    const handleModal = (pass, name) => {
         if (openModal) {
             setOpenModal(false);
             setPass('');
+            setCountryName('');
         } else {
             setOpenModal(true);
             setPass(pass);
+            setCountryName(name);
         }
     };
 
     const checkPass = (e) => {
         e.preventDefault();
+        let newMessages = JSON.parse(localStorage.getItem('newMessages')) || [];
         if (pass == input) {
             countries.map((country) => {
-                if (country.pass == pass) {
+                if (country.name == countryName && country.pass == pass) {
                     country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
+                    newMessages.push(country.name);
                 }
             })
         }
-        localStorage.setItem('data', JSON.stringify(countries));
+        localStorage.setItem('countries', JSON.stringify(countries));
+        localStorage.setItem('newMessages', JSON.stringify(newMessages));
+        console.log('saiu do mapa: ',newMessages);
+        window.dispatchEvent(new Event('news'));
+        window.dispatchEvent(new Event('new-message'));
         setOpenModal(false);  
     };
 
@@ -133,7 +142,7 @@ function Map() {
                             })
                         }
                         eventHandlers={{
-                            click: () => handleModal(country.pass),
+                            click: () => handleModal(country.pass, country.name),
                         }}
                         key={country.name}
                         >
