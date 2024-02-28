@@ -8,6 +8,7 @@ function App() {
 
 
   const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
+  const [newMessages, setNewMessages] = useState(localStorage.getItem('new-messages') || []);
 
   const handlePageChange = (page) => {
     localStorage.setItem('page', page);
@@ -22,7 +23,7 @@ function App() {
     <div>
         <div className='menu'>
             <div className='navlink' onClick={() => handlePageChange('map')}>Mapa</div>
-            <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens</div>
+            <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens {newMessages > 0 ? '('+newMessages.length()+')' : ''}</div>
             <div className='navlink' onClick={() => handlePageChange('account')}>Conta</div>
         </div>       
         <div className='content'>

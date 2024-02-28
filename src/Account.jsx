@@ -3,10 +3,73 @@ import './Account.css';
 
 function Account() {
     const [recover, setRecover] = useState(false);
-    const [auth, setAuth] = useState(localStorage.getItem('user'));
+    const [auth, setAuth] = useState(localStorage.getItem('auth') || false);
     const [attempts, setAttempts] = useState(0);
     const [loginMessage, setLoginMessage] = useState('');
     const [pass, setPass] = useState('');
+    const countries = [
+        {
+            name: 'brasil',
+            pass: 'brasil',
+            position: [ -2.7562580015438476 , -48.17132509212502 ],
+            marker: 'locked-point',
+            id: '0',
+        },
+        {
+            name: 'argentina',
+            pass: 'argentina',
+            position: [ -40.77563875754914 , -69.2750762182338 ],
+            marker: 'locked-point',
+        },
+        {
+            name: 'eua',
+            pass: 'eua',
+            position: [ 33.71432359567805 , -86.95083968378019 ],
+            marker: 'locked-point',
+        },
+        {
+            name: 'polonia',
+            pass: 'polonia',
+            position: [ 51.57581250779703 , 20.601412987576932 ],
+            marker: 'locked-point',
+        },
+        {
+            name: 'turquia',
+            pass: 'turquia',
+            position: [ 39.87468079676904 , 35.40007298068552 ],
+            marker: 'locked-point',
+        },
+        {
+            name: 'mocambique',
+            pass: 'mocambique',
+            position: [ -9.915867897227745 , 27.67686458128958 ],
+            marker: 'locked-point',
+        },
+        {
+            name: 'arabia',
+            pass: 'arabia',
+            position: [ 25.73921961430858 , 42.000545531346155 ],
+            marker: 'locked-point',
+        },
+        {
+            name: 'india',
+            pass: 'india',
+            position: [ 21.16301794100615 , 79.60419371933031 ],
+            marker: 'locked-point',
+        },
+        {
+            name: 'indonesia',
+            pass: 'indonesia',
+            position: [ -0.396793751120472 , 101.92963933255506 ],
+            marker: 'locked-point',
+        },
+        {
+            name: 'turcomenistao',
+            pass: 'turcomenistao',
+            position: [ 39.4008965162013 , 58.422772177048984 ],
+            marker: 'locked-point',
+        },  
+    ];
 
     const handleRecover = () => {
         setPass('');
@@ -18,10 +81,9 @@ function Account() {
             setPass('');
             setLoginMessage('');
             setRecover(false);
-            localStorage.setItem('user', 'agente241');
-            localStorage.setItem('id', '');
-            setAuth(localStorage.getItem('user'));
-            location.reload();
+            localStorage.setItem('data', JSON.stringify(countries));
+            localStorage.setItem('auth', JSON.stringify(true));
+            setAuth(true);
             return;
         }
         else if (recover) {
@@ -69,13 +131,13 @@ function Account() {
             <audio id="audio"><source src="sounds/error.mp3" type="audio/mp3"></source></audio>
             
             <div className={auth ? 'box' : 'none'}>
-                <h2>AGENTE 241</h2>
+                <h2>SUA CONTA</h2>
                 <form>
                     <div className='input-box'>
-                        <input type='username' readOnly
-                        value={auth && auth !== 'agente241' ? auth : 'agente241@proton.me'}/>
+                        <input type='username' value='agente241' readOnly/>
                     </div>
                     <div className='login-message'></div>
+                    <div className='login-btn' onClick={() => localStorage.clear()}>Apagar meus dados</div>
                     <div className='login-btn' onClick={handleLogOff}>Sair</div>
                 </form>
 

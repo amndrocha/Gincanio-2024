@@ -8,81 +8,9 @@ function Map() {
     const [loading, setLoading] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [dark, setDark] = useState(false);
-    const [id, setId] = useState('');
     const [pass, setPass] = useState('');
     const [input, setInput] = useState('');
-    const [countries, setCountries] = useState([
-        {
-            name: 'brasil',
-            pass: 'brasil',
-            position: [ -2.7562580015438476 , -48.17132509212502 ],
-            marker: 'locked-point',
-            id: '0',
-        },
-        {
-            name: 'argentina',
-            pass: 'argentina',
-            position: [ -40.77563875754914 , -69.2750762182338 ],
-            marker: 'locked-point',
-            id: '1',
-        },
-        {
-            name: 'eua',
-            pass: 'eua',
-            position: [ 33.71432359567805 , -86.95083968378019 ],
-            marker: 'locked-point',
-            id: '2',
-        },
-        {
-            name: 'polonia',
-            pass: 'polonia',
-            position: [ 51.57581250779703 , 20.601412987576932 ],
-            marker: 'locked-point',
-            id: '3',
-        },
-        {
-            name: 'turquia',
-            pass: 'turquia',
-            position: [ 39.87468079676904 , 35.40007298068552 ],
-            marker: 'locked-point',
-            id: '4',
-        },
-        {
-            name: 'mocambique',
-            pass: 'mocambique',
-            position: [ -9.915867897227745 , 27.67686458128958 ],
-            marker: 'locked-point',
-            id: '5',
-        },
-        {
-            name: 'arabia',
-            pass: 'arabia',
-            position: [ 25.73921961430858 , 42.000545531346155 ],
-            marker: 'locked-point',
-            id: '6',
-        },
-        {
-            name: 'india',
-            pass: 'india',
-            position: [ 21.16301794100615 , 79.60419371933031 ],
-            marker: 'locked-point',
-            id: '7',
-        },
-        {
-            name: 'indonesia',
-            pass: 'indonesia',
-            position: [ -0.396793751120472 , 101.92963933255506 ],
-            marker: 'locked-point',
-            id: '8',
-        },
-        {
-            name: 'turcomenistao',
-            pass: 'turcomenistao',
-            position: [ 39.4008965162013 , 58.422772177048984 ],
-            marker: 'locked-point',
-            id: '9',
-        },  
-    ]);
+    const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('data')) || []);
 
     const fakeLoading = () => {
         setLoading(true);
@@ -91,26 +19,27 @@ function Map() {
         }, 5000);
     };
 
-    const handleModal = (pass, id) => {
+    const handleModal = (pass) => {
         if (openModal) {
             setOpenModal(false);
             setPass('');
-            setId('');
         } else {
             setOpenModal(true);
             setPass(pass);
-            setId(id);
         }
     };
 
-    const checkPass = () => {
+    const checkPass = (e) => {
+        e.preventDefault();
         if (pass == input) {
             countries.map((country) => {
-                if (country.id == id && country.pass == pass) {
-                    country.marker = dark ? "dark-unlocked-point" : "unlocked-point";             
+                if (country.pass == pass) {
+                    country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
                 }
             })
         }
+        localStorage.setItem('data', JSON.stringify(countries));
+        setOpenModal(false);  
     };
 
     const handleDark = () => {
@@ -174,7 +103,7 @@ function Map() {
                                             <div className="input-box">
                                                 <input id="pass" type="text" value={input}
                                                 onChange={(e) => setInput(e.target.value)}
-                                                onKeyDown={(e) => {if (e.key === "Enter") checkPass()}}
+                                                onKeyDown={(e) => {if (e.key === "Enter") checkPass(e)}}
                                                 placeholder="Resposta"/>
                                             </div>                                            
                                             <button className="send-btn" onClick={checkPass}>Enviar</button>
@@ -204,7 +133,7 @@ function Map() {
                             })
                         }
                         eventHandlers={{
-                            click: () => handleModal(country.pass, country.id),
+                            click: () => handleModal(country.pass),
                         }}
                         key={country.name}
                         >
