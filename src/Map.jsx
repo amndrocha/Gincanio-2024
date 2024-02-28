@@ -1,8 +1,7 @@
 import { divIcon } from "leaflet";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { renderToString } from 'react-dom/server';
-import { supabase } from "./supabaseClient";
 import './Map.css';
 
 function Map() {
@@ -84,7 +83,6 @@ function Map() {
             id: '9',
         },  
     ]);
-    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('countries')));
 
     const fakeLoading = () => {
         setLoading(true);
@@ -92,77 +90,6 @@ function Map() {
             setLoading(false);
         }, 5000);
     };
-
-    const updateLocked = () => {
-        const updatedCountries = countries.map(country => {
-            const userDataItem = userData.find(item => item.id === country.id);
-            if (userDataItem) {
-                if (userDataItem.locked) {
-                    //console.log(country.pass,userDataItem.locked);
-                    return {
-                        ...country,
-                        marker: dark ? 'dark-locked-point' : 'locked-point'
-                    };
-                } else {
-                    //console.log(country.pass,userDataItem.locked);
-                    return {
-                        ...country,
-                        marker: dark ? 'dark-unlocked-point' : 'unlocked-point'
-                    };
-                }
-            } else {
-                return country;
-            }
-        });
-        setCountries(updatedCountries);
-        window.dispatchEvent(new Event('one'));
-        setLoading(false);
-    };
-
-    useEffect(()=>{
-        if (localStorage.getItem('id')) {
-            updateLocked();
-        }
-    }, [])
- 
-    window.addEventListener('two', () => {
-        window.dispatchEvent(new Event('three'));        
-    });   
-    
-
-    async function updateDatabase() {
-        const updatedData = userData.map(item => {
-            if (item.id == id) {
-                return { ...item, locked: false };
-            } else {
-                return item;
-            }
-        });
-        try {
-            const { data, error } = await supabase
-                .from('profiles')
-                .update({ countries: updatedData })
-                .eq('id', localStorage.getItem('id'));
-
-            if (error) {
-                console.error('Error updating Supabase row:', error.message);
-            } else {
-                console.log('Supabase updated:', data);
-                const updatedCountries = data ? data.countries : []; // Check if data exists
-                if (updatedCountries === 0) {
-                    //console.log('ERRO SUPABASE!!!!');
-                } else {
-                    //console.log('ACERTO SUPABASE!!!!')
-                    //localStorage.setItem('countries', JSON.stringify(updatedCountries));
-                    setUserData(updatedCountries); // Update userData with updatedCountries
-                    updateLocked(); // Call updateLocked after updating userData
-                }
-            }
-
-        } catch (error) {
-            console.error('Error updating Supabase row:', error.message);
-        }
-    }
 
     const handleModal = (pass, id) => {
         if (openModal) {
@@ -177,24 +104,13 @@ function Map() {
     };
 
     const checkPass = () => {
-        let update = false;
         if (pass == input) {
             countries.map((country) => {
                 if (country.id == id && country.pass == pass) {
-                    country.marker = dark ? "dark-unlocked-point" : "unlocked-point";     
-                    update = true;               
+                    country.marker = dark ? "dark-unlocked-point" : "unlocked-point";             
                 }
-            })            
-        } else {
-            setLoading(true);
+            })
         }
-        if (update) {
-            setLoading(true);
-            updateDatabase();
-            setLoading(true);
-            alert('Parabéns, agente. Você desbloqueou mais um país. Fique atento, em breve o sistema se atualizará com as novas descobertas.');
-        }
-        setInput('');
     };
 
     const handleDark = () => {

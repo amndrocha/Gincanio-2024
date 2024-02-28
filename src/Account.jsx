@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { supabase } from './supabaseClient';
 import './Account.css';
 
 function Account() {
@@ -7,26 +6,7 @@ function Account() {
     const [auth, setAuth] = useState(localStorage.getItem('user'));
     const [attempts, setAttempts] = useState(0);
     const [loginMessage, setLoginMessage] = useState('');
-    const [user, setUser] = useState('agente241');
     const [pass, setPass] = useState('');
-
-    async function signInWithEmail() {
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email: user,
-            password: pass,
-        });
-        if (error) {
-            document.getElementById('audio').play(); 
-            setLoginMessage('Credenciais inválidas.');  
-        } else {
-            setLoginMessage('');
-            localStorage.setItem('user', user);
-            setAuth(user);
-            localStorage.setItem('id', data.user.id);
-            window.dispatchEvent(new Event('id'));
-        }
-      }
-    
 
     const handleRecover = () => {
         setPass('');
@@ -34,57 +14,43 @@ function Account() {
     }
 
     const handleLogin = () => {
-        if (user == 'agente241') {
-            if (pass == '1940') {
-                setPass('');
-                setLoginMessage('');
-                setRecover(false);
-                localStorage.setItem('user', 'agente241');
-                localStorage.setItem('id', '');
-                setAuth(localStorage.getItem('user'));
-                location.reload();
-                return;
-            }
-            else if (recover) {
-                if (pass != '') {
-                    setPass('');
-                    setLoginMessage('Resposta incorreta. Tente Novamente.');   
-                } else {
-                    setLoginMessage('Por favor, insira uma resposta.');
-                }
-            }
-            else {
-                if (pass != '') {
-                    if (attempts < 2) {
-                        setLoginMessage('Senha incorreta. Tente Novamente.')
-                        setPass('');
-                        setAttempts(attempts+1);
-                    } else {
-                        setLoginMessage('')
-                        setPass('');
-                        setAttempts(attempts+1);
-                    }                
-                } else {
-                    setLoginMessage('Por favor, insira uma senha.')
-                }
-            }
-            document.getElementById('audio').play();            
-        } else {
+        if (pass == '1940') {
+            setPass('');
+            setLoginMessage('');
+            setRecover(false);
+            localStorage.setItem('user', 'agente241');
+            localStorage.setItem('id', '');
+            setAuth(localStorage.getItem('user'));
+            location.reload();
+            return;
+        }
+        else if (recover) {
             if (pass != '') {
-                // Attempt to sign in with Supabase
-                signInWithEmail();
+                setPass('');
+                setLoginMessage('Resposta incorreta. Tente Novamente.');   
             } else {
-                document.getElementById('audio').play(); 
-                setLoginMessage('Por favor, insira uma senha.');
+                setLoginMessage('Por favor, insira uma resposta.');
             }
         }
+        else {
+            if (pass != '') {
+                if (attempts < 2) {
+                    setLoginMessage('Senha incorreta. Tente Novamente.')
+                    setPass('');
+                    setAttempts(attempts+1);
+                } else {
+                    setLoginMessage('')
+                    setPass('');
+                    setAttempts(attempts+1);
+                }                
+            } else {
+                setLoginMessage('Por favor, insira uma senha.')
+            }
+        }
+        document.getElementById('audio').play();
     } 
 
     const handleLogOff = () => {
-        if (user != 'agente241') {
-            supabase.auth.signOut();
-        }
-        setUser('');
         setPass('');
         localStorage.clear();
         setAuth(false);
@@ -121,7 +87,7 @@ function Account() {
                         <p className={recover ? 'visible' : 'none'}><b>Pergunta de segurança:</b> Qual foi o ano de fundação da minha universidade?</p>
                         <div className={recover ? 'none' : 'input-box'}>
                             <input type='username' placeholder='Credencial' autoComplete="username"
-                            value={user} onChange={(e) => setUser(e.target.value)}/>
+                            value='agente241' readOnly/>
                         </div>
                         <div className='input-box'>
                             <input type='password' placeholder='Senha' onKeyUp={(e) => handleKeyPress(e.key)}
