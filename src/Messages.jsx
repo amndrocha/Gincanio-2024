@@ -1,9 +1,13 @@
 import { useState } from "react";
 import './Messages.css'
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { remove } from "./slice";
 
 function Messages() {
+    const dispatch = useDispatch();
     const [current, setCurrent] = useState(-1);
-    const [newMessages, setNewMessages] = useState(JSON.parse(localStorage.getItem('newMessages')) || []);
+    const newMessages = useSelector(state => state.message.message);
     const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
 
     const getUnlocked = () => {
@@ -19,19 +23,12 @@ function Messages() {
 
     const unlocked = countries ? getUnlocked() : [];
 
-    window.addEventListener('new-message', () => {
-        setNewMessages(JSON.parse(localStorage.getItem('newMessages'))); 
+    window.addEventListener('news', () => {
         setCountries(JSON.parse(localStorage.getItem('countries')));
-        console.log('chegou em messages: ',newMessages);
     });
 
     const openMessage = (countryName, message) => {
-        if (countryName !== '') {
-            setNewMessages(prevMessages => prevMessages.filter(country => country !== countryName));
-            localStorage.setItem('newMessages', JSON.stringify(newMessages));
-            window.dispatchEvent(new Event('remove'));
-            console.log('saiu de messages: ',newMessages);            
-        }
+        dispatch(remove(countryName));
         setCurrent(message);
 
     }
@@ -42,7 +39,7 @@ function Messages() {
             <div className="messages-preview">
 
                 <div className={unlocked && unlocked.includes('brasil') ? 'message' : 'none'}
-                onClick={() => openMessage('brasil', 1)}>
+                onClick={() => openMessage('brasil', 2)}>
                     <span className={newMessages && newMessages.includes('brasil') ? 'visible' : 'none'}>((NEW)) </span>
                     O Brasil foi revelado!
                 </div>

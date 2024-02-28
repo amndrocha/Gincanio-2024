@@ -3,8 +3,11 @@ import { useState } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { renderToString } from 'react-dom/server';
 import './Map.css';
+import { useDispatch } from "react-redux";
+import { add } from "./slice";
 
 function Map() {
+    const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [dark, setDark] = useState(false);
@@ -34,20 +37,16 @@ function Map() {
 
     const checkPass = (e) => {
         e.preventDefault();
-        let newMessages = JSON.parse(localStorage.getItem('newMessages')) || [];
         if (pass == input) {
             countries.map((country) => {
                 if (country.name == countryName && country.pass == pass) {
                     country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
-                    newMessages.push(country.name);
+                    dispatch(add(country.name));
                 }
             })
         }
         localStorage.setItem('countries', JSON.stringify(countries));
-        localStorage.setItem('newMessages', JSON.stringify(newMessages));
-        console.log('saiu do mapa: ',newMessages);
         window.dispatchEvent(new Event('news'));
-        window.dispatchEvent(new Event('new-message'));
         setOpenModal(false);  
     };
 

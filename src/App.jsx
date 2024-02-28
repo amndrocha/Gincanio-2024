@@ -3,12 +3,13 @@ import './App.css'
 import Map from './Map'
 import Messages from './Messages'
 import Account from './Account'
+import { useSelector } from 'react-redux'
 
 function App() {
 
 
   const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
-  const [newMessages, setNewMessages] = useState(JSON.parse(localStorage.getItem('newMessages')) || []);
+  const newMessages = useSelector(state => state.message.message);
 
   const handlePageChange = (page) => {
     localStorage.setItem('page', page);
@@ -17,15 +18,6 @@ function App() {
       location.reload();
     }
   }
-  window.addEventListener('news', () => {
-    setNewMessages(JSON.parse(localStorage.getItem('newMessages')));
-    console.log('chegou no app: ',newMessages);
-  });
-
-  window.addEventListener('remove', () => {
-    setNewMessages(JSON.parse(localStorage.getItem('newMessages')));
-  });
-
 
   return (
     <div>
@@ -35,10 +27,10 @@ function App() {
             <div className='navlink' onClick={() => handlePageChange('account')}>Conta</div>
         </div>       
         <div className='content'>
-          <span className={current == 'map' ? 'visible' : 'invisible'}><Map/></span>
-          <span className={current == 'account' ? 'visible' : 'invisible'}><Account/></span>
-          <span className={current == 'messages' ? 'visible' : 'invisible'}><Messages/></span>
-          <span className={current == '' ? 'visible' : 'invisible'}></span>          
+          <span className={current == 'map' ? 'visible' : 'none'}><Map/></span>
+          <span className={current == 'account' ? 'visible' : 'none'}><Account/></span>
+          <span className={current == 'messages' ? 'visible' : 'none'}><Messages/></span>
+          <span className={current == '' ? 'visible' : 'none'}></span>          
         </div>
        
     </div>
