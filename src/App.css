@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "terminal";
+  src: url("assets/terminal2.ttf");
+}
+
+* {
+  font-family: terminal;
+}
+
 .none {
     display: none;
 }
@@ -13,6 +22,7 @@
 
 .navlink {
     cursor: pointer;
+    font-size: 1.6em;
 }
 
 .navlink:hover {
@@ -35,7 +45,7 @@
     font-weight: bold;
     font-family: monospace;
     display: inline-grid;
-    font-size: 30px;
+    font-size: 60px;
   }
   .loader:before,
   .loader:after {
@@ -93,10 +103,22 @@
   width: 500px;
   height: 300px;
   padding: 10px;
+  background-color: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.map-modal-window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4em 3em;
   border: 2px solid rgba(0,255,0,0.2);
   background-color: transparent;
   border-radius: 20px;
   backdrop-filter: blur(5px);
+
 }
 
 .invisible {

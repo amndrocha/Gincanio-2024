@@ -90,38 +90,37 @@ function Map() {
         return null;
     };
 
+    const preventClick = (e) => {
+        e.stopPropagation();
+    }
+
     return (
         <div className={dark ? 'dark-map-page' : 'map-page'} >
             <div className={loading ? 'loading' : 'none'}><div className="loader"></div></div>
             <div className={ dark ? "lightBtnOff" : "lightBtnOn"} onClick={handleDark}><div className={ dark ? "lightBtnCircleOff" : "lightBtnCircleOn"}></div></div>
-            <div className={openModal ? 'modal' : 'none'}>
-                <div className="modal-window">
-                    <div className="modal-header">
-                        <div className="close-btn" onClick={handleModal}>fechar</div>
-                    </div>
-                    <div className="modal-content">
-                        {countries.map((country, i) => {
-                            if (country.pass == pass) {
-                                if (country.marker == "unlocked-point" || country.marker == "dark-unlocked-point") {
-                                    return(
-                                        <div key={country}>País investigado com sucesso.</div>
-                                    )
-                                } else {
-                                    return(
-                                        <form key={i}>
-                                            <div className="input-box">
-                                                <input id="pass" type="text" value={input}
-                                                onChange={(e) => setInput(e.target.value)}
-                                                onKeyDown={(e) => {if (e.key === "Enter") checkPass(e)}}
-                                                placeholder="Resposta"/>
-                                            </div>                                            
-                                            <button className="send-btn" onClick={checkPass}>Enviar</button>
-                                        </form>
-                                    )
-                                }
+            <div className={openModal ? 'modal' : 'none'} onClick={handleModal}>
+                <div className="map-modal-window" onClick={(e) => preventClick(e)}>
+                    {countries.map((country, i) => {
+                        if (country.pass == pass) {
+                            if (country.marker == "unlocked-point" || country.marker == "dark-unlocked-point") {
+                                return(
+                                    <div key={country}>País investigado com sucesso.</div>
+                                )
+                            } else {
+                                return(
+                                    <form key={i} style={{marginTop: 0}}>
+                                        <div className="input-box">
+                                            <input id="pass" type="text" value={input}
+                                            onChange={(e) => setInput(e.target.value)}
+                                            onKeyDown={(e) => {if (e.key === "Enter") checkPass(e)}}
+                                            placeholder="Resposta"/>
+                                        </div>                                            
+                                        <button className="send-btn" onClick={checkPass}>Enviar</button>
+                                    </form>
+                                )
                             }
-                        })}                            
-                    </div>
+                        }
+                    })} 
                 </div>
             </div>
 

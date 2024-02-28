@@ -13,7 +13,8 @@
     border-radius: 40px 0 0 40px;
 }
 .current-message {
-    font-size: 15px;
+    font-size: 1.6em;
+    text-align: justify;
     padding: 30px;
     height: 100%;
     width: 70vw;
@@ -23,7 +24,7 @@
     line-height: 30px;
 }
 .message {
-    font-size: 15px;
+    font-size: 1.6em;
     padding: 30px;
     height: 70px;
     border-bottom: 2px solid rgba(0,255,0,0.2);
@@ -31,19 +32,4 @@
     white-space: nowrap;
     overflow: hidden;
     cursor: pointer;
-}
-
-.viewPassword {
-    cursor: pointer;
-    font-size: 20px;
-    position: absolute;
-    margin-top: -39px;
-    margin-left: 278px;
-}
-.hidePassword {
-    cursor: pointer;
-    font-size: 20px;
-    position: absolute;
-    margin-top: -37px;
-    margin-left: 282px;
 }
