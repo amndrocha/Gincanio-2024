@@ -76,17 +76,49 @@ function Account() {
         setRecover(true);
     }
 
-    const handleLogin = () => {
-        if (pass == '1940') {
-            if (!localStorage.getItem('countries')) {
-                localStorage.setItem('countries', JSON.stringify(countries));
-            }
+    const logIn = () => {
             setPass('');
             setLoginMessage('');
             setRecover(false);
             localStorage.setItem('auth', JSON.stringify(true));
             setAuth(true);
             return;
+
+    }
+
+    const right = [123]
+
+    const handleLogin = () => {
+        if (pass == '1946') {
+            setLoginMessage('Agora sim! Preparando login...');
+            setTimeout(function() {
+                logIn();
+            }, 1000);
+
+        }
+        else if (pass == '1940') {
+            setLoginMessage('Errado. Isso foi o decreto de fundação…');
+            document.getElementById('audio').play();
+        }
+        else if (pass == '1941') {
+            setLoginMessage('Aí foram as primeiras aulas das Faculdades Católicas... não da universidade!');
+            document.getElementById('audio').play();
+        }
+        else if (pass == '1947') {
+            setLoginMessage('Aqui passamos a chamar Pontifícia, mas já éramos universidade antes disso.');
+            document.getElementById('audio').play();
+        }
+        else if (pass < '1500') {
+            setLoginMessage('Sério isso? Antes do descobrimento?');
+            document.getElementById('audio').play();
+        }
+        else if (pass > '2000' || (pass > '1501' && pass < '1900')) {
+            setLoginMessage('Século errado, tente novamente.');
+        }
+        else if (pass == '123') {
+            if (!localStorage.getItem('countries')) {
+                localStorage.setItem('countries', JSON.stringify(countries));
+            }
         }
         else if (recover) {
             if (pass != '') {
@@ -152,7 +184,7 @@ function Account() {
             <div className={auth ? 'none' : 'box'}>
                     <h2>{recover ? 'RECUPERAR ACESSO' : 'ACESSO RESTRITO'}</h2>
                     <form>                        
-                        <p className={recover ? 'visible' : 'none'}><b>Pergunta de segurança:</b> Qual foi o ano de fundação da minha universidade?</p>
+                        <p className={recover ? 'visible' : 'none'}><b>Pergunta de segurança: </b>Em que ano foram dadas as primeiras aulas em sua universidade?</p>
                         <div className={recover ? 'none' : 'input-box'}>
                             <input type='username' placeholder='Credencial' autoComplete="username"
                             value='agente241' readOnly/>

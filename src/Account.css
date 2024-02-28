@@ -145,7 +145,8 @@ input:valid ~ label {
     color: red;
     margin-top: 0px;
     margin: 4px 0;
-    height: 15px;
+    height: fit-content;
+    min-height: 19.2px;
     font-size: 1.2em;
 }
 
