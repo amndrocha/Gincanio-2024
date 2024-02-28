@@ -6,7 +6,7 @@ import { remove } from "./slice";
 
 function Messages() {
     const dispatch = useDispatch();
-    const [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(-1);
     const newMessages = useSelector(state => state.message.message);
     const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
 
@@ -99,7 +99,12 @@ function Messages() {
                 </div>
 
                 <div className={current == 0 ? 'visible' : 'none'}>
-                    Atenção!<br/><br/>Nosso sistema detectou atividades suspeitas na sua conta. Como medida de segurança, a sua senha dessa será alterada a cada nova atualização do banco de dados.<br/><br/>Caso haja alguma tentativa de logar utilizando uma senha antiga, os dados mais recentes da investigação serão ocultados.<br/><br/>  
+                    Atenção!<br/><br/>Nosso sistema detectou atividades suspeitas na sua conta. Como medida de segurança, a sua senha dessa será alterada a cada nova atualização do banco de dados.<br/><br/>Caso haja alguma tentativa de logar utilizando uma senha antiga, os dados mais recentes da investigação serão ocultados.<br/><br/>
+
+                    <div className="intercepted-message">
+                        <img className="message-img" src='./img/raposo0.jpg'/>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, fugit. Ullam unde debitis magni? Illum magni omnis a, earum quas necessitatibus dolores facilis accusantium modi cum non mollitia. Quam, fugiat.
+                    </div>
                 </div>
 
             </div>

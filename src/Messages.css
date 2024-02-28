@@ -112,5 +112,17 @@
 
 ::-webkit-scrollbar{
     width: 0px;
-    background:red;
-  }
+}
+.intercepted-message {
+    padding: 10px;
+    margin: 0px 10%;
+    text-align: left;
+    border: 2px solid lime;
+}
+.message-img {
+    width: 90px;
+    outline: 2px solid lime;
+    float: left;
+    margin: 0px 10px 0 0;
+
+}
