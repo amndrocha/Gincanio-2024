@@ -6,7 +6,7 @@ import { remove } from "./slice";
 
 function Messages() {
     const dispatch = useDispatch();
-    const [current, setCurrent] = useState(-1);
+    const [current, setCurrent] = useState(0);
     const newMessages = useSelector(state => state.message.message);
     const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
 
@@ -58,6 +58,8 @@ function Messages() {
 
             </div>
             <div className="current-message">
+                <div className="diviser"></div>
+                <div className="return"></div>
                 <div className={current == 2 ? 'visible' : 'none'}>
                     O Brasil foi revelado!
                 </div>
@@ -67,6 +69,8 @@ function Messages() {
                 </div>
 
                 <div className={current == 0 ? 'visible' : 'none'}>
+                    Atenção!<br/><br/>Nosso sistema detectou atividades suspeitas na sua conta. Como medida de segurança, a senha da sua conta foi alterada.<br/><br/>Caso haja alguma tentativa de logar utilizando uma senha antiga, os dados mais recentes da investigação serão ocultados.<br/><br/>
+
                     Atenção!<br/><br/>Nosso sistema detectou atividades suspeitas na sua conta. Como medida de segurança, a senha da sua conta foi alterada.<br/><br/>Caso haja alguma tentativa de logar utilizando uma senha antiga, os dados mais recentes da investigação serão ocultados.<br/><br/>
                 </div>
 

@@ -11,6 +11,9 @@
     width: 30vw;
     border: 2px solid rgba(0,255,0,0.2);
     border-radius: 40px 0 0 40px;
+    @media only screen and (max-width: 600px) {
+        display: none;
+    }
 }
 .current-message {
     font-size: 1.6em;
@@ -22,6 +25,14 @@
     border-radius: 0 40px 40px 0;
     border-left: none;
     line-height: 30px;
+    overflow-y: auto;
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+        border-radius: 40px;;
+        border-left: 2px solid rgba(0,255,0,0.2);
+        padding: 20px;
+        padding-top: 55px;
+    }
 }
 .message {
     font-size: 1.6em;
@@ -33,3 +44,31 @@
     overflow: hidden;
     cursor: pointer;
 }
+
+.diviser {
+    position: absolute;
+    margin-top: -38px;
+    width: 70vw;
+    background-image: linear-gradient(to right,#032101, black, black, black, black, black, black, black, black, black, black, black, #032401);
+    border-bottom: 2px solid rgba(0,255,0,0.2);
+    height: 30px;
+    @media only screen and (min-width: 600px) {
+        display: none;
+    }
+}
+
+.return {
+    margin-top: -38px;
+    position: absolute;
+    @media only screen and (min-width: 600px) {
+        display: none;
+    }
+}
+.return::before {
+    content: '<<< voltar';
+}
+
+::-webkit-scrollbar{
+    width: 0px;
+    background:red;
+  }
