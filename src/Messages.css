@@ -31,7 +31,6 @@
         border-radius: 40px;;
         border-left: 2px solid rgba(0,255,0,0.2);
         padding: 20px;
-        padding-top: 55px;
     }
 }
 .message {
@@ -46,20 +45,17 @@
 }
 
 .diviser {
-    position: absolute;
-    margin-top: -38px;
-    width: 70vw;
-    background-image: linear-gradient(to right,#032101, black, black, black, black, black, black, black, black, black, black, black, #032401);
-    border-bottom: 2px solid rgba(0,255,0,0.2);
-    height: 30px;
+    width: 100%;
+    backdrop-filter: blur(100px);
+    background-color: rgba(0,255,0,0.2);
+    height: 1.5px;
+    margin-bottom: 10px;
     @media only screen and (min-width: 600px) {
         display: none;
     }
 }
 
 .return {
-    margin-top: -38px;
-    position: absolute;
     @media only screen and (min-width: 600px) {
         display: none;
     }
