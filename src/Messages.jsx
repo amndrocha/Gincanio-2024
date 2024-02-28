@@ -29,37 +29,67 @@ function Messages() {
 
     const openMessage = (countryName, message) => {
         dispatch(remove(countryName));
-        setCurrent(message);
-
+        setCurrent(message)
+        setPreview(false);
     }
+
+    const [preview, setPreview] = useState(true);
     
     return (
         <div className="messages-page">
 
-            <div className="messages-preview">
+            <div className={preview ? 'view-messages-preview' : "messages-preview"}>
+
+                <div className={unlocked && unlocked.includes('eua') ? 'message' : 'none'}
+                onClick={() => openMessage('eua', 3)}>                    
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes('eua') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Os Estados Unidos foram revelados!
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                </div>
 
                 <div className={unlocked && unlocked.includes('brasil') ? 'message' : 'none'}
-                onClick={() => openMessage('brasil', 2)}>
-                    <span className={newMessages && newMessages.includes('brasil') ? 'visible' : 'none'}>((NEW)) </span>
-                    O Brasil foi revelado!
+                onClick={() => openMessage('brasil', 2)}>                    
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes('brasil') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                                O Brasil foi revelado!
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
                 </div>
 
                 <div className={unlocked && unlocked.includes('argentina') ? 'message' : 'none'}
                 onClick={() => openMessage('argentina', 1)}>
-                    <span className={newMessages && newMessages.includes('argentina') ? 'visible' : 'none'}>((NEW)) </span>
-                    A Argentina foi revelada!
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes('argentina') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            A Argentina foi revelada!
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
                 </div>
 
                 <div className='message'
                 onClick={() => openMessage('', 0)}>
-                    <span className={newMessages && newMessages.includes('') ? 'visible' : 'none'}>((NEW)) </span>
-                    Atenção! Nosso sistema detectou atividades suspeitas na sua conta. Para evitar a perda dos dados da investigação, é imprescindível que você atualize seu endereço de e-mail e senha imediatamente. Sem essa ação, a sua conta estará comprometida.
+                    <div style={{display: 'flex'}}>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Atenção! Nosso sistema detectou atividades suspeitas na sua conta...
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
                 </div>
 
             </div>
-            <div className="current-message">
-                <div className="return"></div>
+            <div className={preview ?  'current-message' : "view-current-message"}>
+                <div className="return" onClick={() => setPreview(true)}></div>
                 <div className="diviser"></div>
+                <div className={current == 3 ? 'visible' : 'none'}>
+                    Os Estados Unidos foram revelados!
+                </div>
                 <div className={current == 2 ? 'visible' : 'none'}>
                     O Brasil foi revelado!
                 </div>
@@ -69,7 +99,7 @@ function Messages() {
                 </div>
 
                 <div className={current == 0 ? 'visible' : 'none'}>
-                    Atenção!<br/><br/>Nosso sistema detectou atividades suspeitas na sua conta. Como medida de segurança, a sua senha dessa será alterada a cada nova atualização.<br/><br/>Caso haja alguma tentativa de logar utilizando uma senha antiga, os dados mais recentes da investigação serão ocultados.<br/><br/>  
+                    Atenção!<br/><br/>Nosso sistema detectou atividades suspeitas na sua conta. Como medida de segurança, a sua senha dessa será alterada a cada nova atualização do banco de dados.<br/><br/>Caso haja alguma tentativa de logar utilizando uma senha antiga, os dados mais recentes da investigação serão ocultados.<br/><br/>  
                 </div>
 
             </div>
