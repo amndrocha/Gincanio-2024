@@ -20,7 +20,7 @@ function Map() {
         setLoading(true);
         setTimeout(function() {
             setLoading(false);
-        }, 5000);
+        }, 1500);
     };
 
     const handleModal = (pass, name) => {
@@ -42,6 +42,7 @@ function Map() {
                 if (country.name == countryName && country.pass == pass) {
                     country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
                     dispatch(add(country.name));
+                    fakeLoading();
                 }
             })
         }

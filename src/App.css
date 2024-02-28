@@ -39,7 +39,7 @@
   }
   .loader:before,
   .loader:after {
-    content:"Loading...";
+    content:"Analisando dados...";
     grid-area: 1/1;
     -webkit-mask-size: 100% 5px,100% 100%;
     -webkit-mask-repeat: no-repeat;
