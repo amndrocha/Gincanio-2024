@@ -86,65 +86,72 @@ function Account() {
 
     }
 
-    const right = [123]
+    const right = ['1946']
 
     const handleLogin = () => {
-        if (pass == '1946') {
-            setLoginMessage('Agora sim! Preparando login...');
-            setTimeout(function() {
-                logIn();
-            }, 1000);
-
-        }
-        else if (pass == '1940') {
-            setLoginMessage('Errado. Isso foi o decreto de fundação…');
-            document.getElementById('audio').play();
-        }
-        else if (pass == '1941') {
-            setLoginMessage('Aí foram as primeiras aulas das Faculdades Católicas... não da universidade!');
-            document.getElementById('audio').play();
-        }
-        else if (pass == '1947') {
-            setLoginMessage('Aqui passamos a chamar Pontifícia, mas já éramos universidade antes disso.');
-            document.getElementById('audio').play();
-        }
-        else if (pass < '1500') {
-            setLoginMessage('Sério isso? Antes do descobrimento?');
-            document.getElementById('audio').play();
-        }
-        else if (pass > '2000' || (pass > '1501' && pass < '1900')) {
-            setLoginMessage('Século errado, tente novamente.');
-        }
-        else if (pass == '123') {
-            if (!localStorage.getItem('countries')) {
-                localStorage.setItem('countries', JSON.stringify(countries));
-            }
-        }
-        else if (recover) {
-            if (pass != '') {
+        if (recover) {
+            if (pass === '1946') {
+                if (!localStorage.getItem('countries')) {
+                    localStorage.setItem('countries', JSON.stringify(countries));
+                }
+                setLoginMessage('Agora sim! Preparando login...');
+                setTimeout(function() {
+                    logIn();
+                }, 1000);
+            } else if (pass === '1940') {
                 setPass('');
-                setLoginMessage('Resposta incorreta. Tente Novamente.');   
+                setLoginMessage('Errado. Isso foi o decreto de fundação…');
+            } else if (pass === '1941') {
+                setPass('');
+                setLoginMessage('Aí foram as primeiras aulas das Faculdades Católicas... não da universidade!');
+            } else if (pass === '1947') {
+                setPass('');
+                setLoginMessage('Aqui passamos a chamar Pontifícia, mas já éramos universidade antes disso.');
+            } else if (pass <= '1500') {
+                setPass('');
+                setLoginMessage('Sério isso? Antes do descobrimento?');
+            } else if (pass >= '2000' || pass < '1900') {
+                setPass('');
+                setLoginMessage('Século errado, tente novamente.');
+            } else if (pass === '') {
+                setPass('');
+                setLoginMessage('Por favor, insira uma resposta.');   
             } else {
-                setLoginMessage('Por favor, insira uma resposta.');
+                setPass('');
+                setLoginMessage('Resposta incorreta. Tente Novamente.');
             }
-        }
-        else {
-            if (pass != '') {
-                if (attempts < 2) {
-                    setLoginMessage('Senha incorreta. Tente Novamente.')
-                    setPass('');
-                    setAttempts(attempts+1);
+        } else {
+            if (pass === '') {
+                setLoginMessage('Por favor, insira uma senha.');              
+            } else {
+                if (right.includes(pass)) {
+                    if (pass === '1946') {
+                        if (!localStorage.getItem('countries')) {
+                            localStorage.setItem('countries', JSON.stringify(countries));
+                        }                        
+                    }
+                    logIn();
                 } else {
-                    setLoginMessage('')
-                    setPass('');
-                    setAttempts(attempts+1);
-                }                
-            } else {
-                setLoginMessage('Por favor, insira uma senha.')
+                    if (attempts < 2) {
+                        setLoginMessage('Senha incorreta. Tente Novamente.')
+                        setPass('');
+                        setAttempts(attempts+1);
+                    } else {
+                        setLoginMessage('')
+                        setPass('');
+                        setAttempts(attempts+1);
+                    }
+                }
             }
         }
-        document.getElementById('audio').play();
-    } 
+        const audioElement = document.getElementById('audio');
+        if(audioElement) {
+            audioElement.play();
+        } else {
+            console.error("Audio element not found");
+        }
+    }
+    
 
     const handleLogOff = () => {
         setPass('');

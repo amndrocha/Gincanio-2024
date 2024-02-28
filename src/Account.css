@@ -148,6 +148,7 @@ input:valid ~ label {
     height: fit-content;
     min-height: 19.2px;
     font-size: 1.2em;
+    max-width: 300px;
 }
 
 form {
