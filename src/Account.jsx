@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Account.css';
 
 function Account() {
@@ -71,10 +71,185 @@ function Account() {
             marker: 'locked-point',
         },  
     ];
+    const errorSound = document.getElementById('audio');
+    const paths = [["argentina", "brasil", "eua", "polonia", "turquia"], ["mocambique", "arabia"],["indonesia", "india"]];
+    const words = [
+        "marmota",
+        "cangalho",
+        "pamonha",
+        "xarope",
+        "cacareco",
+        "muvuca",
+        "zumbido",
+        "ximbica",
+        "gambiarra",
+        "munganga",
+        "marreco",
+        "cochicho",
+        "cuscuz",
+        "trambique",
+        "pinguim",
+        "chafariz",
+        "lagartixa",
+        "trambolho",
+        "falsete",
+        "fricote",
+        "choramingo",
+        "pinguelo",
+        "mambembe",
+        "pandorga",
+        "acocorado",
+        "capenga",
+        "xerife",
+        "estrovenga",
+        "bochecha",
+        "arapuca",
+        "pernilongo",
+        "ziguezague",
+        "xaveco",
+        "patacoada",
+        "patolino",
+        "esparrela",
+        "patuscada",
+        "tumulto",
+        "embuste",
+        "bagunceiro",
+        "desbunde",
+        "xereta",
+        "esbugalhado",
+        "almofadinha",
+        "esguicho",
+        "chilique",
+        "borboleta",
+        "piparote",
+        "borralho",
+        "zarolho",
+        "espantalho",
+        "espoleta",
+        "xurumela",
+        "pechincha"
+    ];
+    useEffect(() => {
+        const paths = [["argentina", "brasil", "eua", "polonia", "turquia"], ["mocambique", "arabia"],["indonesia", "india"]];
+        const words = [
+            "marmota",
+            "cangalho",
+            "pamonha",
+            "xarope",
+            "cacareco",
+            "muvuca",
+            "zumbido",
+            "ximbica",
+            "gambiarra",
+            "munganga",
+            "marreco",
+            "cochicho",
+            "cuscuz",
+            "trambique",
+            "pinguim",
+            "chafariz",
+            "lagartixa",
+            "trambolho",
+            "falsete",
+            "fricote",
+            "choramingo",
+            "pinguelo",
+            "mambembe",
+            "pandorga",
+            "acocorado",
+            "capenga",
+            "xerife",
+            "estrovenga",
+            "bochecha",
+            "arapuca",
+            "pernilongo",
+            "ziguezague",
+            "xaveco",
+            "patacoada",
+            "patolino",
+            "esparrela",
+            "patuscada",
+            "tumulto",
+            "embuste",
+            "bagunceiro",
+            "desbunde",
+            "xereta",
+            "esbugalhado",
+            "almofadinha",
+            "esguicho",
+            "chilique",
+            "borboleta",
+            "piparote",
+            "borralho",
+            "zarolho",
+            "espantalho",
+            "espoleta",
+            "xurumela",
+            "pechincha"
+        ];
+
+        function generatePaths(currentPath, index, allPaths) {
+            if (index === currentPath.length) {
+                allPaths.push(currentPath.slice()); 
+                return;
+            }
+
+            for (let i = 0; i <= paths[index].length; i++) {
+                currentPath[index] = i < paths[index].length ? paths[index][i] : ''; 
+                generatePaths(currentPath, index + 1, allPaths); 
+            }
+        }
+        let allPaths = [];
+        let currentPath = ['', '', ''];
+        let checkpoints = [];
+        generatePaths(currentPath, 0, allPaths);
+        for (let i = 0; i < allPaths.length; i++) {
+            checkpoints.push({
+                path: allPaths[i],
+                password: words[i],
+            });
+        }
+        localStorage.setItem('checkpoints', JSON.stringify(checkpoints));
+    }, []);
+
+    
 
     const handleRecover = () => {
         setPass('');
         setRecover(true);
+    }
+
+    const getPath = () => {        
+        const checkpoints = JSON.parse(localStorage.getItem('checkpoints'));
+        let path = [];
+        checkpoints.forEach(checkpoint => {
+            if (checkpoint.password == pass) {
+                path = checkpoint.path;
+            }
+        })
+        let last = false;
+        let unlocked = [];
+        paths.forEach((array, i) => {
+            array.forEach((country, j) => {
+                if (j == 0) {
+                    last = false;
+                }
+                console.log(country, j, last);
+                if (!last) {
+                    unlocked.push(country);
+                    if (path[i].includes(country)) {
+                        last = true;
+                    }               
+                }
+            })
+        })
+        countries.forEach(country => {
+            if (unlocked.includes(country.name)) {
+                country.marker = 'unlocked-point';
+            }
+        })
+        localStorage.setItem('countries', JSON.stringify(countries));
+        location.reload();
     }
 
     const logIn = () => {
@@ -87,8 +262,6 @@ function Account() {
 
     }
 
-    const right = ['1946']
-
     const handleLogin = () => {
         if (recover) {
             if (pass === '1946') {
@@ -99,6 +272,7 @@ function Account() {
                 setTimeout(function() {
                     logIn();
                 }, 1000);
+                return;
             } else if (pass === '1940') {
                 setPass('');
                 setLoginMessage('Errado. Isso foi o decreto de fundação…');
@@ -125,13 +299,16 @@ function Account() {
             if (pass === '') {
                 setLoginMessage('Por favor, insira uma senha.');              
             } else {
-                if (right.includes(pass)) {
+                if (pass === '1946' || words.includes(pass)) {
                     if (pass === '1946') {
                         if (!localStorage.getItem('countries')) {
                             localStorage.setItem('countries', JSON.stringify(countries));
-                        }                        
+                        }                   
+                    } else {
+                        getPath();
                     }
                     logIn();
+                    return;  
                 } else {
                     if (attempts < 2) {
                         setLoginMessage('Senha incorreta. Tente Novamente.')
@@ -145,12 +322,7 @@ function Account() {
                 }
             }
         }
-        const audioElement = document.getElementById('audio');
-        if(audioElement) {
-            audioElement.play();
-        } else {
-            console.error("Audio element not found");
-        }
+        errorSound.play();
     }
     
 

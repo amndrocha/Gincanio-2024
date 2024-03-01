@@ -11,6 +11,7 @@ function App() {
   const [current, setCurrent] = useState(localStorage.getItem('page') || 'account');
   const newMessages = useSelector(state => state.message.message);
   const [showPass, setShowPass] = useState(false);
+  const [wrongPass, setWrongPass] = useState(false);
   const password = useSelector(state => state.message.pass);
 
 
@@ -30,16 +31,34 @@ function App() {
     setShowPass(true);
   });
 
+  window.addEventListener('wrong', () => {
+    setWrongPass(true);
+  });
+
 
   const preventClick = (e) => {
       e.stopPropagation();
   }
 
+  const passAlert = () => {
+    return(
+      <span>
+        A investigação foi atualizada.<br/>Sua nova senha é: {password}
+      </span>
+    );
+  }
+
+  const closeAlert = () => {
+    setShowPass(false);
+    setWrongPass(false);
+
+  }
+
   return (
     <div>  
-      <div className={showPass ? "modal" : 'none'} onClick={() => setShowPass(false)}>
+      <div className={showPass || wrongPass ? "modal" : 'none'} onClick={closeAlert}>
           <div style={{textAlign: 'center', fontSize: '1.5em', maxWidth: '100vw'}} className="map-modal-window" onClick={(e) => preventClick(e)}>
-            A investigação foi atualizada.<br/>Sua nova senha é: {password}
+            {wrongPass ? 'Nenhum resultado. Tente novamente.' : passAlert()}
           </div>
       </div>
       <div className='menu'>

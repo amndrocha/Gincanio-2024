@@ -15,65 +15,11 @@ function Map() {
     const [pass, setPass] = useState('');
     const [input, setInput] = useState('');
     const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
+    const checkpoints = JSON.parse(localStorage.getItem('checkpoints')) || [];
 
+    /// ATUALIZAR O COUNTRIES DE ACORDO COM A SENHA AO LOGAR
 
     const paths = [["argentina", "brasil", "eua", "polonia", "turquia"], ["mocambique", "arabia"],["indonesia", "india"]];
-    const words = [
-        "marmota",
-        "cangalho",
-        "pamonha",
-        "xarope",
-        "cacareco",
-        "muvuca",
-        "zumbido",
-        "ximbica",
-        "gambiarra",
-        "munganga",
-        "marreco",
-        "cochicho",
-        "cuscuz",
-        "trambique",
-        "pinguim",
-        "chafariz",
-        "lagartixa",
-        "trambolho",
-        "falsete",
-        "fricote",
-        "choramingo",
-        "pinguelo",
-        "mambembe",
-        "pandorga",
-        "acocorado",
-        "capenga",
-        "xerife",
-        "estrovenga",
-        "bochecha",
-        "arapuca",
-        "pernilongo",
-        "ziguezague",
-        "xaveco",
-        "patacoada",
-        "patolino",
-        "esparrela",
-        "patuscada",
-        "tumulto",
-        "embuste",
-        "bagunceiro",
-        "desbunde",
-        "xereta",
-        "esbugalhado",
-        "almofadinha",
-        "esguicho",
-        "chilique",
-        "borboleta",
-        "piparote",
-        "borralho",
-        "zarolho",
-        "espantalho",
-        "espoleta",
-        "xurumela",
-        "pechincha"
-      ];
     const getUnlocked = () => {
         let unlockedPath = ['', '', ''];
         if (countries) {
@@ -94,28 +40,6 @@ function Map() {
             return unlockedPath;
         }    
     };
-    let allPaths = [];
-    let currentPath = ['', '', ''];
-    function generatePaths(currentPath, index, allPaths) {
-        if (index === currentPath.length) {
-            allPaths.push(currentPath.slice()); 
-            return;
-        }
-
-        for (let i = 0; i <= paths[index].length; i++) {
-            currentPath[index] = i < paths[index].length ? paths[index][i] : ''; 
-            generatePaths(currentPath, index + 1, allPaths); 
-        }
-    }
-    generatePaths(currentPath, 0, allPaths);
-
-    let checkpoints = [];
-    for (let i = 0; i < allPaths.length; i++) {
-        checkpoints.push({
-            path: allPaths[i],
-            password: words[i],
-        });
-    }
 
     const password = useSelector(state => state.message.pass);
 
@@ -173,20 +97,28 @@ function Map() {
         }
     };
 
+    const clean = () => {
+        return input.toLowerCase();
+    }
+
     const checkPass = (e) => {
         e.preventDefault();
-        if (pass == input) {
+        if (pass == clean(input)) {
             countries.map((country) => {
                 if (country.name == countryName && country.pass == pass) {
                     country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
                     dispatch(add(country.name));
                     updatePassword();
-                    fakeLoading();         
+                    localStorage.setItem('countries', JSON.stringify(countries));
+                    window.dispatchEvent(new Event('news'));
+                    fakeLoading();     
                 }
             })
+        } else {
+            window.dispatchEvent(new Event('wrong'));
+            fakeLoading();
         }
-        localStorage.setItem('countries', JSON.stringify(countries));
-        window.dispatchEvent(new Event('news'));
+        setInput('');
         setOpenModal(false);  
     };
 
