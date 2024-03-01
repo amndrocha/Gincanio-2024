@@ -13,6 +13,7 @@ function App() {
   const newMessages = useSelector(state => state.message.message);
   const [showPass, setShowPass] = useState(false);
   const [wrongPass, setWrongPass] = useState(false);
+  const [ending, setEnding] = useState(false)
   const password = useSelector(state => state.message.pass);
 
 
@@ -36,17 +37,31 @@ function App() {
     setWrongPass(true);
   });
 
+  window.addEventListener('finish', () => {
+    setEnding(true);
+  });
+
 
   const preventClick = (e) => {
       e.stopPropagation();
   }
 
   const passAlert = () => {
-    return(
-      <span>
-        A investigação foi atualizada.<br/>Sua nova senha é: {password}
-      </span>
-    );
+    if (ending) {
+      return(
+        <span>
+          Parabéns! Você chegou ao fim da investigação.
+        </span>
+      );
+
+    } else {
+      return(
+        <span>
+          A investigação foi atualizada.<br/>Sua nova senha é: {password}
+        </span>
+      );      
+    }
+
   }
 
   const closeAlert = () => {

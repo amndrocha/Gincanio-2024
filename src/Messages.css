@@ -234,3 +234,7 @@
     background-color: lime;
     color: black
 }
+
+.mask {
+    width: 100%;
+}

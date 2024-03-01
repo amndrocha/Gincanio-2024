@@ -66,7 +66,7 @@ function Account() {
         },
         {
             name: 'turcomenistao',
-            pass: 'turcomenistao',
+            pass: 'darvaza',
             position: [ 39.4008965162013 , 58.422772177048984 ],
             marker: 'locked-point',
         },  

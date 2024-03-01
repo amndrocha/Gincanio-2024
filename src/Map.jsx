@@ -116,6 +116,9 @@ function Map() {
                     updatePassword();
                     localStorage.setItem('countries', JSON.stringify(countries));
                     window.dispatchEvent(new Event('news'));
+                    if (pass == 'darvaza') {
+                        window.dispatchEvent(new Event('finish'));
+                    }
                     fakeLoading();     
                 }
             })
