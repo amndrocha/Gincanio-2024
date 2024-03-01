@@ -219,6 +219,24 @@ function Account() {
         pass: '654649898779797',
         position: [68.9585, 33.0828],
         marker: 'locked-point',
+    },
+        {
+        name: 'LocalizaçãoA111111',
+        pass: '654649898779797',
+        position: [6.5244, 3.3792],
+        marker: 'locked-point',
+    },
+    {
+        name: 'LocalizaçãoA222222',
+        pass: '654649898779797',
+        position: [-1.2921, 36.8219],
+        marker: 'locked-point',
+    },
+    {
+        name: 'LocalizaçãoA333333',
+        pass: '654649898779797',
+        position: [-33.9249, 18.4241],
+        marker: 'locked-point',
     }
         
        
