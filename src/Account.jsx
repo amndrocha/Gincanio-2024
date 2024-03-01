@@ -31,25 +31,25 @@ function Account() {
         {
             name: 'polonia',
             pass: 'polonia',
-            position: [ 51.57581250779703 , 20.601412987576932 ],
+            position: [ 52.226935156019415 , 21.00532683694275 ],
             marker: 'locked-point',
         },
         {
             name: 'turquia',
             pass: 'turquia',
-            position: [ 39.87468079676904 , 35.40007298068552 ],
+            position: [ 41.00823543738099 , 28.964718023163034 ],
             marker: 'locked-point',
         },
         {
             name: 'mocambique',
             pass: 'mocambique',
-            position: [ -9.915867897227745 , 27.67686458128958 ],
+            position: [ -25.96396503793443 , 32.57084229018247 ],
             marker: 'locked-point',
         },
         {
             name: 'arabia saudita',
             pass: 'arabia',
-            position: [ 25.73921961430858 , 42.000545531346155 ],
+            position: [ 21.41860157679805 , 39.83525706418852 ],
             marker: 'locked-point',
         },
         {

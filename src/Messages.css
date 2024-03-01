@@ -4,6 +4,8 @@
     display: flex;
     align-items: center;
     padding: 50px;
+    padding-bottom: 19px;
+    padding-top: 0;
 }
 
 .messages-preview {
@@ -12,7 +14,7 @@
     border: 2px solid rgba(0,255,0,0.2);
     border-radius: 40px 0 0 40px;
     overflow-y: auto;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 715px) {
         display: none;
     }
 }
@@ -23,7 +25,7 @@
     border: 2px solid rgba(0,255,0,0.2);
     border-radius: 40px 0 0 40px;
     overflow-y: auto;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 715px) {
         width: 100%;
         border-radius: 40px;
     }
@@ -40,7 +42,7 @@
     border-left: none;
     line-height: 30px;
     overflow-y: auto;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 715px) {
         display: none;
     }
 }
@@ -56,7 +58,7 @@
     border-left: none;
     line-height: 30px;
     overflow-y: auto;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 715px) {
         width: 100%;
         border-radius: 40px;;
         border-left: 2px solid rgba(0,255,0,0.2);
@@ -82,14 +84,14 @@
     background-color: rgba(0,255,0,0.2);
     height: 1.5px;
     margin-bottom: 10px;
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 715px) {
         display: none;
     }
 }
 
 .return {
     cursor: pointer;
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 715px) {
         display: none;
     }
 }
@@ -98,7 +100,7 @@
 }
 .mobile-icon {
     margin-left: 10px;
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 715px) {
         display: none;
     }
 
@@ -127,4 +129,50 @@
     float: left;
     margin: 0px 10px 0 0;
 
+}
+
+.dossie-img {
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+    border-right: 4px solid lime;
+}
+.dossie {
+    display: flex;
+    flex-direction: column;
+    
+    @media only screen and (max-width: 715px) {
+        justify-content: center;
+        align-items: center;
+    }
+}
+.dossie-content { 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    @media only screen and (max-width: 715px) {
+        flex-direction: column;
+    }
+
+}
+
+.dossie-title {
+    width: 100%;
+    background-color: lime;
+    color: black;
+}
+
+.dossie-header {
+    width: 100%;
+    border: 5px solid lime;
+    @media only screen and (min-width: 510px) {
+        display: flex;
+    }
+}
+
+.dossie-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
