@@ -129,6 +129,66 @@ function Account() {
         pass: '654649898779797',
         position: [37.7749, -122.4194], 
         marker: 'locked-point',
+    },
+        {
+        name: 'Localização116565',
+        pass: '654649898779797',
+        position: [52.2297, 21.0122],
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização126454665',
+        pass: '654649898779797',
+        position: [43.6532, -79.3832],
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização13656554',
+        pass: '654649898779797',
+        position: [41.9028, 12.4964],
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização1465656',
+        pass: '654649898779797',
+        position: [52.5200, 13.4050],
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização15565566',
+        pass: '654649898779797',
+        position: [-33.4489, -70.6693],
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização1698989',
+        pass: '654649898779797',
+        position: [59.3293, 18.0686],
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização176464644',
+        pass: '654649898779797',
+        position: [30.0444, 31.2357],
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização186565656',
+        pass: '654649898779797',
+        position: [37.5665, 126.9780],
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização1965656565',
+        pass: '654649898779797',
+        position: [55.6761, 12.5683], 
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização208888888',
+        pass: '654649898779797',
+        position: [38.7223, -9.1393],
+        marker: 'locked-point',
     }
        
     ];
