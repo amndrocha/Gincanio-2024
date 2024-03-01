@@ -189,6 +189,12 @@ function Account() {
         pass: '654649898779797',
         position: [38.7223, -9.1393],
         marker: 'locked-point',
+    },
+        {
+        name: 'Localização no Peru',
+        pass: '654649898779797',
+        position: [-12.0464, -77.0428],
+        marker: 'locked-point',
     }
        
     ];
