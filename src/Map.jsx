@@ -3,8 +3,8 @@ import { useState } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { renderToString } from 'react-dom/server';
 import './Map.css';
-import { useDispatch } from "react-redux";
-import { add } from "./slice";
+import { useDispatch, useSelector } from "react-redux";
+import { add, changePass } from "./slice";
 
 function Map() {
     const dispatch = useDispatch();
@@ -15,6 +15,144 @@ function Map() {
     const [pass, setPass] = useState('');
     const [input, setInput] = useState('');
     const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
+
+
+    const paths = [["argentina", "brasil", "eua", "polonia", "turquia"], ["mocambique", "arabia"],["indonesia", "india"]];
+    const words = [
+        "marmota",
+        "cangalho",
+        "pamonha",
+        "xarope",
+        "cacareco",
+        "muvuca",
+        "zumbido",
+        "ximbica",
+        "gambiarra",
+        "munganga",
+        "marreco",
+        "cochicho",
+        "cuscuz",
+        "trambique",
+        "pinguim",
+        "chafariz",
+        "lagartixa",
+        "trambolho",
+        "falsete",
+        "fricote",
+        "choramingo",
+        "pinguelo",
+        "mambembe",
+        "pandorga",
+        "acocorado",
+        "capenga",
+        "xerife",
+        "estrovenga",
+        "bochecha",
+        "arapuca",
+        "pernilongo",
+        "ziguezague",
+        "xaveco",
+        "patacoada",
+        "patolino",
+        "esparrela",
+        "patuscada",
+        "tumulto",
+        "embuste",
+        "bagunceiro",
+        "desbunde",
+        "xereta",
+        "esbugalhado",
+        "almofadinha",
+        "esguicho",
+        "chilique",
+        "borboleta",
+        "piparote",
+        "borralho",
+        "zarolho",
+        "espantalho",
+        "espoleta",
+        "xurumela",
+        "pechincha"
+      ];
+    const getUnlocked = () => {
+        let unlockedPath = ['', '', ''];
+        if (countries) {
+            const unlockedCountries = countries.filter(country => 
+                country.marker === 'dark-unlocked-point' || country.marker === 'unlocked-point'
+            );
+
+            const unlockedNames = unlockedCountries.map((country) => country.name);
+
+            paths.forEach((path, i) => {
+                path.forEach((country) => {
+                    if (unlockedNames.includes(country)) {
+                        unlockedPath[i] = country;
+                    }
+                });
+            });
+
+            return unlockedPath;
+        }    
+    };
+    let allPaths = [];
+    let currentPath = ['', '', ''];
+    function generatePaths(currentPath, index, allPaths) {
+        if (index === currentPath.length) {
+            allPaths.push(currentPath.slice()); 
+            return;
+        }
+
+        for (let i = 0; i <= paths[index].length; i++) {
+            currentPath[index] = i < paths[index].length ? paths[index][i] : ''; 
+            generatePaths(currentPath, index + 1, allPaths); 
+        }
+    }
+    generatePaths(currentPath, 0, allPaths);
+
+    let checkpoints = [];
+    for (let i = 0; i < allPaths.length; i++) {
+        checkpoints.push({
+            path: allPaths[i],
+            password: words[i],
+        });
+    }
+
+    const password = useSelector(state => state.message.pass);
+
+    function isEqual(arr1, arr2) {
+        // Check if the arrays have the same length
+        if (arr1.length !== arr2.length) {
+            return false;
+        }
+    
+        // Check if all elements are equal
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] !== arr2[i]) {
+                return false;
+            }
+        }
+    
+        return true;
+    }
+    const updatePassword = () => {
+        console.log('Old pass: '+password);
+        const unlocked = getUnlocked(); 
+        for (let i = 0; i < checkpoints.length; i++) {
+            const checkpoint = checkpoints[i];
+            if (isEqual(checkpoint.path, unlocked)) {
+                dispatch(changePass(checkpoint.password));
+            }
+        }
+        console.log('No matching checkpoint found.');
+    };
+
+    window.addEventListener('pass', () => {
+        updatePassword();
+        window.dispatchEvent(new Event('pass-changed'));
+    });
+
+
+    
 
     const fakeLoading = () => {
         setLoading(true);
@@ -42,7 +180,8 @@ function Map() {
                 if (country.name == countryName && country.pass == pass) {
                     country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
                     dispatch(add(country.name));
-                    fakeLoading();
+                    updatePassword();
+                    fakeLoading();         
                 }
             })
         }

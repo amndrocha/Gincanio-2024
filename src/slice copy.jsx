@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     message: JSON.parse(localStorage.getItem('newMessage')) || [],
-    pass: localStorage.getItem('pass') || '',
+    pass: ''
 };
 
 export const messageSlice = createSlice({
@@ -18,13 +18,8 @@ export const messageSlice = createSlice({
             state.message = newMessage;
             localStorage.setItem('newMessage', JSON.stringify(state.message));
         },
-        changePass: (state, action) => {
+        setPassword: (state, action) => {
             state.pass = action.payload;
-            localStorage.setItem('pass', action.payload);
         }
     }
 });
-
-export const { add, remove, changePass } = messageSlice.actions;
-
-export default messageSlice.reducer;

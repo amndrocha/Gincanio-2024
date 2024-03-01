@@ -35,9 +35,9 @@
     justify-content: center;
     background-image: linear-gradient(to right,#032101, black, #032401);
     position: fixed;
-    bottom: 0;
+    top: 0;
     width: 100vw;
-    height: 94vh;
+    height: 100vh;
     z-index: 99999;
 }
 /* HTML: <div class="loader"></div> */
@@ -91,7 +91,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.305);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
 }
 

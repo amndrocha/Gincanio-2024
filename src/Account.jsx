@@ -185,7 +185,6 @@ function Account() {
                     <div className='login-btn' onClick={cleanSlate}>Apagar meus dados</div>
                     <div className='login-btn' onClick={handleLogOff}>Sair</div>
                 </form>
-
             </div>
 
             <div className={auth ? 'none' : 'box'}>
