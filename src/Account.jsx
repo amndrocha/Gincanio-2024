@@ -24,7 +24,7 @@ function Account() {
         },
         {
             name: 'estados unidos',
-            pass: 'eua',
+            pass: 'estados unidos',
             position: [ 33.71432359567805 , -86.95083968378019 ],
             marker: 'locked-point',
         },
@@ -73,7 +73,7 @@ function Account() {
     ];
     const countries = initialCountries;
     const errorSound = document.getElementById('audio');
-    const paths = [["argentina", "brasil", "eua", "polonia", "turquia"], ["mocambique", "arabia"],["indonesia", "india"]];
+    const paths = [["argentina", "brasil", "estados unidos", "polonia", "turquia"], ["mocambique", "arabia saudita"],["indonesia", "india"]];
     const words = [
         "marmota",
         "cangalho",
@@ -131,7 +131,7 @@ function Account() {
         "pechincha"
     ];
     useEffect(() => {
-        const paths = [["argentina", "brasil", "eua", "polonia", "turquia"], ["mocambique", "arabia"],["indonesia", "india"]];
+        const paths = [["argentina", "brasil", "estados unidos", "polonia", "turquia"], ["mocambique", "arabia saudita"],["indonesia", "india"]];
         const words = [
             "marmota",
             "cangalho",

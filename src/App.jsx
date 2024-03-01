@@ -4,6 +4,7 @@ import Map from './Map'
 import Messages from './Messages'
 import Account from './Account'
 import { useSelector } from 'react-redux'
+import Dossies from './Dossies'
 
 function App() {
 
@@ -64,11 +65,13 @@ function App() {
       <div className='menu'>
           <div className='navlink' onClick={() => handlePageChange('map')}>Mapa</div>
           <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens {newMessages.length > 0 ? '('+newMessages.length+')' : ''}</div>
+          <div className='navlink' onClick={() => handlePageChange('dossiess')}>Dossiê</div>
           <div className='navlink' onClick={() => handlePageChange('account')}>Conta</div>
       </div>       
       <div className='content'>
         <span className={current == 'map' ? 'visible' : 'none'}><Map/></span>
         <span className={current == 'account' ? 'visible' : 'none'}><Account/></span>
+        <span className={current == 'dossiess' ? 'visible' : 'none'}><Dossies/></span>
         <span className={current == 'messages' ? 'visible' : 'none'}><Messages/></span>
         <span className={current == '' ? 'visible' : 'none'}></span>          
       </div>
