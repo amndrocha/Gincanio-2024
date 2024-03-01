@@ -18,7 +18,7 @@ function Messages() {
         
             const unlockedCountryNames = unlockedCountries.map(country => country.name);
             return unlockedCountryNames;
-        }    
+        }
     };
 
     const unlocked = countries ? getUnlocked() : [];

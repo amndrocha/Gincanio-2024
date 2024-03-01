@@ -20,6 +20,7 @@ function Map() {
     /// ATUALIZAR O COUNTRIES DE ACORDO COM A SENHA AO LOGAR
 
     const paths = [["argentina", "brasil", "estados unidos", "polonia", "turquia"], ["mocambique", "arabia saudita"],["indonesia", "india"]];
+    const allCountries = ["argentina", "brasil", "estados unidos", "polonia", "turquia", "mocambique", "arabia saudita", "indonesia", "india"];
     const getUnlocked = () => {
         let unlockedPath = ['', '', ''];
         if (countries) {
@@ -40,6 +41,40 @@ function Map() {
             return unlockedPath;
         }    
     };
+
+    const getUnlockedNames = () => {
+        if (countries) {
+            const unlockedCountries = countries.filter(country => 
+                country.marker === 'dark-unlocked-point' || country.marker === 'unlocked-point'
+            );
+        
+            const unlockedCountryNames = unlockedCountries.map(country => country.name);
+            return unlockedCountryNames;
+        }
+    };
+
+    function checkPrevious() {
+        let unlockedNames = getUnlockedNames();
+        if (countryName === 'turcomenistao') {
+            for (let country of allCountries) {
+                if (!unlockedNames.includes(country)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        for (let path of paths) {
+            let index = path.indexOf(countryName);
+            if (index !== -1) {
+                for (let i = 0; i < index; i++) {
+                    if (!unlockedNames.includes(path[i])) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
     const password = useSelector(state => state.message.pass);
 
@@ -108,18 +143,25 @@ function Map() {
 
     const checkPass = (e) => {
         e.preventDefault();
+        console.log(checkPrevious());
         if (pass.includes(clean(input)) && input != '') {
             countries.map((country) => {
                 if (country.name == countryName && pass.includes(country.pass)) {
-                    country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
-                    dispatch(add(country.name));
-                    updatePassword();
-                    localStorage.setItem('countries', JSON.stringify(countries));
-                    window.dispatchEvent(new Event('news'));
-                    if (pass == 'darvaza') {
-                        window.dispatchEvent(new Event('finish'));
-                    }
-                    fakeLoading();     
+                    console.log('entrou');
+                    if (checkPrevious()) {
+                        country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
+                        dispatch(add(country.name));
+                        updatePassword();
+                        localStorage.setItem('countries', JSON.stringify(countries));
+                        window.dispatchEvent(new Event('news'));
+                        if (pass == 'darvaza') {
+                            window.dispatchEvent(new Event('finish'));
+                        }
+                        fakeLoading();                           
+                    } else {
+                        window.dispatchEvent(new Event('wrong'));
+                        fakeLoading();
+                    }  
                 }
             })
         } else {
