@@ -71,63 +71,63 @@ function Account() {
             marker: 'locked-point',
         },  
           {
-        name: 'Localização 1',
+        name: 'Localização146546',
         pass: '654649898779797',
-        position: [51.5074, -0.1278], // Londres, Reino Unido
+        position: [51.5074, -0.1278],
         marker: 'locked-point',
     },
     {
-        name: 'Localização 2',
+        name: 'Localização24646',
         pass: '654649898779797',
-        position: [40.7128, -74.0060], // Nova Iorque, EUA
+        position: [40.7128, -74.0060],
         marker: 'locked-point',
     },
     {
-        name: 'Localização 3',
+        name: 'Localização345466',
         pass: '654649898779797',
-        position: [-22.9068, -43.1729], // Rio de Janeiro, Brasil
+        position: [-22.9068, -43.1729],
         marker: 'locked-point',
     },
     {
-        name: 'Localização 4',
+        name: 'Localização47998',
         pass: '654649898779797',
-        position: [35.6895, 139.6917], // Tóquio, Japão
+        position: [35.6895, 139.6917],
         marker: 'locked-point',
     },
     {
-        name: 'Localização 5',
+        name: 'Localização59897',
         pass: '654649898779797',
-        position: [48.8566, 2.3522], // Paris, França
+        position: [48.8566, 2.3522], 
         marker: 'locked-point',
     },
     {
-        name: 'Localização 6',
+        name: 'Localização69898',
         pass: '654649898779797',
-        position: [-33.8688, 151.2093], // Sydney, Austrália
+        position: [-33.8688, 151.2093],
         marker: 'locked-point',
     },
     {
-        name: 'Localização 7',
+        name: 'Localização798989',
         pass: '654649898779797',
-        position: [55.7558, 37.6176], // Moscou, Rússia
+        position: [55.7558, 37.6176],
         marker: 'locked-point',
     },
     {
-        name: 'Localização 8',
+        name: 'Localização8656565',
         pass: '654649898779797',
-        position: [19.4326, -99.1332], // Cidade do México, México
+        position: [19.4326, -99.1332],
         marker: 'locked-point',
     },
     {
-        name: 'Localização 9',
+        name: 'Localização95565656',
         pass: '654649898779797',
-        position: [-34.6037, -58.3816], // Buenos Aires, Argentina
+        position: [-34.6037, -58.3816], 
         marker: 'locked-point',
     },
     {
-        name: 'Localização 10',
+        name: 'Localização1546650',
         pass: '654649898779797',
-        position: [37.7749, -122.4194], // São Francisco, EUA
+        position: [37.7749, -122.4194], 
         marker: 'locked-point',
     }
        
