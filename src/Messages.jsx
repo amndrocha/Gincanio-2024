@@ -28,12 +28,16 @@ function Messages() {
     });
 
     const openMessage = (countryName, message) => {
+        console.log(message);
         dispatch(remove(countryName));
         setCurrent(message)
         setPreview(false);
     }
 
     const [preview, setPreview] = useState(true);
+
+    const arrowRight = '>>';
+    const arrowLeft = '<<';
 
 
     return (
@@ -121,7 +125,7 @@ function Messages() {
                     </div>
                 </div>
                 <div className={unlocked && unlocked.includes('mocambique') ? 'message' : 'none'}
-                onClick={() => openMessage('mocambique', 12)}>                    
+                onClick={() => openMessage('mocambique', 17)}>                    
                     <div style={{display: 'flex'}}>
                         <span className={newMessages && newMessages.includes('mocambique') ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
@@ -212,7 +216,6 @@ function Messages() {
                         CAIXA DE SAÍDA: MENSAGEM NÃO ENVIADA
                     </div>
                     <br/><br/>
-                    <div className="intercepted-message">
 
                         <div className="dossie-title">
                             De:
@@ -228,8 +231,7 @@ function Messages() {
                         <br/><br/>
                         A agência é controlada por extraterrestres e eles são incapazes de pensamento abstrato. Um simples enigma como esses pode atrasá-los por dias. Use a cifra musical que enviei para Bruno para me enviar um telegrama!
                         <br/><br/>
-                        <img className="mask" src='./img/afgfsade.png'/>                         
-                    </div>
+                        <img className="mask" src='./img/afgfsade.png'/>    
                 </div>
                 <div className={current == 10 ? 'visible' : 'none'}>
                     Aqui está a íntegra do telegrama que você decifrou.
@@ -241,21 +243,74 @@ function Messages() {
                             <br/><br/>
                             TEMOS TODOS OS FRAGMENTOS
                             <br/><br/>
-                            O QUE ESTÁ ACONTECENDO, AGENTE241?
+                            O QUE ESTÃ ACONT3CENDO, AGENTE241?
                             <br/><br/>
-                            VOCÊ ESTÁ SE COMUNICANDO COM O INIMIGO?
+                            VOCÃ ESTÃ SE COM~NICANDO COM O IN´_MIG´?
                             <br/><br/>
-                            REPORTE-SE À BASE IMEDIATAMENTE.
+                            REPORTE-SE ÃÃ B4SE IMEDI_T_M3NT;.-
                         </div>
                 </div>
                 <div className={current == 7 ? 'visible' : 'none'}>
                     Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama abaixo.
+                    <br/><br/>
+                    <div className="intercepted-message">
+                        RFQJG CMN RSQBR J HMYV
+                        <br/><br/>
+                        LNETOYT BJ CELDIC BTAQPSC
+                        <br/><br/>
+                        HCQBETELJP OUKQU EM RNM
+                        <br/><br/>
+                        <div className="lead123">
+                            <div className="circle123">3</div>
+                            <div className="grid123">
+                                <div style={{display: 'flex', width: 'fit-content'}}>
+                                    <div  className="box123 box123top">F</div>
+                                    <div className="box123 box123top">H</div>
+                                    <div className="box123 box123top">Z</div>
+                                    <div className="box123 box123top">X</div>
+                                    <div className="box123 box123top">D</div>
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <div className="box123">C</div>
+                                    <div className="box123">R</div>
+                                    <div className="box123">K</div>
+                                    <div className="box123">A</div>
+                                    <div className="box123">Q</div>
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <div className="box123">M</div>
+                                    <div className="box123">O</div>
+                                    <div className="box123">U</div>
+                                    <div className="box123">J</div>
+                                    <div className="box123">V</div>
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <div className="box123">E</div>
+                                    <div className="box123">Y</div>
+                                    <div className="box123">N</div>
+                                    <div className="box123">B</div>
+                                    <div className="box123">G</div>
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <div className="box123">T</div>
+                                    <div className="box123">P</div>
+                                    <div className="box123">L</div>
+                                    <div className="box123">S</div>
+                                    <div className="box123">I</div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                    <br/>
+                    <div className="dossie-title" style={{textAlign: 'cente'}}>
+                        Agente241, nossos técnicos estão finalmente aprendendo como esses códigos funcionam. A mensagem parece falar de números. Que sistema numérico é esse e onde foi inventado?
+                        
+                    </div>
                 </div>
-                <div className={current == 5 ? 'visible' : 'none'}>
+                <div className={current == 12 ? 'visible' : 'none'}>
                     Interceptamos uma mensagem de Janaina para Catarina. Eles precisam ser contidos
                     <br/><br/>
-                    <div className="intercepted-message"
-                style={{lineBreak: 'anywhere'}}>
+                    <div className="intercepted-message">
                     <img className="message-img" src="./img/janaina0.jpg"/>
                         Mana,
                         <br/><br/>
@@ -330,9 +385,39 @@ function Messages() {
                 </div>
                 <div className={current == 14 ? 'visible' : 'none'}>
                     Aqui está a íntegra do telegrama que você decifrou.
+                        <br/><br/>
+                    <div className="intercepted-message">
+                        CHAVE QUE APAGA O FOGO
+                        <br/><br/>
+                        NUMEROS EM ANTIGA ESCRITA  
+                        <br/><br/>
+                        FRAGMENTOS MORAM NO CEU
+                    </div>
+                    <br/>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>
+                        O que você decifrou com o sistema Tamil, agente241? Você não está nos escondendo algo, está?
+                    </div>
                 </div>
                 <div className={current == 8 ? 'visible' : 'none'}>
                     A transcrição abaixo parece ser do grupo que os irmãos Máximo mantém para se comunicar e foi interceptada por nosso spyware.
+                    <br/><br/>
+                    <div className="intercepted-message">
+                        Catarina {arrowRight} Manos, segui as dicas do Bruno e consegui decifrar o Pustaha inteiro. Além daquela data o documento tem várias informações sobre como funcionam os fragmentos. Precisamos conversar pessoalmente!
+                        <br/><br/>
+                        Janaína {arrowRight} Não podemos falar disso por aqui… Viktor já nos disse que nossas comunicações estão sendo interceptadas.
+                        <br/><br/>
+                        Bruno {arrowRight} Sabia que meu aparelho de vinil ia servir para alguma coisa. Olha só o que eu recebi pelo correio!
+                        <br/><br/>
+                        <img style={{width: '100%'}} src='./img/sdfsedfeds.png'/>
+                        <br/><br/>
+                        Catarina {arrowRight} Música numa hora dessas?
+                        <br/><br/>
+                        Bruno {arrowRight} É uma gravação de “Telegrama Musical” , de Waldir Silva. Estou tentando entender ainda, mas acho que a capa quer dizer alguma coisa.
+                        <br/><br/>
+                        Janaína {arrowRight} Bruno, olha a hora, você vai perder o seu vôo… (de novo)
+                    </div>
+                    <br/><br/>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>Acho que vamos precisar de mais informações antes de decifrar essa, agente241. Boa sorte.</div>
                 </div>
                 <div className={current == 6 ? 'visible' : 'none'}>
                     Aqui está a íntegra do telegrama que você decifrou.
@@ -353,15 +438,16 @@ function Messages() {
                     <br/><br/>
 
                     <div className="dossie-title" style={{textAlign: 'center'}}>
-                        A investigação parece estar num beco sem saída, agente241 e os Máximo estão se aproximando perigosamente de nossa base. Em breve teremos que tomar medidas drásticas.
+                        A investigação parece estar num beco sem saída, agente241.  Os Máximo estão se aproximando perigosamente de nossa base. Em breve teremos que tomar medidas drásticas.
                     </div>
                 </div>
-                <div className={current == 12 ? 'visible' : 'none'}>
+                <div className={current == 17 ? 'visible' : 'none'}>
                     Bom trabalho, agente241!
                     <br/><br/>
                     A pista sobre a agência de correios em Maputo nos levou até esse outro telegrama:
                     <br/><br/>
-                    <div className="intercepted-message">
+                    <div className="intercepted-message"
+                    style={{lineBreak: 'anywhere'}}>
                         Y GMVK ZEPMR XF XFRPON XR YDGYJXX AHXNO.
                         <br/><br/>
                         XEMO OX HFJXO X SDOTY GKGBG.
@@ -419,7 +505,30 @@ function Messages() {
                     <div className="dossie-title" style={{textAlign: 'center'}}>Esse telegrama deve falar sobre os próximos passos de Janaina. Para onde ela foi? O que ela deve dizer?</div>
                 </div>
                 <div className={current == 5 ? 'visible' : 'none'}>
-                    O Moçambique foi revelado!
+                    Recebemos novas transmissão de nosso spyware.
+                    <br/><br/>
+                    <div className="intercepted-message">
+                    Bruno {arrowRight} Manas, encontrei um fragmento onde vocês indicaram. Ainda não consigo acreditar nisso tudo.
+                    <br/><br/>
+                    Janaína {arrowRight} Se você não consegue, imagine eu.
+                    <br/><br/>
+                    Catarina {arrowRight} Olha, para piorar as coisas, ontem eu dei um fragmento desses para um técnico aqui na Europa avaliar no laboratório. Ele me garantiu que não tem nada parecido com esse metal na Terra. Algum de vocês ouviu mamãe falar alguma vez de alienígenas?
+                    <br/><br/>
+                    Bruno{arrowRight} Não.
+                    <br/><br/>
+                    Janaína{arrowRight} Não.
+                    <br/><br/>
+                    Bruno {arrowRight} Olha só isso. Vocês sabem de onde é essa página? Acho que é uma cópia, mas se for original vale uma fortuna.  Alguém colocou num envelope debaixo da minha porta.
+                    <br/><br/>
+                    Janaína {arrowRight} Claro que não é original, Bruno, não viaja. 
+                    <br/><br/>
+                    Catarina {arrowRight} Gente, quem é Viktor? é algum de vocês pregando uma peça? Recebi umas mensagens estranhíssimas…
+                    <br/><br/>
+                    {arrowLeft} CONNECTION LOST {arrowRight}
+                    </div>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>Agente241, determine o nome e a origem desse documento para que possamos continuar as investigações.</div>
+
+                    <img style={{width: '100%'}} src='./img/egdfged.png'/>
                 </div>
                 <div className={current == 4 ? 'visible' : 'none'}>
                 Estimado agente241,
@@ -491,17 +600,17 @@ function Messages() {
                 <div className="intercepted-message"
                 style={{lineBreak: 'anywhere'}}>
                     HLQAHNHSQGKMGQAU.
-                    <br/>
+                    <br/><br/>
                     GTKJYEBSKHZHKM.
-                    <br/>
+                    <br/><br/>
                     VKSUKVGTYEUNAUTDKZUHHJ.
-                    <br/>
+                    <br/><br/>
                     SUXBPVHDRKSUURKDLMDTPTHYNPKZQGPKPOUK
-                    <br/>
+                    <br/><br/>
                     CHKVVQMKKIHJNPNZRQQTYQDHAUHPSR.
-                    <br/>
+                    <br/><br/>
                     NQAOSUMNTQUNZNELYR.
-                    <br/>
+                    <br/><br/>
                     HDEYVPNVKPQGKVORVQTEPVNPPF.
                     <br/><br/>
                     <div className="lead123">
@@ -547,7 +656,6 @@ function Messages() {
                 </div>
 
                 <br/>
-                <br/><br/>
                 <div className="dossie-title-center">Decifre esse mensagem, agente241. Vamos tentar alcançá-los.</div>
 
                 </div>

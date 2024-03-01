@@ -24,13 +24,13 @@ function Account() {
         },
         {
             name: 'estados unidos',
-            pass: 'jemison',
+            pass: 'mae jemison',
             position: [ 33.71432359567805 , -86.95083968378019 ],
             marker: 'locked-point',
         },
         {
             name: 'polonia',
-            pass: 'curie',
+            pass: 'marie curie',
             position: [ 52.226935156019415 , 21.00532683694275 ],
             marker: 'locked-point',
         },

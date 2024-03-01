@@ -79,7 +79,7 @@ function App() {
       </div>
       <div className='menu'>
           <div className='navlink' onClick={() => handlePageChange('map')}>Mapa</div>
-          <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens {newMessages.length > 0 ? '('+newMessages.length+')' : ''}</div>
+          <div className='navlink' onClick={() => handlePageChange('messages')}>Mensagens {newMessages.length > 0 ? '(NEW)' : ''}</div>
           <div className='navlink' onClick={() => handlePageChange('dossiess')}>Dossiê</div>
           <div className='navlink' onClick={() => handlePageChange('account')}>Conta</div>
       </div>       
