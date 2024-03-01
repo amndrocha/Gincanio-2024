@@ -59,7 +59,6 @@ function Map() {
         return true;
     }
     const updatePassword = () => {
-        console.log('Old pass: '+password);
         const unlocked = getUnlocked(); 
         for (let i = 0; i < checkpoints.length; i++) {
             const checkpoint = checkpoints[i];
@@ -67,7 +66,6 @@ function Map() {
                 dispatch(changePass(checkpoint.password));
             }
         }
-        console.log('No matching checkpoint found.');
     };
 
     window.addEventListener('pass', () => {
@@ -98,7 +96,14 @@ function Map() {
     };
 
     const clean = () => {
-        return input.toLowerCase();
+        let cleanInput = input;                                                     
+        cleanInput = cleanInput.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a');
+        cleanInput = cleanInput.replace(new RegExp('[ÉÈÊ]','gi'), 'e');
+        cleanInput = cleanInput.replace(new RegExp('[ÍÌÎ]','gi'), 'i');
+        cleanInput = cleanInput.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o');
+        cleanInput = cleanInput.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
+        cleanInput = cleanInput.replace(new RegExp('[Ç]','gi'), 'c');
+        return cleanInput.toLowerCase();
     }
 
     const checkPass = (e) => {

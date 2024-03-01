@@ -8,7 +8,7 @@ function Account() {
     const [loginMessage, setLoginMessage] = useState('');
     const currentPass = localStorage.getItem('pass') || '1946';
     const [pass, setPass] = useState('');
-    const countries = [
+    const initialCountries = [
         {
             name: 'brasil',
             pass: 'brasil',
@@ -23,7 +23,7 @@ function Account() {
             marker: 'locked-point',
         },
         {
-            name: 'eua',
+            name: 'estados unidos',
             pass: 'eua',
             position: [ 33.71432359567805 , -86.95083968378019 ],
             marker: 'locked-point',
@@ -47,7 +47,7 @@ function Account() {
             marker: 'locked-point',
         },
         {
-            name: 'arabia',
+            name: 'arabia saudita',
             pass: 'arabia',
             position: [ 25.73921961430858 , 42.000545531346155 ],
             marker: 'locked-point',
@@ -71,6 +71,7 @@ function Account() {
             marker: 'locked-point',
         },  
     ];
+    const countries = initialCountries;
     const errorSound = document.getElementById('audio');
     const paths = [["argentina", "brasil", "eua", "polonia", "turquia"], ["mocambique", "arabia"],["indonesia", "india"]];
     const words = [
@@ -234,7 +235,6 @@ function Account() {
                 if (j == 0) {
                     last = false;
                 }
-                console.log(country, j, last);
                 if (!last) {
                     unlocked.push(country);
                     if (path[i].includes(country)) {
@@ -259,7 +259,6 @@ function Account() {
             localStorage.setItem('auth', JSON.stringify(true));
             setAuth(true);
             return;
-
     }
 
     const handleLogin = () => {
@@ -271,7 +270,7 @@ function Account() {
                 setLoginMessage('Agora sim! Preparando login...');
                 setTimeout(function() {
                     logIn();
-                }, 1000);
+                }, 1500);
                 return;
             } else if (pass === '1940') {
                 setPass('');
@@ -328,19 +327,15 @@ function Account() {
 
     const handleLogOff = () => {
         setPass('');
-        localStorage.setItem('auth', JSON.stringify(false));
         setAuth(false);
+        localStorage.clear();
+        location.reload();
     }
 
     const handleKeyPress = (key) => {
         if (key === "Enter") {
             handleLogin();
         }
-    }
-
-    const cleanSlate = () => {
-        localStorage.clear();
-        location.reload();
     }
 
     const [showPass, setShowPass] = useState(false);
@@ -367,7 +362,6 @@ function Account() {
                         <div className='show-pass' >👁</div>
                         <div className='cover-icon' onClick={handleViewPass}></div>
                     </div>
-                    <div className='login-btn' onClick={cleanSlate}>Apagar meus dados</div>
                     <div className='login-btn' onClick={handleLogOff}>Sair</div>
                 </form>
             </div>
