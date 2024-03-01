@@ -69,7 +69,7 @@ function Dossies() {
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>????</div>
                                 <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>????</div> 
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>????</div>
+                                <div className="dossie-content"><div className="dossie-title">Interesses: </div>????</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
                         </div>
@@ -92,39 +92,11 @@ function Dossies() {
                         <br/><br/>
                         Pelo teor da mensagem, suspeitamos que 31 de Janeiro seja seu aniversário, mas não sabemos seu nome ou ano de nascimento. Qualquer pista sobre seu passado ou paradeiro é importante.              
                         <br/><br/>
-                        <div className="dossie-title" style={{textAlign: 'center'}}>**IMPORTANTE**</div>
+                        <div className="dossie-title" style={{textAlign: 'center'}}>IMPORTANTE</div>
                         <div>Aconteça o que acontecer, não trave contato direto com nenhum dos Máximo.</div>
                     </div>
                 </div>
-                <div className={current == 5 ? 'visible' : 'none'}>
-                    <div className="dossie">
-                        <div className="dossie-header">
-                            <img className="dossie-img" src='./img/catarina.jpg'/>                            
-                            <div className="dossie-info">
-                                <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Catarina Máximo</div>
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>22/02/2001</div> 
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>22/02/2001</div>
-                                <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
-                            </div>
-                        </div>
-                        <div>
-                        <br/>
-                        Formada em Letras pela PUC-Rio, Catarina é a filha mais jovem do casal Raposo e Daniela Máximo. 
-                        <br/>
-                        <br/>
-                        Além do interesse acadêmico em Linguística e Estudos da Linguagem, suas redes sociais indicam interesses em cinema, viagens e danças folclóricas. Dos três irmãos, Catarina é a mais presente nas redes e a única cujo paradeiro nós temos notícia. Com um pouco de sorte conseguiremos interceptar algumas das comunicações de Catarina, graças a um *spyware* que conseguimos instalar em seu telefone.
-                        <br/>
-                        <br/>
-                        Uma de nossas fontes na América do Sul avistou Catarina nas ruas de Buenos Aires.
-                        <br/>
-                        <br/>
-                        Para dar seguimento às investigações, identifique o local no mapa e insira o nome da caçula.
-                        <br/>
-                        <br/>
-                        <div className="dossie-title" style={{textAlign: 'center'}}>**IMPORTANTE**
-                        </div> Aconteça o que acontecer, não trave contato direto com nenhum dos Máximo.</div>
-                    </div>
-                </div>
+                
                 <div className={current == 3 ? 'visible' : 'none'}>
                     <div className="dossie">
                         <div className="dossie-header">
@@ -132,7 +104,7 @@ function Dossies() {
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Janaína Máximo</div>
                                 <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>11/01/1994</div> 
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>11/01/1994</div>
+                                <div className="dossie-content"><div className="dossie-title">Interesses: </div>Geografia, arqueologia</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
                         </div>
@@ -143,7 +115,7 @@ function Dossies() {
                         <br/><br/>
                         Cartas e recados nas redes interceptados por nossa agência nos levam a crer que Janaína faria tudo por seus irmãos mais novos.                        
                         <br/><br/>
-                        <div className="dossie-title" style={{textAlign: 'center'}}>**IMPORTANTE**</div>
+                        <div className="dossie-title" style={{textAlign: 'center'}}>IMPORTANTE</div>
                         <div>Aconteça o que acontecer, não trave contato direto com nenhum dos Máximo.</div>
 
                     </div>
@@ -155,7 +127,7 @@ function Dossies() {
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Catarina Máximo</div>
                                 <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>22/02/2001</div> 
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>22/02/2001</div>
+                                <div className="dossie-content"><div className="dossie-title">Interesses: </div>Linguística, cinema, viagens</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
                         </div>
@@ -164,7 +136,7 @@ function Dossies() {
                         Formada em Letras pela PUC-Rio, Catarina é a filha mais jovem do casal Raposo e Daniela Máximo. 
                         <br/>
                         <br/>
-                        Além do interesse acadêmico em Linguística e Estudos da Linguagem, suas redes sociais indicam interesses em cinema, viagens e danças folclóricas. Dos três irmãos, Catarina é a mais presente nas redes e a única cujo paradeiro nós temos notícia. Com um pouco de sorte conseguiremos interceptar algumas das comunicações de Catarina, graças a um *spyware* que conseguimos instalar em seu telefone.
+                        Além do interesse acadêmico em Linguística e Estudos da Linguagem, suas redes sociais indicam interesses em cinema, viagens e danças folclóricas. Dos três irmãos, Catarina é a mais presente nas redes e a única cujo paradeiro nós temos notícia. Com um pouco de sorte conseguiremos interceptar algumas das comunicações de Catarina, já que ela não parece se preocupar muito com segurança digital.
                         <br/>
                         <br/>
                         Uma de nossas fontes na América do Sul avistou Catarina nas ruas de Buenos Aires.
@@ -173,7 +145,7 @@ function Dossies() {
                         Para dar seguimento às investigações, identifique o local no mapa e insira o nome da caçula.
                         <br/>
                         <br/>
-                        <div className="dossie-title" style={{textAlign: 'center'}}>**IMPORTANTE**
+                        <div className="dossie-title" style={{textAlign: 'center'}}>IMPORTANTE
                         </div> Aconteça o que acontecer, não trave contato direto com nenhum dos Máximo.</div>
                     </div>
                 </div>
@@ -184,7 +156,7 @@ function Dossies() {
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Bruno Máximo</div>
                                 <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>31/12/1999</div> 
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>31/12/1999</div>
+                                <div className="dossie-content"><div className="dossie-title">Interesses: </div>Filosofia, teologia</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
                         </div>
@@ -195,7 +167,7 @@ function Dossies() {
                         <br/><br/>
                         Não temos, no presente momento, notícias de seu paradeiro, exceto por uma série de guias de viagem sobre o leste asiático registrados em seu histórico de compras online.                        
                         <br/><br/>
-                        <div className="dossie-title" style={{textAlign: 'center'}}>**IMPORTANTE**</div>
+                        <div className="dossie-title" style={{textAlign: 'center'}}>IMPORTANTE</div>
                         <div>Aconteça o que acontecer, não trave contato direto com nenhum dos Máximo.</div>
                     </div>
                 </div>
@@ -206,7 +178,7 @@ function Dossies() {
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Raposo Máximo</div>
                                 <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>22/02/2001</div> 
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>01/03/1946</div>
+                                <div className="dossie-content"><div className="dossie-title">Interesses: </div>Química</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
                         </div>
@@ -216,7 +188,7 @@ function Dossies() {
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Daniela Máximo</div>
                                 <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>22/02/2001</div> 
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>17/10/1948</div>
+                                <div className="dossie-content"><div className="dossie-title">Interesses: </div>Astrofísica</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
                         </div>
@@ -237,7 +209,7 @@ function Dossies() {
                         Agente 241, sua missão inicial é localizar e seguir os passos dos membros da família Máximo e, caso descubra onde está o artefato, sua prioridade deve ser recuperá-lo a todo custo.
                         <br/>
                         <br/>
-                        <div className="dossie-title" style={{textAlign: 'center'}}>**IMPORTANTE**
+                        <div className="dossie-title" style={{textAlign: 'center'}}>IMPORTANTE
                         </div> Aconteça o que acontecer, não trave contato direto com nenhum dos Máximo.</div>
 
                     </div>

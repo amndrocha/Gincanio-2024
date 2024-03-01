@@ -118,10 +118,19 @@
     width: 0px;
 }
 .intercepted-message {
+    display: block;
     padding: 10px;
     margin: 0px 10%;
     text-align: left;
     border: 2px solid lime;
+    height: fit-content;
+}
+.sign-img {
+    margin-left: calc(100% - 100px);
+    margin-bottom: -8px;
+    width: 100px;
+    line-height: 30px;
+    align-self: right;
 }
 .message-img {
     width: 90px;
@@ -163,6 +172,13 @@
     color: black;
 }
 
+.dossie-title-center {
+    width: 100%;
+    background-color: lime;
+    color: black;
+    text-align: center;
+}
+
 .dossie-header {
     width: 100%;
     border: 5px solid lime;
@@ -175,4 +191,46 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+.lead123 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: center;
+}
+.circle123 {
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: lime;
+    color: black;
+    border-radius: 30px;
+    margin-right: 140px;
+    margin-bottom: 10px;
+}
+
+.grid123 {
+    width: fit-content;
+}
+
+
+.box123 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    border: 1px solid lime;
+}
+
+.box123top {
+    border-top: 4px solid lime;
+}
+
+.highlight {
+    background-color: lime;
+    color: black
 }

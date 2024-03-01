@@ -11,56 +11,56 @@ function Account() {
     const initialCountries = [
         {
             name: 'brasil',
-            pass: 'brasil',
+            pass: 'carimbo',
             position: [ -2.7562580015438476 , -48.17132509212502 ],
             marker: 'locked-point',
             id: '0',
         },
         {
             name: 'argentina',
-            pass: 'argentina',
+            pass: 'catarina',
             position: [ -40.77563875754914 , -69.2750762182338 ],
             marker: 'locked-point',
         },
         {
             name: 'estados unidos',
-            pass: 'estados unidos',
+            pass: 'jemison',
             position: [ 33.71432359567805 , -86.95083968378019 ],
             marker: 'locked-point',
         },
         {
             name: 'polonia',
-            pass: 'polonia',
+            pass: 'curie',
             position: [ 52.226935156019415 , 21.00532683694275 ],
             marker: 'locked-point',
         },
         {
             name: 'turquia',
-            pass: 'turquia',
+            pass: 'helio',
             position: [ 41.00823543738099 , 28.964718023163034 ],
             marker: 'locked-point',
         },
         {
             name: 'mocambique',
-            pass: 'mocambique',
+            pass: 'janaina',
             position: [ -25.96396503793443 , 32.57084229018247 ],
             marker: 'locked-point',
         },
         {
             name: 'arabia saudita',
-            pass: 'arabia',
+            pass: 'sadalsuud',
             position: [ 21.41860157679805 , 39.83525706418852 ],
             marker: 'locked-point',
         },
         {
             name: 'india',
-            pass: 'india',
+            pass: 'tamil',
             position: [ 21.16301794100615 , 79.60419371933031 ],
             marker: 'locked-point',
         },
         {
             name: 'indonesia',
-            pass: 'indonesia',
+            pass: 'pustaha',
             position: [ -0.396793751120472 , 101.92963933255506 ],
             marker: 'locked-point',
         },
@@ -363,6 +363,7 @@ function Account() {
                         <div className='show-pass' >👁</div>
                         <div className='cover-icon' onClick={handleViewPass}></div>
                     </div>
+                    <div className='login-message'></div>
                     <div className='login-btn' onClick={handleLogOff}>Sair</div>
                 </form>
             </div>

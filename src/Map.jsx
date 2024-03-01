@@ -19,7 +19,7 @@ function Map() {
 
     /// ATUALIZAR O COUNTRIES DE ACORDO COM A SENHA AO LOGAR
 
-    const paths = [["argentina", "brasil", "eua", "polonia", "turquia"], ["mocambique", "arabia"],["indonesia", "india"]];
+    const paths = [["argentina", "brasil", "estados unidos", "polonia", "turquia"], ["mocambique", "arabia saudita"],["indonesia", "india"]];
     const getUnlocked = () => {
         let unlockedPath = ['', '', ''];
         if (countries) {
@@ -108,9 +108,9 @@ function Map() {
 
     const checkPass = (e) => {
         e.preventDefault();
-        if (pass == clean(input)) {
+        if (pass.includes(clean(input)) && input != '') {
             countries.map((country) => {
-                if (country.name == countryName && country.pass == pass) {
+                if (country.name == countryName && pass.includes(country.pass)) {
                     country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
                     dispatch(add(country.name));
                     updatePassword();
