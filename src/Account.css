@@ -173,3 +173,28 @@ p {
     line-height: 20px;
     font-size: 1.2em;
 }
+
+.show-pass {
+    font-size: 20px;
+    position: absolute;
+    margin-top: -39px;
+    margin-left: 274px;
+}
+
+.hide-pass {
+    font-size: 20px;
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 281px;
+
+}
+
+.cover-icon {
+    width: 20px;
+    height: 30px;
+    background-color: transparent;
+    position: absolute;
+    margin-top: -39px;
+    margin-left: 274px;
+    cursor: pointer;
+}

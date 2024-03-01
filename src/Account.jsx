@@ -6,6 +6,7 @@ function Account() {
     const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')) || false);
     const [attempts, setAttempts] = useState(0);
     const [loginMessage, setLoginMessage] = useState('');
+    const currentPass = localStorage.getItem('pass') || '1946';
     const [pass, setPass] = useState('');
     const countries = [
         {
@@ -170,6 +171,12 @@ function Account() {
         location.reload();
     }
 
+    const [showPass, setShowPass] = useState(false);
+
+    const handleViewPass = () => {
+        setShowPass(!showPass);
+    }
+
 
     return (
         <div className={auth ? 'account-page-auth' : 'account-page'}>
@@ -181,7 +188,13 @@ function Account() {
                     <div className='input-box'>
                         <input type='username' value='agente241' readOnly/>
                     </div>
-                    <div className='login-message'></div>
+                    <div className='input-box'>
+                        <input type={showPass ? 'text' : 'password'} placeholder='Senha' readOnly
+                        value={currentPass}/>
+                        <div className={showPass ? 'none': 'hide-pass'}>/</div>
+                        <div className='show-pass' >👁</div>
+                        <div className='cover-icon' onClick={handleViewPass}></div>
+                    </div>
                     <div className='login-btn' onClick={cleanSlate}>Apagar meus dados</div>
                     <div className='login-btn' onClick={handleLogOff}>Sair</div>
                 </form>

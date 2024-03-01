@@ -38,7 +38,7 @@ function App() {
   return (
     <div>  
       <div className={showPass ? "modal" : 'none'} onClick={() => setShowPass(false)}>
-          <div style={{textAlign: 'center'}} className="map-modal-window" onClick={(e) => preventClick(e)}>
+          <div style={{textAlign: 'center', fontSize: '1.5em', maxWidth: '100vw'}} className="map-modal-window" onClick={(e) => preventClick(e)}>
             A investigação foi atualizada.<br/>Sua nova senha é: {password}
           </div>
       </div>
