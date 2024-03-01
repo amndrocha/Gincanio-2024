@@ -79,7 +79,7 @@ function Account() {
         {
             name: '!#@#$%TRED555S$#@23',
             pass: '!#@#$%T8888S$S$#@23',
-            position: [ 39.4004757575753 , 70.422772177048984 ],
+            position: [ -22.979235, -43.231691 ],
             marker: 'locked-point',
         },  
         {
