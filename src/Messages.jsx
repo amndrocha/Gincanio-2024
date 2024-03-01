@@ -28,7 +28,6 @@ function Messages() {
     });
 
     const openMessage = (countryName, message) => {
-        console.log(message);
         dispatch(remove(countryName));
         setCurrent(message)
         setPreview(false);
@@ -526,8 +525,9 @@ function Messages() {
                     <br/><br/>
                     {arrowLeft} CONNECTION LOST {arrowRight}
                     </div>
+                    <br/>
                     <div className="dossie-title" style={{textAlign: 'center'}}>Agente241, determine o nome e a origem desse documento para que possamos continuar as investigações.</div>
-
+                    <br/>
                     <img style={{width: '100%'}} src='./img/egdfged.png'/>
                 </div>
                 <div className={current == 4 ? 'visible' : 'none'}>
