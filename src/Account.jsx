@@ -249,6 +249,7 @@ function Account() {
             }
         })
         localStorage.setItem('countries', JSON.stringify(countries));
+        localStorage.setItem('pass', pass);
         location.reload();
     }
 
