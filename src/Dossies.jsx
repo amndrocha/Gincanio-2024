@@ -76,7 +76,7 @@ function Dossies() {
                         <br/>
                         Muito pouco se sabe sobre esse indivíduo. Acreditamos que ele seja um filho não registrado do casal Raposo e Daniela, mas a única pista que temos é um porta retrato deixado no apartamento de do casal com a foto que vemos em anexo. A fotografia está datada de 27 de Janeiro de 2008. No verso da fotografia, nossos agentes encontraram um estranho recado:
                         <br/><br/>
-                        <div className="intercepted-message">
+                        <div className="intercepted-message"> 
                             Queridos pais, obrigado pelo presente de aniversário, Parahat me entregou ontem, durante a mudança da guarda.
                             <br/><br/>
                             Sinto-me velho para ainda gostar de super heróis e o Super-Homem nunca foi meu favorito mas confesso que gostei da piada. Acho que eu já esperava algo nesse sentido, vindo de vocês.  Certamente foi mais engraçada que o casaco dourado de lã que vocês mandaram nos meus 18 anos, seus *nerds*. Lembro que na época demorei a entender a referência mitológica, mas dessa vez eu já estava esperando alguma gracinha.
@@ -177,7 +177,7 @@ function Dossies() {
                             <img className="dossie-img" src='./img/raposo.jpg'/>                            
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Raposo Máximo</div>
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>22/02/2001</div> 
+                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>01/03/1946</div> 
                                 <div className="dossie-content"><div className="dossie-title">Interesses: </div>Química</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
@@ -187,7 +187,7 @@ function Dossies() {
                             <img className="dossie-img" src='./img/daniela.jpg'/>                            
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Daniela Máximo</div>
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>22/02/2001</div> 
+                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>17/10/1948</div> 
                                 <div className="dossie-content"><div className="dossie-title">Interesses: </div>Astrofísica</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
