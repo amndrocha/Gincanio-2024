@@ -70,6 +70,66 @@ function Account() {
             position: [ 39.4008965162013 , 58.422772177048984 ],
             marker: 'locked-point',
         },  
+          {
+        name: 'Localização 1',
+        pass: '654649898779797',
+        position: [51.5074, -0.1278], // Londres, Reino Unido
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 2',
+        pass: '654649898779797',
+        position: [40.7128, -74.0060], // Nova Iorque, EUA
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 3',
+        pass: '654649898779797',
+        position: [-22.9068, -43.1729], // Rio de Janeiro, Brasil
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 4',
+        pass: '654649898779797',
+        position: [35.6895, 139.6917], // Tóquio, Japão
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 5',
+        pass: '654649898779797',
+        position: [48.8566, 2.3522], // Paris, França
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 6',
+        pass: '654649898779797',
+        position: [-33.8688, 151.2093], // Sydney, Austrália
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 7',
+        pass: '654649898779797',
+        position: [55.7558, 37.6176], // Moscou, Rússia
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 8',
+        pass: '654649898779797',
+        position: [19.4326, -99.1332], // Cidade do México, México
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 9',
+        pass: '654649898779797',
+        position: [-34.6037, -58.3816], // Buenos Aires, Argentina
+        marker: 'locked-point',
+    },
+    {
+        name: 'Localização 10',
+        pass: '654649898779797',
+        position: [37.7749, -122.4194], // São Francisco, EUA
+        marker: 'locked-point',
+    }
        
     ];
     const countries = initialCountries;
