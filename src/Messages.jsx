@@ -28,6 +28,7 @@ function Messages() {
     });
 
     const openMessage = (countryName, message) => {
+        console.log(countryName);
         dispatch(remove(countryName));
         setCurrent(message)
         setPreview(false);
