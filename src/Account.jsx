@@ -70,42 +70,7 @@ function Account() {
             position: [ 39.4008965162013 , 58.422772177048984 ],
             marker: 'locked-point',
         },  
-        {
-            name: '!#@#$%TREDSS$S$#@23',
-            pass: '!#@#$%TREDSS$S$#@23',
-            position: [ 49.4008965162013 , 68.422772177048984 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TRED555S$#@23',
-            pass: '!#@#$%T8888S$S$#@23',
-            position: [ -22.979235, -43.231691 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%Tddddddd$#@23',
-            pass: '!#@#$%TRE444$S$#@23',
-            position: [ 10.4008965162013 , 20.422772177048984 ],
-            marker: 'locked-point',
-        },
-        {
-            name: '!#@#$%TREDSS$S$#@23',
-            pass: '!#@#$%TREDSS$S$#@23',
-            position: [ 49.4008965162013 , 68.422772177048984 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TRE44444$#@23',
-            pass: '!#@#$efefeff$S$#@23',
-            position: [ 39.4004757575753 , 70.422772177048984 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%sgwrge$S$#@23',
-            pass: '!#@#$%T4444444$#@23',
-            position: [ 20.4044465162013 , 16.000000000008984 ],
-            marker: 'locked-point',
-        },
+       
     ];
     const countries = initialCountries;
     const errorSound = document.getElementById('audio');
