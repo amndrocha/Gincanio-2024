@@ -131,13 +131,14 @@
     width: 30px;
     height: 20px;
     position: fixed;
-    top: 0;
+    bottom: 0;
     margin: 13px;
     z-index: 1;
     padding: 3px;
     border-radius: 50px;
     background-color: black;
     border: 2px solid lime;
+    z-index: 999;
 }
 .lightBtnCircleOn {
     width: 10.8px;
@@ -153,13 +154,14 @@
     width: 30px;
     height: 20px;
     position: fixed;
-    top: 0;
+    bottom: 0;
     margin: 13px;
     z-index: 1;
     padding: 3px;
     border-radius: 50px;
     background-color: lime;
     border: 2px solid black;
+    z-index: 999;
 }
 .lightBtnCircleOff {
     width: 10.8px;

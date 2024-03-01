@@ -6,6 +6,9 @@
     padding: 50px;
     padding-bottom: 19px;
     padding-top: 0;
+    @media only screen and (max-width: 500px) {
+        padding: 10px;
+    }
 }
 
 .messages-preview {
@@ -124,6 +127,9 @@
     text-align: left;
     border: 2px solid lime;
     height: fit-content;
+    @media only screen and (max-width: 715px) {
+        margin: 0 5px;
+    }
 }
 .sign-img {
     margin-left: calc(100% - 100px);

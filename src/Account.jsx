@@ -19,7 +19,7 @@ function Account() {
         {
             name: 'argentina',
             pass: 'catarina',
-            position: [ -40.77563875754914 , -69.2750762182338 ],
+            position: [ -34.88204066721371 , -58.53371685995923 ],
             marker: 'locked-point',
         },
         {
@@ -497,6 +497,12 @@ function Account() {
             marker: 'locked-point',
         }, 
         {
+            name: '!#@#$%TREDSS$S$#@_170987',
+            pass: '!#@#$%TREDSS$S$#@_170987',
+            position: [ -41.880230356858966 , -69.9232532204971 ],
+            marker: 'locked-point',
+        }, 
+        {
             name: '!#@#$%TREDSS$S$#@_170',
             pass: '!#@#$%TREDSS$S$#@_170',
             position: [ 65.26705614674772 , 124.66218201175191 ],
@@ -833,8 +839,8 @@ function Account() {
                     <div className='input-box'>
                         <input type={showPass ? 'text' : 'password'} placeholder='Senha' readOnly
                         value={currentPass}/>
-                        <div className={showPass ? 'none': 'hide-pass'}>/</div>
                         <div className='show-pass' >👁</div>
+                        <div className={showPass ? 'none': 'hide-pass'}>/</div>
                         <div className='cover-icon' onClick={handleViewPass}></div>
                     </div>
                     <div className='login-message'></div>
