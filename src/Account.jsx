@@ -191,11 +191,36 @@ function Account() {
         marker: 'locked-point',
     },
         {
-        name: 'Localização no Peru',
+        name: 'LocalizaçãoP666666',
         pass: '654649898779797',
         position: [-12.0464, -77.0428],
         marker: 'locked-point',
+    },
+        {
+        name: 'LocalizaçãoC11111',
+        pass: '654649898779797',
+        position: [45.4215, -75.6919],
+        marker: 'locked-point',
+    },
+    {
+        name: 'LocalizaçãoC2222',
+        pass: '654649898779797',
+        position: [53.5461, -113.4938],
+        marker: 'locked-point',
+    },
+    {
+        name: 'LocalizaçãoNR11111',
+        pass: '654649898779797',
+        position: [69.3549, 88.1897], 
+        marker: 'locked-point',
+    },
+    {
+        name: 'LocalizaçãoNR2',
+        pass: '654649898779797',
+        position: [68.9585, 33.0828],
+        marker: 'locked-point',
     }
+        
        
     ];
     const countries = initialCountries;
