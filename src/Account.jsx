@@ -10,62 +10,62 @@ function Account() {
     const [pass, setPass] = useState('');
     const initialCountries = [
         {
-            name: 'brasil',
+            name: "c2",
             pass: 'carimbo',
             position: [ -2.7562580015438476 , -48.17132509212502 ],
             marker: 'locked-point',
             id: '0',
         },
         {
-            name: 'argentina',
+            name: "c1",
             pass: 'catarina',
             position: [ -34.88204066721371 , -58.53371685995923 ],
             marker: 'locked-point',
         },
         {
-            name: 'estados unidos',
+            name: "c3",
             pass: 'mae jemison',
             position: [ 33.71432359567805 , -86.95083968378019 ],
             marker: 'locked-point',
         },
         {
-            name: 'polonia',
+            name: "c4",
             pass: 'marie curie',
             position: [ 52.226935156019415 , 21.00532683694275 ],
             marker: 'locked-point',
         },
         {
-            name: 'turquia',
+            name: "c5",
             pass: 'helio',
             position: [ 41.00823543738099 , 28.964718023163034 ],
             marker: 'locked-point',
         },
         {
-            name: 'mocambique',
+            name: "c6",
             pass: 'janaina',
             position: [ -25.96396503793443 , 32.57084229018247 ],
             marker: 'locked-point',
         },
         {
-            name: 'arabia saudita',
+            name: "c7",
             pass: 'sadalsuud',
             position: [ 21.41860157679805 , 39.83525706418852 ],
             marker: 'locked-point',
         },
         {
-            name: 'india',
+            name: "c9",
             pass: 'tamil',
             position: [ 21.16301794100615 , 79.60419371933031 ],
             marker: 'locked-point',
         },
         {
-            name: 'indonesia',
+            name: "c8",
             pass: 'pustaha',
             position: [ -0.396793751120472 , 101.92963933255506 ],
             marker: 'locked-point',
         },
         {
-            name: 'turcomenistao',
+            name: "c10",
             pass: 'darvaza',
             position: [ 39.4008965162013 , 58.422772177048984 ],
             marker: 'locked-point',
@@ -553,7 +553,7 @@ function Account() {
     ];
     const countries = initialCountries;
     const errorSound = document.getElementById('audio');
-    const paths = [["argentina", "brasil", "estados unidos", "polonia", "turquia"], ["mocambique", "arabia saudita"],["indonesia", "india"]];
+    const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
     const words = [
         "marmota",
         "cangalho",
@@ -611,7 +611,7 @@ function Account() {
         "pechincha"
     ];
     useEffect(() => {
-        const paths = [["argentina", "brasil", "estados unidos", "polonia", "turquia"], ["mocambique", "arabia saudita"],["indonesia", "india"]];
+        const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
         const words = [
             "marmota",
             "cangalho",

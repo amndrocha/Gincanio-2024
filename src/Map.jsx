@@ -19,8 +19,8 @@ function Map() {
 
     /// ATUALIZAR O COUNTRIES DE ACORDO COM A SENHA AO LOGAR
 
-    const paths = [["argentina", "brasil", "estados unidos", "polonia", "turquia"], ["mocambique", "arabia saudita"],["indonesia", "india"]];
-    const allCountries = ["argentina", "brasil", "estados unidos", "polonia", "turquia", "mocambique", "arabia saudita", "indonesia", "india"];
+    const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
+    const allCountries = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"];
     const getUnlocked = () => {
         let unlockedPath = ['', '', ''];
         if (countries) {
@@ -55,7 +55,7 @@ function Map() {
 
     function checkPrevious() {
         let unlockedNames = getUnlockedNames();
-        if (countryName === 'turcomenistao') {
+        if (countryName === "c10") {
             for (let country of allCountries) {
                 if (!unlockedNames.includes(country)) {
                     return false;

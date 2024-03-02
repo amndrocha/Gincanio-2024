@@ -44,110 +44,110 @@ function Messages() {
         <div className="messages-page">
 
             <div className={preview ? 'view-messages-preview' : "messages-preview"}>
-                <div className={unlocked && unlocked.includes('turcomenistao') ? 'message' : 'none'}
-                onClick={() => openMessage('turcomenistao', 15)}>                    
+                <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
+                onClick={() => openMessage("c10", 15)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('turcomenistao') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c10") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             CAIXA DE SAÍDA: MENSAGEM NÃO ENVIADA
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('turcomenistao') ? 'message' : 'none'}
-                onClick={() => openMessage('turcomenistao', 10)}>                    
+                <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
+                onClick={() => openMessage("c10", 10)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('turcomenistao') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c10") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Aqui está a íntegra do telegrama que você decifrou.
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('turquia') ? 'message' : 'none'}
-                onClick={() => openMessage('turquia', 12)}>
+                <div className={unlocked && unlocked.includes("c5") ? 'message' : 'none'}
+                onClick={() => openMessage("c5", 12)}>
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('turquia') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c5") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Interceptamos uma mensagem de Janaina para Catarina. Eles precisam ser contidos.
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('turquia') ? 'message' : 'none'}
-                onClick={() => openMessage('turquia', 9)}>                    
+                <div className={unlocked && unlocked.includes("c5") ? 'message' : 'none'}
+                onClick={() => openMessage("c5", 9)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('turquia') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c5") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Nossos agentes foram ao endereço de Parahat, em Istambul, e recuperaram o telegrama abaixo,
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('india') ? 'message' : 'none'}
-                onClick={() => openMessage('india', 14)}>                    
+                <div className={unlocked && unlocked.includes("c9") ? 'message' : 'none'}
+                onClick={() => openMessage("c9", 14)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('india') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c9") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Aqui está a íntegra do telegrama que você decifrou.
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('india') ? 'message' : 'none'}
-                onClick={() => openMessage('india', 8)}>                    
+                <div className={unlocked && unlocked.includes("c9") ? 'message' : 'none'}
+                onClick={() => openMessage("c9", 8)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('india') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c9") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             A transcrição abaixo parece ser do grupo que os irmãos Máximo mantém para se comunicar e foi interceptada por nosso spyware.
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('indonesia') ? 'message' : 'none'}
-                onClick={() => openMessage('indonesia', 7)}>                    
+                <div className={unlocked && unlocked.includes("c8") ? 'message' : 'none'}
+                onClick={() => openMessage("c8", 7)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('indonesia') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c8") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama abaixo.
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('arabia saudita') ? 'message' : 'none'}
-                onClick={() => openMessage('arabia saudita', 6)}>                    
+                <div className={unlocked && unlocked.includes("c7") ? 'message' : 'none'}
+                onClick={() => openMessage("c7", 6)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('arabia saudita') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c7") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Aqui está a íntegra do telegrama que você decifrou. 
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('mocambique') ? 'message' : 'none'}
-                onClick={() => openMessage('mocambique', 17)}>                    
+                <div className={unlocked && unlocked.includes("c6") ? 'message' : 'none'}
+                onClick={() => openMessage("c6", 17)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('mocambique') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c6") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             A pista sobre a agência de correios em Maputo nos levou até esse outro telegrama.
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>    
-                <div className={unlocked && unlocked.includes('mocambique') ? 'message' : 'none'}
-                onClick={() => openMessage('mocambique', 5)}>                    
+                <div className={unlocked && unlocked.includes("c6") ? 'message' : 'none'}
+                onClick={() => openMessage("c6", 5)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('mocambique') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c6") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Recebemos novas transmissão de nosso spyware.
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>               
-                <div className={unlocked && unlocked.includes('polonia') ? 'message' : 'none'}
-                onClick={() => openMessage('polonia', 4)}>                    
+                <div className={unlocked && unlocked.includes("c4") ? 'message' : 'none'}
+                onClick={() => openMessage("c4", 4)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('polonia') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c4") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Como gostaríamos que todo investigado fosse tão descuidado quanto Catarina!
                         </div>
@@ -155,20 +155,20 @@ function Messages() {
                     </div>
                 </div>
 
-                <div className={unlocked && unlocked.includes('estados unidos') ? 'message' : 'none'}
-                onClick={() => openMessage('estados unidos', 3)}>                    
+                <div className={unlocked && unlocked.includes("c3") ? 'message' : 'none'}
+                onClick={() => openMessage("c3", 3)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('estados unidos') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c3") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Você conseguiu mais uma vez! Graças à sua descoberta, pudemos identificar que essa página encontrada no Alabama pertence ao diário de Catarina:
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
                 </div>
-                <div className={unlocked && unlocked.includes('estados unidos') ? 'message' : 'none'}
-                onClick={() => openMessage('estados unidos', 11)}>                    
+                <div className={unlocked && unlocked.includes("c3") ? 'message' : 'none'}
+                onClick={() => openMessage("c3", 11)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('estados unidos') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c3") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                         Aqui está a íntegra do telegrama que você decifrou. Parabéns pelo belo trabalho, agente241.
                         </div>
@@ -176,10 +176,10 @@ function Messages() {
                     </div>
                 </div>
 
-                <div className={unlocked && unlocked.includes('brasil') ? 'message' : 'none'}
-                onClick={() => openMessage('brasil', 2)}>                    
+                <div className={unlocked && unlocked.includes("c2") ? 'message' : 'none'}
+                onClick={() => openMessage("c2", 2)}>                    
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('brasil') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c2") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Excelente trabalho, agente241. Parece que Catarina esteve mesmo no Brasil.    
                         </div>
@@ -187,10 +187,10 @@ function Messages() {
                     </div>
                 </div>
 
-                <div className={unlocked && unlocked.includes('argentina') ? 'message' : 'none'}
-                onClick={() => openMessage('argentina', 1)}>
+                <div className={unlocked && unlocked.includes("c1") ? 'message' : 'none'}
+                onClick={() => openMessage("c1", 1)}>
                     <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes('argentina') ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <span className={newMessages && newMessages.includes("c1") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
                             Ficamos felizes em te ver recuperando o tempo perdido.
                         </div>

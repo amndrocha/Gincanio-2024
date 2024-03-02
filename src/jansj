@@ -1,118 +1,118 @@
 [
     [
-        "argentina",
-        "mocambique",
-        "indonesia"
+        "c1",
+        "c6",
+        "c8"
     ],
     [
-        "argentina",
-        "mocambique",
-        "india"
+        "c1",
+        "c6",
+        "c9"
     ],
     [
-        "argentina",
-        "mocambique",
+        "c1",
+        "c6",
         ""
     ],
     [
-        "argentina",
+        "c1",
         "arabia",
-        "indonesia"
+        "c8"
     ],
     [
-        "argentina",
+        "c1",
         "arabia",
-        "india"
+        "c9"
     ],
     [
-        "argentina",
-        "arabia",
-        ""
-    ],
-    [
-        "argentina",
-        "",
-        "indonesia"
-    ],
-    [
-        "argentina",
-        "",
-        "india"
-    ],
-    [
-        "argentina",
-        "",
-        ""
-    ],
-    [
-        "brasil",
-        "mocambique",
-        "indonesia"
-    ],
-    [
-        "brasil",
-        "mocambique",
-        "india"
-    ],
-    [
-        "brasil",
-        "mocambique",
-        ""
-    ],
-    [
-        "brasil",
-        "arabia",
-        "indonesia"
-    ],
-    [
-        "brasil",
-        "arabia",
-        "india"
-    ],
-    [
-        "brasil",
+        "c1",
         "arabia",
         ""
     ],
     [
-        "brasil",
+        "c1",
         "",
-        "indonesia"
+        "c8"
     ],
     [
-        "brasil",
+        "c1",
         "",
-        "india"
+        "c9"
     ],
     [
-        "brasil",
+        "c1",
         "",
         ""
     ],
     [
-        "eua",
-        "mocambique",
-        "indonesia"
+        "c2",
+        "c6",
+        "c8"
     ],
     [
-        "eua",
-        "mocambique",
-        "india"
+        "c2",
+        "c6",
+        "c9"
     ],
     [
-        "eua",
-        "mocambique",
+        "c2",
+        "c6",
+        ""
+    ],
+    [
+        "c2",
+        "arabia",
+        "c8"
+    ],
+    [
+        "c2",
+        "arabia",
+        "c9"
+    ],
+    [
+        "c2",
+        "arabia",
+        ""
+    ],
+    [
+        "c2",
+        "",
+        "c8"
+    ],
+    [
+        "c2",
+        "",
+        "c9"
+    ],
+    [
+        "c2",
+        "",
         ""
     ],
     [
         "eua",
-        "arabia",
-        "indonesia"
+        "c6",
+        "c8"
+    ],
+    [
+        "eua",
+        "c6",
+        "c9"
+    ],
+    [
+        "eua",
+        "c6",
+        ""
     ],
     [
         "eua",
         "arabia",
-        "india"
+        "c8"
+    ],
+    [
+        "eua",
+        "arabia",
+        "c9"
     ],
     [
         "eua",
@@ -122,12 +122,12 @@
     [
         "eua",
         "",
-        "indonesia"
+        "c8"
     ],
     [
         "eua",
         "",
-        "india"
+        "c9"
     ],
     [
         "eua",
@@ -135,119 +135,119 @@
         ""
     ],
     [
-        "polonia",
-        "mocambique",
-        "indonesia"
+        "c4",
+        "c6",
+        "c8"
     ],
     [
-        "polonia",
-        "mocambique",
-        "india"
+        "c4",
+        "c6",
+        "c9"
     ],
     [
-        "polonia",
-        "mocambique",
+        "c4",
+        "c6",
         ""
     ],
     [
-        "polonia",
+        "c4",
         "arabia",
-        "indonesia"
+        "c8"
     ],
     [
-        "polonia",
+        "c4",
         "arabia",
-        "india"
+        "c9"
     ],
     [
-        "polonia",
-        "arabia",
-        ""
-    ],
-    [
-        "polonia",
-        "",
-        "indonesia"
-    ],
-    [
-        "polonia",
-        "",
-        "india"
-    ],
-    [
-        "polonia",
-        "",
-        ""
-    ],
-    [
-        "turquia",
-        "mocambique",
-        "indonesia"
-    ],
-    [
-        "turquia",
-        "mocambique",
-        "india"
-    ],
-    [
-        "turquia",
-        "mocambique",
-        ""
-    ],
-    [
-        "turquia",
-        "arabia",
-        "indonesia"
-    ],
-    [
-        "turquia",
-        "arabia",
-        "india"
-    ],
-    [
-        "turquia",
+        "c4",
         "arabia",
         ""
     ],
     [
-        "turquia",
+        "c4",
         "",
-        "indonesia"
+        "c8"
     ],
     [
-        "turquia",
+        "c4",
         "",
-        "india"
+        "c9"
     ],
     [
-        "turquia",
+        "c4",
+        "",
+        ""
+    ],
+    [
+        "c5",
+        "c6",
+        "c8"
+    ],
+    [
+        "c5",
+        "c6",
+        "c9"
+    ],
+    [
+        "c5",
+        "c6",
+        ""
+    ],
+    [
+        "c5",
+        "arabia",
+        "c8"
+    ],
+    [
+        "c5",
+        "arabia",
+        "c9"
+    ],
+    [
+        "c5",
+        "arabia",
+        ""
+    ],
+    [
+        "c5",
+        "",
+        "c8"
+    ],
+    [
+        "c5",
+        "",
+        "c9"
+    ],
+    [
+        "c5",
         "",
         ""
     ],
     [
         "",
-        "mocambique",
-        "indonesia"
+        "c6",
+        "c8"
     ],
     [
         "",
-        "mocambique",
-        "india"
+        "c6",
+        "c9"
     ],
     [
         "",
-        "mocambique",
+        "c6",
         ""
     ],
     [
         "",
         "arabia",
-        "indonesia"
+        "c8"
     ],
     [
         "",
         "arabia",
-        "india"
+        "c9"
     ],
     [
         "",
@@ -257,12 +257,12 @@
     [
         "",
         "",
-        "indonesia"
+        "c8"
     ],
     [
         "",
         "",
-        "india"
+        "c9"
     ],
     [
         "",
