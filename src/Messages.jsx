@@ -683,7 +683,7 @@ function Messages() {
                     <br/><br/>
 
                         <div style={{textAlign: "center"}} className="dossie-title">
-                            Se souber de que dança e qual cidade Janaína está falando, podemos prosseguir as investigações.                            
+                            Se souber de que dança e qual cidade Catarina está falando, podemos prosseguir as investigações.                            
                         </div>
                 </div>
                 <div className={current == 0 ? 'visible' : 'none'}>
