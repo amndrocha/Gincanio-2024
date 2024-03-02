@@ -206,303 +206,7 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
             } else {
                 return (
                     <>
-
-                    </>
-                )
-            }
-        }
-    } 
-
-    const msg9 = (preview) => {
-        if (unlocked.includes("c10")) {
-            if (preview) {
-                return (
-                    <div style={{display: 'flex'}}>
-                        
-                    </div>
-                )
-            } else {
-                return (
-                    <>
-
-                    </>
-                )
-            }
-        }
-    } 
-
-    return (
-        <div className="messages-page">
-
-            <div className={preview ? 'view-messages-preview' : "messages-preview"}>
-                <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
-                onClick={() => openMessage("c10", 15)}>                                             {msg15(true)}
-                </div>
-
-
-                <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
-                onClick={() => openMessage("c10", 10)}>                    
-                    {msg10(true)}
-                </div>
-
-                <div className={unlocked && unlocked.includes("c5") ? 'message' : 'none'}
-                onClick={() => openMessage("c5", 12)}>
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c5") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Interceptamos uma mensagem de Janaina para Catarina. Eles precisam ser contidos.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-                <div className={unlocked && unlocked.includes("c5") ? 'message' : 'none'}
-                onClick={() => openMessage("c5", 9)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c5") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Nossos agentes foram ao endereço de Parahat, em Istambul, e recuperaram o telegrama abaixo,
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-                <div className={unlocked && unlocked.includes("c9") ? 'message' : 'none'}
-                onClick={() => openMessage("c9", 14)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c9") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Aqui está a íntegra do telegrama que você decifrou.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-                <div className={unlocked && unlocked.includes("c9") ? 'message' : 'none'}
-                onClick={() => openMessage("c9", 8)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c9") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            A transcrição abaixo parece ser do grupo que os irmãos Máximo mantém para se comunicar e foi interceptada por nosso spyware.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-                <div className={unlocked && unlocked.includes("c8") ? 'message' : 'none'}
-                onClick={() => openMessage("c8", 7)}>                    
-                    {msg7(true)}
-                </div>
-                <div className={unlocked && unlocked.includes("c7") ? 'message' : 'none'}
-                onClick={() => openMessage("c7", 6)}>                    
-                    {msg6(true)}
-                </div>
-                <div className={unlocked && unlocked.includes("c6") ? 'message' : 'none'}
-                onClick={() => openMessage("c6", 17)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c6") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            A pista sobre a agência de correios em Maputo nos levou até esse outro telegrama.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>    
-                <div className={unlocked && unlocked.includes("c6") ? 'message' : 'none'}
-                onClick={() => openMessage("c6", 5)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c6") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Recebemos novas transmissão de nosso spyware.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>               
-                <div className={unlocked && unlocked.includes("c4") ? 'message' : 'none'}
-                onClick={() => openMessage("c4", 4)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c4") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Como gostaríamos que todo investigado fosse tão descuidado quanto Catarina!
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-
-                <div className={unlocked && unlocked.includes("c3") ? 'message' : 'none'}
-                onClick={() => openMessage("c3", 3)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c3") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Você conseguiu mais uma vez! Graças à sua descoberta, pudemos identificar que essa página encontrada no Alabama pertence ao diário de Catarina:
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-                <div className={unlocked && unlocked.includes("c3") ? 'message' : 'none'}
-                onClick={() => openMessage("c3", 11)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c3") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                        Aqui está a íntegra do telegrama que você decifrou. Parabéns pelo belo trabalho, agente241.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-
-                <div className={unlocked && unlocked.includes("c2") ? 'message' : 'none'}
-                onClick={() => openMessage("c2", 2)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c2") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Excelente trabalho, agente241. Parece que Catarina esteve mesmo no Brasil.    
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-
-                <div className={unlocked && unlocked.includes("c1") ? 'message' : 'none'}
-                onClick={() => openMessage("c1", 1)}>
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c1") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Ficamos felizes em te ver recuperando o tempo perdido.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-                <div className='message'
-                onClick={() => openMessage('', 0)}>
-                    <div style={{display: 'flex'}}>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Atenção! Nosso sistema detectou atividades suspeitas na sua conta...
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
-                </div>
-
-            </div>
-            <div className={preview ?  'current-message' : "view-current-message"}>
-                <div className="return" onClick={() => setPreview(true)}></div>
-                <div className="diviser"></div>
-                <div className={current == 15 ? 'visible' : 'none'}>
-                       {msg15(false)}
-                </div>
-                <div className={current == 10 ? 'visible' : 'none'}>
-                    {msg10(false)}
-                </div>
-                <div className={current == 7 ? 'visible' : 'none'}>
-                    {msg7(false)}
-                </div>
-                <div className={current == 12 ? 'visible' : 'none'}>
-                    Interceptamos uma mensagem de Janaina para Catarina. Eles precisam ser contidos
-                    <br/><br/>
-                    <div className="intercepted-message">
-                    <img className="message-img" src="./img/janaina0.jpg"/>
-                        Mana,
-                        <br/><br/>
-                        Aqui é um lugar inacreditável, Bruno ia adorar isso aqui. Fiz o que combinamos e disse a tal senha para o vigia do observatório. A coisa toda é um super hotel de luxo, estou até agora sem acreditar, mas parece que tudo que o Bruno disse é verdade e nossos pais faziam parte mesmo de uma sociedade secreta!
-                        <br/><br/>
-                        Foi uma conversa estranhíssima mas, de acordo com eles, uma nave em queda foi vista nos céus do Mar Cáspio no início dos anos 70 e nossos pais foram ao local investigar.
-                        <br/><br/>
-                        Mamãe na época já estava grávida do nosso irmão perdido. Eles ficaram sumidos por um tempo e, quando voltaram, nada do bebê. Logo em seguida eles se afastaram da sociedade, voltaram para o Brasil e passaram a evitar contato com a sociedade. Como que a gente nunca ficou sabendo disso, mana?
-                        <br/><br/>
-                        Você conseguiu falar com Viktor? Ele vai mesmo nos ajudar?
-                        <br/><br/>
-                        Viajo amanhã, estou indo até você. Nos encontramos na aldeia?
-                    </div>
-                    <br/><br/>
-                    <div className="dossie-title" style={{textAlign: 'center'}}>IMPORTANTE</div>
-                    Agente241, estamos convencidos de que os irmãos Máximo estão prestes a cometer um atentado grave contra nós! Já entendeu de que aldeia eles estão falando?! Pois é!
-                    <br/><br/>
-                    Ignore todas as recomendações anteriores e, se encontrá-los, USE FORÇA LETAL.
-                </div>
-
-                <div className={current == 9 ? 'visible' : 'none'}>Nossos agentes foram ao endereço de Parahat, em Istambul, e recuperaram o telegrama abaixo, endereçado para alguém chamado Viktor:
-                <br/><br/>
-                    <div className="intercepted-message"
-                style={{lineBreak: 'anywhere'}}>
-                    RQBG DHOQMR CL
-                    <br/>
-                    FAG DPXAFOEG KZ XGOELGO.
-                    <br/>
-                    ELYRE ZQRZR ZR OMGXLRKAZR.
-                    <br/><br/>
-                    <div className="lead123">
-                        <div className="circle123">4</div>
-                        <div className="grid123">
-                            <div style={{display: 'flex', width: 'fit-content'}}>
-                                <div  className="box123 box123top">B</div>
-                                <div className="box123 box123top">I</div>
-                                <div className="box123 box123top">Y</div>
-                                <div className="box123 box123top">J</div>
-                                <div className="box123 box123top">H</div>
-                            </div>
-                            <div style={{display: 'flex'}}>
-                                <div className="box123">P</div>
-                                <div className="box123">N</div>
-                                <div className="box123">F</div>
-                                <div className="box123">K</div>
-                                <div className="box123">V</div>
-                            </div>
-                            <div style={{display: 'flex'}}>
-                                <div className="box123">Z</div>
-                                <div className="box123">A</div>
-                                <div className="box123">O</div>
-                                <div className="box123">T</div>
-                                <div className="box123">Q</div>
-                            </div>
-                            <div style={{display: 'flex'}}>
-                                <div className="box123">S</div>
-                                <div className="box123">G</div>
-                                <div className="box123">R</div>
-                                <div className="box123">E</div>
-                                <div className="box123">D</div>
-                            </div>
-                            <div style={{display: 'flex'}}>
-                                <div className="box123">C</div>
-                                <div className="box123">X</div>
-                                <div className="box123">M</div>
-                                <div className="box123">L</div>
-                                <div className="box123">U</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <div className={current == 14 ? 'visible' : 'none'}>
-                    Aqui está a íntegra do telegrama que você decifrou.
-                        <br/><br/>
-                    <div className="intercepted-message">
-                        CHAVE QUE APAGA O FOGO
-                        <br/><br/>
-                        NUMEROS EM ANTIGA ESCRITA  
-                        <br/><br/>
-                        FRAGMENTOS MORAM NO CEU
-                    </div>
-                    <br/>
-                    <div className="dossie-title" style={{textAlign: 'center'}}>
-                        O que você decifrou com o sistema Tamil, agente241? Você não está nos escondendo algo, está?
-                    </div>
-                </div>
-                <div className={current == 8 ? 'visible' : 'none'}>
-                    A transcrição abaixo parece ser do grupo que os irmãos Máximo mantém para se comunicar e foi interceptada por nosso spyware.
-                    <br/><br/>
-                    <div className="intercepted-message">
-                        Catarina {arrowRight} Manos, segui as dicas do Bruno e consegui decifrar o Pustaha inteiro. Além daquela data o documento tem várias informações sobre como funcionam os fragmentos. Precisamos conversar pessoalmente!
-                        <br/><br/>
-                        Janaína {arrowRight} Não podemos falar disso por aqui… Viktor já nos disse que nossas comunicações estão sendo interceptadas.
-                        <br/><br/>
-                        Bruno {arrowRight} Sabia que meu aparelho de vinil ia servir para alguma coisa. Olha só o que eu recebi pelo correio!
-                        <br/><br/>
-                        <img style={{width: '100%'}} src='./img/sdfsedfeds.png'/>
-                        <br/><br/>
-                        Catarina {arrowRight} Música numa hora dessas?
-                        <br/><br/>
-                        Bruno {arrowRight} É uma gravação de “Telegrama Musical” , de Waldir Silva. Estou tentando entender ainda, mas acho que a capa quer dizer alguma coisa.
-                        <br/><br/>
-                        Janaína {arrowRight} Bruno, olha a hora, você vai perder o seu vôo… (de novo)
-                    </div>
-                    <br/><br/>
-                    <div className="dossie-title" style={{textAlign: 'center'}}>Acho que vamos precisar de mais informações antes de decifrar essa, agente241. Boa sorte.</div>
-                </div>
-                <div className={current == 6 ? 'visible' : 'none'}>
-                    Aqui está a íntegra do telegrama que você decifrou.
+Aqui está a íntegra do telegrama que você decifrou.
                     <br/><br/>
                     Parabéns pelo belo trabalho, agente241.
                     <br/><br/>
@@ -522,9 +226,28 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
                     <div className="dossie-title" style={{textAlign: 'center'}}>
                         A investigação parece estar num beco sem saída, agente241.  Os Máximo estão se aproximando perigosamente de nossa base. Em breve teremos que tomar medidas drásticas.
                     </div>
-                </div>
-                <div className={current == 17 ? 'visible' : 'none'}>
-                    Bom trabalho, agente241!
+                    </>
+                )
+            }
+        }
+    } 
+
+    const msg17 = (preview) => {
+        if (unlocked.includes("c6")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c6") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            A pista sobre a agência de correios em Maputo nos levou até esse outro telegrama.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Bom trabalho, agente241!
                     <br/><br/>
                     A pista sobre a agência de correios em Maputo nos levou até esse outro telegrama:
                     <br/><br/>
@@ -585,9 +308,28 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
 
 
                     <div className="dossie-title" style={{textAlign: 'center'}}>Esse telegrama deve falar sobre os próximos passos de Janaina. Para onde ela foi? O que ela deve dizer?</div>
-                </div>
-                <div className={current == 5 ? 'visible' : 'none'}>
-                    Recebemos novas transmissão de nosso spyware.
+                    </>
+                )
+            }
+        }
+    } 
+
+    const msg5 = (preview) => {
+        if (unlocked.includes("c6")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c6") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Recebemos novas transmissão de nosso spyware.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Recebemos novas transmissão de nosso spyware.
                     <br/><br/>
                     <div className="intercepted-message">
                     Bruno {arrowRight} Manas, encontrei um fragmento onde vocês indicaram. Ainda não consigo acreditar nisso tudo.
@@ -612,9 +354,216 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
                     <div className="dossie-title" style={{textAlign: 'center'}}>Agente241, determine o nome e a origem desse documento para que possamos continuar as investigações.</div>
                     <br/>
                     <img style={{width: '100%'}} src='./img/egdfged.png'/>
-                </div>
-                <div className={current == 4 ? 'visible' : 'none'}>
-                Estimado agente241,
+                    </>
+                )
+            }
+        }
+    } 
+
+    const msg12 = (preview) => {
+        if (unlocked.includes("c5")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c5") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Interceptamos uma mensagem de Janaina para Catarina. Eles precisam ser contidos.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Interceptamos uma mensagem de Janaina para Catarina. Eles precisam ser contidos
+                    <br/><br/>
+                    <div className="intercepted-message">
+                    <img className="message-img" src="./img/janaina0.jpg"/>
+                        Mana,
+                        <br/><br/>
+                        Aqui é um lugar inacreditável, Bruno ia adorar isso aqui. Fiz o que combinamos e disse a tal senha para o vigia do observatório. A coisa toda é um super hotel de luxo, estou até agora sem acreditar, mas parece que tudo que o Bruno disse é verdade e nossos pais faziam parte mesmo de uma sociedade secreta!
+                        <br/><br/>
+                        Foi uma conversa estranhíssima mas, de acordo com eles, uma nave em queda foi vista nos céus do Mar Cáspio no início dos anos 70 e nossos pais foram ao local investigar.
+                        <br/><br/>
+                        Mamãe na época já estava grávida do nosso irmão perdido. Eles ficaram sumidos por um tempo e, quando voltaram, nada do bebê. Logo em seguida eles se afastaram da sociedade, voltaram para o Brasil e passaram a evitar contato com a sociedade. Como que a gente nunca ficou sabendo disso, mana?
+                        <br/><br/>
+                        Você conseguiu falar com Viktor? Ele vai mesmo nos ajudar?
+                        <br/><br/>
+                        Viajo amanhã, estou indo até você. Nos encontramos na aldeia?
+                    </div>
+                    <br/><br/>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>IMPORTANTE</div>
+                    Agente241, estamos convencidos de que os irmãos Máximo estão prestes a cometer um atentado grave contra nós! Já entendeu de que aldeia eles estão falando?! Pois é!
+                    <br/><br/>
+                    Ignore todas as recomendações anteriores e, se encontrá-los, USE FORÇA LETAL.
+                    </>
+                )
+            }
+        }
+    }
+
+    const msg9 = (preview) => {
+        if (unlocked.includes("c5")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c5") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Nossos agentes foram ao endereço de Parahat, em Istambul, e recuperaram o telegrama abaixo,
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+                        Nossos agentes foram ao endereço de Parahat, em Istambul, e recuperaram o telegrama abaixo, endereçado para alguém chamado Viktor:
+                        <br/><br/>
+                        <div className="intercepted-message"
+                        style={{lineBreak: 'anywhere'}}>
+                            RQBG DHOQMR CL
+                            <br/>
+                            FAG DPXAFOEG KZ XGOELGO.
+                            <br/>
+                            ELYRE ZQRZR ZR OMGXLRKAZR.
+                            <br/><br/>
+                            <div className="lead123">
+                                <div className="circle123">4</div>
+                                <div className="grid123">
+                                    <div style={{display: 'flex', width: 'fit-content'}}>
+                                        <div  className="box123 box123top">B</div>
+                                        <div className="box123 box123top">I</div>
+                                        <div className="box123 box123top">Y</div>
+                                        <div className="box123 box123top">J</div>
+                                        <div className="box123 box123top">H</div>
+                                    </div>
+                                    <div style={{display: 'flex'}}>
+                                        <div className="box123">P</div>
+                                        <div className="box123">N</div>
+                                        <div className="box123">F</div>
+                                        <div className="box123">K</div>
+                                        <div className="box123">V</div>
+                                    </div>
+                                    <div style={{display: 'flex'}}>
+                                        <div className="box123">Z</div>
+                                        <div className="box123">A</div>
+                                        <div className="box123">O</div>
+                                        <div className="box123">T</div>
+                                        <div className="box123">Q</div>
+                                    </div>
+                                    <div style={{display: 'flex'}}>
+                                        <div className="box123">S</div>
+                                        <div className="box123">G</div>
+                                        <div className="box123">R</div>
+                                        <div className="box123">E</div>
+                                        <div className="box123">D</div>
+                                    </div>
+                                    <div style={{display: 'flex'}}>
+                                        <div className="box123">C</div>
+                                        <div className="box123">X</div>
+                                        <div className="box123">M</div>
+                                        <div className="box123">L</div>
+                                        <div className="box123">U</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )
+            }
+        }
+    }     
+
+    const msg14 = (preview) => {
+        if (unlocked.includes("c9")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c9") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Aqui está a íntegra do telegrama que você decifrou.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Aqui está a íntegra do telegrama que você decifrou.
+                        <br/><br/>
+                    <div className="intercepted-message">
+                        CHAVE QUE APAGA O FOGO
+                        <br/><br/>
+                        NUMEROS EM ANTIGA ESCRITA  
+                        <br/><br/>
+                        FRAGMENTOS MORAM NO CEU
+                    </div>
+                    <br/>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>
+                        O que você decifrou com o sistema Tamil, agente241? Você não está nos escondendo algo, está?
+                    </div>
+                    </>
+                )
+            }
+        }
+    }     
+    
+    const msg8 = (preview) => {
+        if (unlocked.includes("c9")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c9") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            A transcrição abaixo parece ser do grupo que os irmãos Máximo mantém para se comunicar e foi interceptada por nosso spyware.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+A transcrição abaixo parece ser do grupo que os irmãos Máximo mantém para se comunicar e foi interceptada por nosso spyware.
+                    <br/><br/>
+                    <div className="intercepted-message">
+                        Catarina {arrowRight} Manos, segui as dicas do Bruno e consegui decifrar o Pustaha inteiro. Além daquela data o documento tem várias informações sobre como funcionam os fragmentos. Precisamos conversar pessoalmente!
+                        <br/><br/>
+                        Janaína {arrowRight} Não podemos falar disso por aqui… Viktor já nos disse que nossas comunicações estão sendo interceptadas.
+                        <br/><br/>
+                        Bruno {arrowRight} Sabia que meu aparelho de vinil ia servir para alguma coisa. Olha só o que eu recebi pelo correio!
+                        <br/><br/>
+                        <img style={{width: '100%'}} src='./img/sdfsedfeds.png'/>
+                        <br/><br/>
+                        Catarina {arrowRight} Música numa hora dessas?
+                        <br/><br/>
+                        Bruno {arrowRight} É uma gravação de “Telegrama Musical” , de Waldir Silva. Estou tentando entender ainda, mas acho que a capa quer dizer alguma coisa.
+                        <br/><br/>
+                        Janaína {arrowRight} Bruno, olha a hora, você vai perder o seu vôo… (de novo)
+                    </div>
+                    <br/><br/>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>Acho que vamos precisar de mais informações antes de decifrar essa, agente241. Boa sorte.</div>
+                    </>
+                )
+            }
+        }
+    }     
+    
+    const msg4 = (preview) => {
+        if (unlocked.includes("c4")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c4") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Como gostaríamos que todo investigado fosse tão descuidado quanto Catarina!
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Estimado agente241,
                 <br/><br/>
                 Como gostaríamos que todo investigado fosse tão descuidado quanto Catarina! Encontramos mais algumas mensagens escritas por Catarina em seu diário virtual, enquanto ela esteve na Polônia:
                 <br/><br/>
@@ -638,9 +587,64 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
                 </div>
                 <br/><br/>
                 <div className="dossie-title" style={{textAlign: 'center'}}>Onde era o ponto de encontro deles com Parahat? Você consegue descobrir o nome do filho mais velho dos Máximo?</div>
-                </div>
-                <div className={current == 11 ? 'visible' : 'none'}>
-                    Prezado agente241,
+                    </>
+                )
+            }
+        }
+    }     
+    
+    const msg3 = (preview) => {
+        if (unlocked.includes("c3")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c3") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Você conseguiu mais uma vez! Graças à sua descoberta, pudemos identificar que essa página encontrada no Alabama pertence ao diário de Catarina:
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Prezado agente241,
+                    <br/><br/> Você conseguiu mais uma vez! Graças à sua descoberta, conseguimos interceptar o seguinte texto, escrito pela Catarina em seu diário virtual enquanto ela utilizava uma rede wifi pública no Alabama:
+                    <br/><br/>
+                    <div className="intercepted-message">
+                        <img className="message-img" src='./img/catarina0.jpg'/>
+                        Ainda não estou acreditando que tenho outro irmão além de Bruno. As pistas que ele deixou me trouxeram até o Centro de Pesquisa de Foguetes de Huntsville. Fui recebida por um ex-aluno de minha mãe e ele me contou que ela parou de publicar pois ficou obcecada por objetos voadores não identificados e alienígenas. Sei lá,  eu nunca ouvi minha mãe falando dessas coisas, achei tudo muito estranho. 
+                        <br/><br/>
+                        Ele foi muito gentil e me entregou uma caixa com alguns objetos que pertenceram à ela. A maioria eram coisas de escritório, mas no meio das velharias encontrei mais um fragmento misterioso. O que são essas coisas? Achei outro desses na casa onde ela nasceu, no Pará e acho que eles se encaixam.  Tenho que mostrar isso para Janaína, ela vai ficar louca.
+                        <br/><br/>
+                        Mamãe trabalhou por uns anos aqui em Huntsville antes de começar a namorar papai. Lembro dela contando que saiu daqui em viagem para Europa, para conhecer o museu na cidade natal de sua heroína e foi lá que eles acabaram se reencontrando. O museu era perto do trabalho dele, eu acho.
+                        <br/><br/>
+                        Acho que já sei onde está o próximo fragmento!                     
+                    </div>
+                    <br/><br/>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>De que heroína Catarina está falando? Onde está o próximo fragmento?</div>
+                    </>
+                )
+            }
+        }
+    }     
+    
+    const msg11 = (preview) => {
+        if (unlocked.includes("c3")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c3") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                        Aqui está a íntegra do telegrama que você decifrou. Parabéns pelo belo trabalho, agente241.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Prezado agente241,
                     <br/><br/> Aqui está a íntegra do telegrama que você decifrou. Parabéns pelo belo trabalho, agente241.
                     <br/><br/>
                     <div className="intercepted-message">
@@ -658,26 +662,27 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
                         <br/><br/>    
                         MESIGACATARINANOINSTAGRAM.             
                     </div>
-                </div>
-                <div className={current == 3 ? 'visible' : 'none'}>
-                    Prezado agente241,
-                    <br/><br/> Você conseguiu mais uma vez! Graças à sua descoberta, conseguimos interceptar o seguinte texto, escrito pela Catarina em seu diário virtual enquanto ela utilizava uma rede wifi pública no Alabama:
-                    <br/><br/>
-                    <div className="intercepted-message">
-                        <img className="message-img" src='./img/catarina0.jpg'/>
-                        Ainda não estou acreditando que tenho outro irmão além de Bruno. As pistas que ele deixou me trouxeram até o Centro de Pesquisa de Foguetes de Huntsville. Fui recebida por um ex-aluno de minha mãe e ele me contou que ela parou de publicar pois ficou obcecada por objetos voadores não identificados e alienígenas. Sei lá,  eu nunca ouvi minha mãe falando dessas coisas, achei tudo muito estranho. 
-                        <br/><br/>
-                        Ele foi muito gentil e me entregou uma caixa com alguns objetos que pertenceram à ela. A maioria eram coisas de escritório, mas no meio das velharias encontrei mais um fragmento misterioso. O que são essas coisas? Achei outro desses na casa onde ela nasceu, no Pará e acho que eles se encaixam.  Tenho que mostrar isso para Janaína, ela vai ficar louca.
-                        <br/><br/>
-                        Mamãe trabalhou por uns anos aqui em Huntsville antes de começar a namorar papai. Lembro dela contando que saiu daqui em viagem para Europa, para conhecer o museu na cidade natal de sua heroína e foi lá que eles acabaram se reencontrando. O museu era perto do trabalho dele, eu acho.
-                        <br/><br/>
-                        Acho que já sei onde está o próximo fragmento!                     
+                    </>
+                )
+            }
+        }
+    }     
+    const msg2 = (preview) => {
+        if (unlocked.includes("c2")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c2") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Excelente trabalho, agente241. Parece que Catarina esteve mesmo no Brasil.    
+                        </div>
+                        <div className="mobile-icon"></div>
                     </div>
-                    <br/><br/>
-                    <div className="dossie-title" style={{textAlign: 'center'}}>De que heroína Catarina está falando? Onde está o próximo fragmento?</div>
-                </div>
-                <div className={current == 2 ? 'visible' : 'none'}>
-                Excelente trabalho, agente241. 
+                )
+            } else {
+                return (
+                    <>
+Excelente trabalho, agente241. 
                 <br/><br/>Parece que Catarina esteve mesmo no Brasil. Sabendo disso, invadimos o banco de dados dos Correios brasileiros e encontramos esse estranho telegrama, deixado para Catarina enquanto ela esteve em Belém:
                 <br/><br/>
                 <div className="intercepted-message"
@@ -740,10 +745,27 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
 
                 <br/>
                 <div className="dossie-title-center">Decifre esse mensagem, agente241. Vamos tentar alcançá-los.</div>
-
-                </div>
-                <div className={current == 1 ? 'visible' : 'none'}>
-                    Caro agente241,
+                    </>
+                )
+            }
+        }
+    } 
+    const msg1 = (preview) => {
+        if (unlocked.includes("c1")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c1") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Ficamos felizes em te ver recuperando o tempo perdido.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Caro agente241,
                     <br/><br/>
                     Ficamos felizes em te ver recuperando o tempo perdido.
                     <br/><br/>
@@ -767,6 +789,150 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
                         <div style={{textAlign: "center"}} className="dossie-title">
                             Se souber de que dança e qual cidade Catarina está falando, podemos prosseguir as investigações.                            
                         </div>
+                    </>
+                )
+            }
+        }
+    } 
+
+    return (
+        <div className="messages-page">
+
+            <div className={preview ? 'view-messages-preview' : "messages-preview"}>
+                <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
+                onClick={() => openMessage("c10", 15)}>                                             
+                    {msg15(true)}
+                </div>
+
+
+                <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
+                onClick={() => openMessage("c10", 10)}>                    
+                    {msg10(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c5") ? 'message' : 'none'}
+                onClick={() => openMessage("c5", 12)}>
+                    {msg12(true)}
+                </div>
+                
+                <div className={unlocked && unlocked.includes("c5") ? 'message' : 'none'}
+                onClick={() => openMessage("c5", 9)}>                    
+                    {msg9(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c9") ? 'message' : 'none'}
+                onClick={() => openMessage("c9", 14)}>                    
+                    {msg14(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c9") ? 'message' : 'none'}
+                onClick={() => openMessage("c9", 8)}>                    
+                    {msg8(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c8") ? 'message' : 'none'}
+                onClick={() => openMessage("c8", 7)}>                    
+                    {msg7(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c7") ? 'message' : 'none'}
+                onClick={() => openMessage("c7", 6)}>                    
+                    {msg6(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c6") ? 'message' : 'none'}
+                onClick={() => openMessage("c6", 17)}>                    
+                    {msg17(true)}
+                </div>   
+
+                <div className={unlocked && unlocked.includes("c6") ? 'message' : 'none'}
+                onClick={() => openMessage("c6", 5)}>                    
+                    {msg5(true)}
+                </div> 
+
+                <div className={unlocked && unlocked.includes("c4") ? 'message' : 'none'}
+                onClick={() => openMessage("c4", 4)}>                    
+                    {msg4(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c3") ? 'message' : 'none'}
+                onClick={() => openMessage("c3", 3)}>                    
+                    {msg3(true)}
+                </div>
+                <div className={unlocked && unlocked.includes("c3") ? 'message' : 'none'}
+                onClick={() => openMessage("c3", 11)}>                    
+                    {msg11(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c2") ? 'message' : 'none'}
+                onClick={() => openMessage("c2", 2)}>                    
+                    {msg2(true)}
+                </div>
+
+                <div className={unlocked && unlocked.includes("c1") ? 'message' : 'none'}
+                onClick={() => openMessage("c1", 1)}>
+                    {msg1(true)}
+                </div>
+                <div className='message'
+                onClick={() => openMessage('', 0)}>
+                    <div style={{display: 'flex'}}>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Atenção! Nosso sistema detectou atividades suspeitas na sua conta...
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div className={preview ?  'current-message' : "view-current-message"}>
+                <div className="return" onClick={() => setPreview(true)}></div>
+                <div className="diviser"></div>
+                <div className={current == 15 ? 'visible' : 'none'}>
+                       {msg15(false)}
+                </div>
+                <div className={current == 10 ? 'visible' : 'none'}>
+                    {msg10(false)}
+                </div>
+                <div className={current == 7 ? 'visible' : 'none'}>
+                    {msg7(false)}
+                </div>
+                <div className={current == 12 ? 'visible' : 'none'}>
+                    {msg12(false)}
+                </div>
+
+                <div className={current == 9 ? 'visible' : 'none'}>
+                    {msg9(false)}
+                </div>
+                <div className={current == 14 ? 'visible' : 'none'}>
+                    {msg14(false)}
+                </div>
+                <div className={current == 8 ? 'visible' : 'none'}>
+                    {msg8(false)}
+                </div>
+                <div className={current == 6 ? 'visible' : 'none'}>
+                    {msg6(false)}
+                </div>
+                <div className={current == 17 ? 'visible' : 'none'}>
+                    {msg17(false)}
+                </div>
+                <div className={current == 5 ? 'visible' : 'none'}>
+                    {msg5(false)}
+                </div>
+                <div className={current == 4 ? 'visible' : 'none'}>
+                    {msg4(false)}
+                </div>
+                <div className={current == 11 ? 'visible' : 'none'}>
+                    {msg11(false)}
+                </div>
+                <div className={current == 3 ? 'visible' : 'none'}>
+                    {msg3(false)}
+                </div>
+                <div className={current == 2 ? 'visible' : 'none'}>
+                    {msg2(false)}
+
+                </div>
+                <div className={current == 1 ? 'visible' : 'none'}>
+                    {msg1(false)}
                 </div>
                 <div className={current == 0 ? 'visible' : 'none'}>
                     Atenção!<br/><br/>Nosso sistema detectou atividades suspeitas na sua conta. Como medida de segurança, a sua senha será alterada a cada nova atualização do banco de dados.<br/><br/>Caso haja alguma tentativa de logar utilizando uma senha antiga, os dados mais recentes da investigação serão ocultados.<br/><br/>
