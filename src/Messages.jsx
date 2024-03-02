@@ -39,13 +39,10 @@ function Messages() {
     const arrowRight = '>>';
     const arrowLeft = '<<';
 
-
-    return (
-        <div className="messages-page">
-
-            <div className={preview ? 'view-messages-preview' : "messages-preview"}>
-                <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
-                onClick={() => openMessage("c10", 15)}>                    
+    const msg15 = (preview) => {
+        if (unlocked.includes("c10")) {
+            if (preview) {
+                return (
                     <div style={{display: 'flex'}}>
                         <span className={newMessages && newMessages.includes("c10") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
@@ -53,6 +50,78 @@ function Messages() {
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
+                )
+            } else {
+                return (
+                    <>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>
+                        CAIXA DE SAÍDA: MENSAGEM NÃO ENVIADA
+                    </div>
+                    <br/><br/>
+
+                        <div className="dossie-title">
+                            De:
+                        </div>
+                        agente241
+                        <div className="dossie-title">
+                            Para:
+                        </div>
+                        agente241
+                        <div className="dossie-title" style={{color: 'lime'}}>.</div>
+                        <br/>
+                        Parabéns por ter nos seguido até aqui, calouro. Sou eu, Viktor, e estou correndo riscos ao acessar esse sistema, mas estou precisando desesperadamente de ajuda. 
+                        <br/><br/>
+                        A agência é controlada por extraterrestres e eles são incapazes de pensamento abstrato. Um simples enigma como esses pode atrasá-los por dias. Use a cifra musical que enviei para Bruno para me enviar um telegrama!
+                        <br/><br/>
+                        <img className="mask" src='./img/afgfsade.png'/> 
+                    </>
+                )
+            }
+        }
+    }
+
+    // const msg10 = (preview) => {
+    //     if (unlocked.includes("c10")) {
+    //         if (preview) {
+    //             return (
+    //                 <div style={{display: 'flex'}}>
+                        
+    //                 </div>
+    //             )
+    //         } else {
+    //             return (
+    //                 <>
+
+    //                 </>
+    //             )
+    //         }
+    //     }
+    // }    
+    const msg9 = (preview) => {
+        if (unlocked.includes("c10")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+
+                    </>
+                )
+            }
+        }
+    } 
+
+    return (
+        <div className="messages-page">
+
+            <div className={preview ? 'view-messages-preview' : "messages-preview"}>
+                <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
+                onClick={() => openMessage("c10", 15)}>                    
+                    {msg15(true)}
                 </div>
                 <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
                 onClick={() => openMessage("c10", 10)}>                    
@@ -212,26 +281,7 @@ function Messages() {
                 <div className="return" onClick={() => setPreview(true)}></div>
                 <div className="diviser"></div>
                 <div className={current == 15 ? 'visible' : 'none'}>
-                    <div className="dossie-title" style={{textAlign: 'center'}}>
-                        CAIXA DE SAÍDA: MENSAGEM NÃO ENVIADA
-                    </div>
-                    <br/><br/>
-
-                        <div className="dossie-title">
-                            De:
-                        </div>
-                        agente241
-                        <div className="dossie-title">
-                            Para:
-                        </div>
-                        agente241
-                        <div className="dossie-title" style={{color: 'lime'}}>.</div>
-                        <br/>
-                        Parabéns por ter nos seguido até aqui, calouro. Sou eu, Viktor, e estou correndo riscos ao acessar esse sistema, mas estou precisando desesperadamente de ajuda. 
-                        <br/><br/>
-                        A agência é controlada por extraterrestres e eles são incapazes de pensamento abstrato. Um simples enigma como esses pode atrasá-los por dias. Use a cifra musical que enviei para Bruno para me enviar um telegrama!
-                        <br/><br/>
-                        <img className="mask" src='./img/afgfsade.png'/>    
+                       {msg15(false)}
                 </div>
                 <div className={current == 10 ? 'visible' : 'none'}>
                     Aqui está a íntegra do telegrama que você decifrou.
