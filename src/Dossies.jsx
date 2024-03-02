@@ -74,7 +74,7 @@ function Dossies() {
                             </div>
                         </div>
                         <br/>
-                        Muito pouco se sabe sobre esse indivíduo. Acreditamos que ele seja um filho não registrado do casal Raposo e Daniela, mas a única pista que temos é um porta retrato deixado no apartamento de do casal com a foto que vemos em anexo. A fotografia está datada de 27 de Janeiro de 2008. No verso da fotografia, nossos agentes encontraram um estranho recado:
+                        Muito pouco se sabe sobre esse indivíduo. Acreditamos que ele seja um filho não registrado do casal Raposo e Daniela, mas a única pista que temos é um porta retrato deixado no apartamento do casal com a foto que vemos em anexo. A fotografia está datada de 27 de Janeiro de 2008. No verso da fotografia, nossos agentes encontraram um estranho recado:
                         <br/><br/>
                         <div className="intercepted-message"> 
                             Queridos pais, obrigado pelo presente de aniversário, Parahat me entregou ontem, durante a mudança da guarda.
