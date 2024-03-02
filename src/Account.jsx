@@ -708,20 +708,24 @@ function Account() {
                 path = checkpoint.path;
             }
         })
+        console.log(path);
         let last = false;
         let unlocked = [];
         paths.forEach((array, i) => {
-            array.forEach((country, j) => {
-                if (j == 0) {
-                    last = false;
-                }
-                if (!last) {
-                    unlocked.push(country);
-                    if (path[i].includes(country)) {
-                        last = true;
-                    }               
-                }
-            })
+            if (path[i] != '') {
+                array.forEach((country, j) => {
+                    if (j == 0) {
+                        last = false;
+                    }
+                    if (!last) {
+                        unlocked.push(country);
+                        if (path[i].includes(country)) {
+                            console.log(path[i]);
+                            last = true;
+                        }               
+                    }
+                })
+            }
         })
         countries.forEach(country => {
             if (unlocked.includes(country.name)) {

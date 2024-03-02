@@ -21,6 +21,7 @@ function Messages() {
         }
     };
 
+
     const unlocked = countries ? getUnlocked() : [];
 
     window.addEventListener('news', () => {
@@ -79,24 +80,139 @@ function Messages() {
             }
         }
     }
-
-    // const msg10 = (preview) => {
-    //     if (unlocked.includes("c10")) {
-    //         if (preview) {
-    //             return (
-    //                 <div style={{display: 'flex'}}>
+    const msg10 = (preview) => {
+        if (unlocked.includes("c10")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c10") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Aqui está a íntegra do telegrama que você decifrou.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+                        Aqui está a íntegra do telegrama que você decifrou.
+                    <br/><br/>
+                        <div className="intercepted-message">
+                            VIKTOR
+                            <br/><br/>
+                            NOS ENCONTRE NA CRATERA 
+                            <br/><br/>
+                            TEMOS TODOS OS FRAGMENTOS
+                            <br/><br/>
+                            O QUE ESTÃ ACONT3CENDO, AGENTE241?
+                            <br/><br/>
+                            VOCÃ ESTÃ SE COM~NICANDO COM O IN´_MIG´?
+                            <br/><br/>
+                            REPORTE-SE ÃÃ B4SE IMEDI_T_M3NT;.-
+                        </div>
+                    </>
+                )
+            }
+        }
+    }    
+    const msg7 = (preview) => {
+        if (unlocked.includes("c8")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c8") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama abaixo.
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama abaixo.
+                    <br/><br/>
+                    <div className="intercepted-message">
+                        RFQJG CMN RSQBR J HMYV
+                        <br/><br/>
+                        LNETOYT BJ CELDIC BTAQPSC
+                        <br/><br/>
+                        HCQBETELJP OUKQU EM RNM
+                        <br/><br/>
+                        <div className="lead123">
+                            <div className="circle123">3</div>
+                            <div className="grid123">
+                                <div style={{display: 'flex', width: 'fit-content'}}>
+                                    <div  className="box123 box123top">F</div>
+                                    <div className="box123 box123top">H</div>
+                                    <div className="box123 box123top">Z</div>
+                                    <div className="box123 box123top">X</div>
+                                    <div className="box123 box123top">D</div>
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <div className="box123">C</div>
+                                    <div className="box123">R</div>
+                                    <div className="box123">K</div>
+                                    <div className="box123">A</div>
+                                    <div className="box123">Q</div>
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <div className="box123">M</div>
+                                    <div className="box123">O</div>
+                                    <div className="box123">U</div>
+                                    <div className="box123">J</div>
+                                    <div className="box123">V</div>
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <div className="box123">E</div>
+                                    <div className="box123">Y</div>
+                                    <div className="box123">N</div>
+                                    <div className="box123">B</div>
+                                    <div className="box123">G</div>
+                                </div>
+                                <div style={{display: 'flex'}}>
+                                    <div className="box123">T</div>
+                                    <div className="box123">P</div>
+                                    <div className="box123">L</div>
+                                    <div className="box123">S</div>
+                                    <div className="box123">I</div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                    <br/>
+                    <div className="dossie-title" style={{textAlign: 'cente'}}>
+                        Agente241, nossos técnicos estão finalmente aprendendo como esses códigos funcionam. A mensagem parece falar de números. Que sistema numérico é esse e onde foi inventado?
                         
-    //                 </div>
-    //             )
-    //         } else {
-    //             return (
-    //                 <>
+                    </div>
+                    </>
+                )
+            }
+        }
+    }    
 
-    //                 </>
-    //             )
-    //         }
-    //     }
-    // }    
+    const msg6 = (preview) => {
+        if (unlocked.includes("c7")) {
+            if (preview) {
+                return (
+                    <div style={{display: 'flex'}}>
+                        <span className={newMessages && newMessages.includes("c7") ? 'new-icon' : 'none'}>((NEW)) </span>
+                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
+                            Aqui está a íntegra do telegrama que você decifrou. 
+                        </div>
+                        <div className="mobile-icon"></div>
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+
+                    </>
+                )
+            }
+        }
+    } 
+
     const msg9 = (preview) => {
         if (unlocked.includes("c10")) {
             if (preview) {
@@ -120,19 +236,15 @@ function Messages() {
 
             <div className={preview ? 'view-messages-preview' : "messages-preview"}>
                 <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
-                onClick={() => openMessage("c10", 15)}>                    
-                    {msg15(true)}
+                onClick={() => openMessage("c10", 15)}>                                             {msg15(true)}
                 </div>
+
+
                 <div className={unlocked && unlocked.includes("c10") ? 'message' : 'none'}
                 onClick={() => openMessage("c10", 10)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c10") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Aqui está a íntegra do telegrama que você decifrou.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
+                    {msg10(true)}
                 </div>
+
                 <div className={unlocked && unlocked.includes("c5") ? 'message' : 'none'}
                 onClick={() => openMessage("c5", 12)}>
                     <div style={{display: 'flex'}}>
@@ -175,23 +287,11 @@ function Messages() {
                 </div>
                 <div className={unlocked && unlocked.includes("c8") ? 'message' : 'none'}
                 onClick={() => openMessage("c8", 7)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c8") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama abaixo.
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
+                    {msg7(true)}
                 </div>
                 <div className={unlocked && unlocked.includes("c7") ? 'message' : 'none'}
                 onClick={() => openMessage("c7", 6)}>                    
-                    <div style={{display: 'flex'}}>
-                        <span className={newMessages && newMessages.includes("c7") ? 'new-icon' : 'none'}>((NEW)) </span>
-                        <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Aqui está a íntegra do telegrama que você decifrou. 
-                        </div>
-                        <div className="mobile-icon"></div>
-                    </div>
+                    {msg6(true)}
                 </div>
                 <div className={unlocked && unlocked.includes("c6") ? 'message' : 'none'}
                 onClick={() => openMessage("c6", 17)}>                    
@@ -284,78 +384,10 @@ function Messages() {
                        {msg15(false)}
                 </div>
                 <div className={current == 10 ? 'visible' : 'none'}>
-                    Aqui está a íntegra do telegrama que você decifrou.
-                    <br/><br/>
-                        <div className="intercepted-message">
-                            VIKTOR
-                            <br/><br/>
-                            NOS ENCONTRE NA CRATERA 
-                            <br/><br/>
-                            TEMOS TODOS OS FRAGMENTOS
-                            <br/><br/>
-                            O QUE ESTÃ ACONT3CENDO, AGENTE241?
-                            <br/><br/>
-                            VOCÃ ESTÃ SE COM~NICANDO COM O IN´_MIG´?
-                            <br/><br/>
-                            REPORTE-SE ÃÃ B4SE IMEDI_T_M3NT;.-
-                        </div>
+                    {msg10(false)}
                 </div>
                 <div className={current == 7 ? 'visible' : 'none'}>
-                    Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama abaixo.
-                    <br/><br/>
-                    <div className="intercepted-message">
-                        RFQJG CMN RSQBR J HMYV
-                        <br/><br/>
-                        LNETOYT BJ CELDIC BTAQPSC
-                        <br/><br/>
-                        HCQBETELJP OUKQU EM RNM
-                        <br/><br/>
-                        <div className="lead123">
-                            <div className="circle123">3</div>
-                            <div className="grid123">
-                                <div style={{display: 'flex', width: 'fit-content'}}>
-                                    <div  className="box123 box123top">F</div>
-                                    <div className="box123 box123top">H</div>
-                                    <div className="box123 box123top">Z</div>
-                                    <div className="box123 box123top">X</div>
-                                    <div className="box123 box123top">D</div>
-                                </div>
-                                <div style={{display: 'flex'}}>
-                                    <div className="box123">C</div>
-                                    <div className="box123">R</div>
-                                    <div className="box123">K</div>
-                                    <div className="box123">A</div>
-                                    <div className="box123">Q</div>
-                                </div>
-                                <div style={{display: 'flex'}}>
-                                    <div className="box123">M</div>
-                                    <div className="box123">O</div>
-                                    <div className="box123">U</div>
-                                    <div className="box123">J</div>
-                                    <div className="box123">V</div>
-                                </div>
-                                <div style={{display: 'flex'}}>
-                                    <div className="box123">E</div>
-                                    <div className="box123">Y</div>
-                                    <div className="box123">N</div>
-                                    <div className="box123">B</div>
-                                    <div className="box123">G</div>
-                                </div>
-                                <div style={{display: 'flex'}}>
-                                    <div className="box123">T</div>
-                                    <div className="box123">P</div>
-                                    <div className="box123">L</div>
-                                    <div className="box123">S</div>
-                                    <div className="box123">I</div>
-                                </div>
-                            </div>
-                        </div>                        
-                    </div>
-                    <br/>
-                    <div className="dossie-title" style={{textAlign: 'cente'}}>
-                        Agente241, nossos técnicos estão finalmente aprendendo como esses códigos funcionam. A mensagem parece falar de números. Que sistema numérico é esse e onde foi inventado?
-                        
-                    </div>
+                    {msg7(false)}
                 </div>
                 <div className={current == 12 ? 'visible' : 'none'}>
                     Interceptamos uma mensagem de Janaina para Catarina. Eles precisam ser contidos
