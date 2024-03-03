@@ -65,7 +65,7 @@ function Dossies() {
                 <div className={current == 1 ? 'visible' : 'none'}>
                     <div className="dossie">
                         <div className="dossie-header">
-                            <img className="dossie-img" src='./img/helio.jpg'/>                            
+                            <img className="dossie-img" src='./img/afsdgfedg.jpg'/>                            
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>????</div>
                                 <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>????</div> 
