@@ -187,7 +187,7 @@ function Dossies() {
                             <img className="dossie-img" src='./img/daniela.jpg'/>                            
                             <div className="dossie-info">
                                 <div className="dossie-content"><div className="dossie-title">Nome completo: </div>Daniela Máximo</div>
-                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>17/10/1948</div> 
+                                <div className="dossie-content"><div className="dossie-title">Data de nascimento: </div>17/10/1951</div> 
                                 <div className="dossie-content"><div className="dossie-title">Interesses: </div>Astrofísica</div>
                                 <div className="dossie-title" style={{color: 'lime'}}> .</div>                              
                             </div>
