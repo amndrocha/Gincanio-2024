@@ -247,8 +247,9 @@ function Map() {
 
             <MapContainer center={[0,0]} zoom={2} minZoom={2} worldCopyJump={true}>
                 <TileLayer
-                attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+                attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token={accessToken}"
+                accessToken="UqUOnR0pbSX4wApcUBS3TlLOr3WDP1J6vxcMyOJ2BjJ9d93w1NWLCyli7VHUzT8Z"
                 opacity={dark ? 0.3 : 1}
                 />
                 {countries.map((country) => {
