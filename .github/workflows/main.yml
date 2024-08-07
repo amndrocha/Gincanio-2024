@@ -37,6 +37,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Install supabase 
+        run: npm install @supabase/supabase-js
       - name: Build
         run: npm run build
       - name: Setup Pages
