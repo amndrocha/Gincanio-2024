@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import './Account.css';
+//import supabase from './supabase'
+
+
+import { createClient } from "@supabase/supabase-js";
+const supabase = createClient("https://wzpccrhpkxfakpzcktxi.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6cGNjcmhwa3hmYWtwemNrdHhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjE3NjExNTEsImV4cCI6MjAzNzMzNzE1MX0.pSBaFhfJWrWhk0a3mtkwdxPVDVn1q890t63C3dMJVz0");
+
 
 function Account() {
+	const [testeSenha, setTesteSenha] = useState(['']);
     const [recover, setRecover] = useState(false);
     const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')) || false);
     const [attempts, setAttempts] = useState(0);
@@ -554,158 +561,32 @@ function Account() {
     const countries = initialCountries;
     const errorSound = document.getElementById('audio');
     const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
-    const words = [
-        "marmota",
-        "cangalho",
-        "pamonha",
-        "xarope",
-        "cacareco",
-        "muvuca",
-        "zumbido",
-        "ximbica",
-        "gambiarra",
-        "munganga",
-        "marreco",
-        "cochicho",
-        "cuscuz",
-        "trambique",
-        "pinguim",
-        "chafariz",
-        "lagartixa",
-        "trambolho",
-        "falsete",
-        "fricote",
-        "choramingo",
-        "pinguelo",
-        "mambembe",
-        "pandorga",
-        "acocorado",
-        "capenga",
-        "xerife",
-        "estrovenga",
-        "bochecha",
-        "arapuca",
-        "pernilongo",
-        "ziguezague",
-        "xaveco",
-        "patacoada",
-        "patolino",
-        "esparrela",
-        "patuscada",
-        "tumulto",
-        "embuste",
-        "bagunceiro",
-        "desbunde",
-        "xereta",
-        "esbugalhado",
-        "almofadinha",
-        "esguicho",
-        "chilique",
-        "borboleta",
-        "piparote",
-        "borralho",
-        "zarolho",
-        "espantalho",
-        "espoleta",
-        "xurumela",
-        "pechincha"
-    ];
-    useEffect(() => {
-        const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
-        const words = [
-            "marmota",
-            "cangalho",
-            "pamonha",
-            "xarope",
-            "cacareco",
-            "muvuca",
-            "zumbido",
-            "ximbica",
-            "gambiarra",
-            "munganga",
-            "marreco",
-            "cochicho",
-            "cuscuz",
-            "trambique",
-            "pinguim",
-            "chafariz",
-            "lagartixa",
-            "trambolho",
-            "falsete",
-            "fricote",
-            "choramingo",
-            "pinguelo",
-            "mambembe",
-            "pandorga",
-            "acocorado",
-            "capenga",
-            "xerife",
-            "estrovenga",
-            "bochecha",
-            "arapuca",
-            "pernilongo",
-            "ziguezague",
-            "xaveco",
-            "patacoada",
-            "patolino",
-            "esparrela",
-            "patuscada",
-            "tumulto",
-            "embuste",
-            "bagunceiro",
-            "desbunde",
-            "xereta",
-            "esbugalhado",
-            "almofadinha",
-            "esguicho",
-            "chilique",
-            "borboleta",
-            "piparote",
-            "borralho",
-            "zarolho",
-            "espantalho",
-            "espoleta",
-            "xurumela",
-            "pechincha"
-        ];
-
-        function generatePaths(currentPath, index, allPaths) {
-            if (index === currentPath.length) {
-                allPaths.push(currentPath.slice()); 
-                return;
-            }
-
-            for (let i = 0; i <= paths[index].length; i++) {
-                currentPath[index] = i < paths[index].length ? paths[index][i] : ''; 
-                generatePaths(currentPath, index + 1, allPaths); 
-            }
-        }
-        let allPaths = [];
-        let currentPath = ['', '', ''];
-        let checkpoints = [];
-        generatePaths(currentPath, 0, allPaths);
-        for (let i = 0; i < allPaths.length; i++) {
-            checkpoints.push({
-                path: allPaths[i],
-                password: words[i],
-            });
-        }
-        localStorage.setItem('checkpoints', JSON.stringify(checkpoints));
-    }, []);
-
+	
     
+	useEffect(() => {
+		getTesteSenha();
+    }, []);
+        
+
+    async function getTesteSenha(){
+		const { data } = await supabase.from('passes').select('senha, estado');
+		setTesteSenha(data);
+	}
+	
 
     const handleRecover = () => {
         setPass('');
         setRecover(true);
     }
 
-    const getPath = () => {        
+    const getPath = () => {    
         const checkpoints = JSON.parse(localStorage.getItem('checkpoints'));
         let path = [];
-        checkpoints.forEach(checkpoint => {
-            if (checkpoint.password == pass) {
-                path = checkpoint.path;
+		
+		
+		testeSenha.forEach(elemento => {
+            if (String(elemento.senha) == pass) {				
+                path = String(elemento.estado).split(',');
             }
         })
         console.log(path);
@@ -735,6 +616,8 @@ function Account() {
         localStorage.setItem('countries', JSON.stringify(countries));
         localStorage.setItem('pass', pass);
         location.reload();
+		
+		
     }
 
     const logIn = () => {
@@ -745,6 +628,15 @@ function Account() {
             setAuth(true);
             return;
     }
+    
+	const existeSenha = (pass) => {
+		for( let i=0; i < testeSenha.length ; i++ ){	
+			if(testeSenha[i].senha === pass){
+				return true;
+			}	
+		}
+		return false;
+	}
 
     const handleLogin = () => {
         if (recover) {
@@ -783,7 +675,7 @@ function Account() {
             if (pass === '') {
                 setLoginMessage('Por favor, insira uma senha.');              
             } else {
-                if (pass === '1946' || words.includes(pass)) {
+                if (pass === '1946' || existeSenha(pass)) {
                     if (pass === '1946') {
                         if (!localStorage.getItem('countries')) {
                             localStorage.setItem('countries', JSON.stringify(countries));
@@ -808,7 +700,6 @@ function Account() {
         }
         errorSound.play();
     }
-    
 
     const handleLogOff = () => {
         setPass('');
@@ -838,7 +729,7 @@ function Account() {
                 <h2>SUA CONTA</h2>
                 <form>
                     <div className='input-box'>
-                        <input type='username' value='agente241' readOnly/>
+                        <input type='username' value='agente242' readOnly/>
                     </div>
                     <div className='input-box'>
                         <input type={showPass ? 'text' : 'password'} placeholder='Senha' readOnly
@@ -858,7 +749,7 @@ function Account() {
                         <p className={recover ? 'visible' : 'none'}><b>Pergunta de segurança: </b>Em que ano foram dadas as primeiras aulas em sua universidade?</p>
                         <div className={recover ? 'none' : 'input-box'}>
                             <input type='username' placeholder='Credencial' autoComplete="username"
-                            value='agente241' readOnly/>
+                            value='agente242' readOnly/>
                         </div>
                         <div className='input-box'>
                             <input type='password' placeholder='Senha' onKeyUp={(e) => handleKeyPress(e.key)}
@@ -876,5 +767,4 @@ function Account() {
         </div>
     );
   }
-  
   export default Account;
