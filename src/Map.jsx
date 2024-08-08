@@ -1,12 +1,15 @@
 import { divIcon } from "leaflet";
-import { useState } from "react";
+import { useEffect, useState } from 'react';
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { renderToString } from 'react-dom/server';
 import './Map.css';
 import { useDispatch, useSelector } from "react-redux";
 import { add, changePass } from "./slice";
+import { guardaLocal, recuperaLocal } from './sensitive';
 
-function Map() {
+
+
+function Map(testando) {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     const [openModal, setOpenModal] = useState(false);
@@ -14,10 +17,21 @@ function Map() {
     const [countryName, setCountryName] = useState('');
     const [pass, setPass] = useState('');
     const [input, setInput] = useState('');
-    const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
-    const checkpoints = JSON.parse(localStorage.getItem('checkpoints')) || [];
+	const [countries, setCountries] = useState([]);
 
-    /// ATUALIZAR O COUNTRIES DE ACORDO COM A SENHA AO LOGAR
+	let checkpoints = [];
+	
+	useEffect(() => {
+		let recuperado = recuperaLocal('countries');
+		if(recuperado){
+			setCountries(recuperado);
+		}
+		
+		recuperado = recuperaLocal('checkpoints');
+		if(recuperado){
+			checkpoints = recuperado;
+		}
+    }, []);
 
     const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
     const allCountries = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"];
@@ -79,12 +93,10 @@ function Map() {
     const password = useSelector(state => state.message.pass);
 
     function isEqual(arr1, arr2) {
-        // Check if the arrays have the same length
         if (arr1.length !== arr2.length) {
             return false;
         }
     
-        // Check if all elements are equal
         for (let i = 0; i < arr1.length; i++) {
             if (arr1[i] !== arr2[i]) {
                 return false;
@@ -143,16 +155,15 @@ function Map() {
 
     const checkPass = (e) => {
         e.preventDefault();
-        console.log(checkPrevious());
+        //console.log(checkPrevious());
         if (pass.includes(clean(input)) && input != '') {
             countries.map((country) => {
                 if (country.name == countryName && pass.includes(country.pass)) {
-                    console.log('entrou');
                     if (checkPrevious()) {
                         country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
                         dispatch(add(country.name));
                         updatePassword();
-                        localStorage.setItem('countries', JSON.stringify(countries));
+						guardaLocal('countries', countries);
                         window.dispatchEvent(new Event('news'));
                         if (pass == 'darvaza') {
                             window.dispatchEvent(new Event('finish'));
@@ -205,7 +216,7 @@ function Map() {
     const LocationFinderDummy = () => {
         const map = useMapEvents({
             click(e) {
-                console.log('[', e.latlng.lat,',',e.latlng.lng,']');
+                //console.log('[', e.latlng.lat,',',e.latlng.lng,']');
             },
         });
         return null;

@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
 import './Account.css';
-//import supabase from './supabase'
-
-
-import { createClient } from "@supabase/supabase-js";
-const supabase = createClient("https://wzpccrhpkxfakpzcktxi.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6cGNjcmhwa3hmYWtwemNrdHhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjE3NjExNTEsImV4cCI6MjAzNzMzNzE1MX0.pSBaFhfJWrWhk0a3mtkwdxPVDVn1q890t63C3dMJVz0");
-
+import { supabase } from './supabase';
+import { guardaLocal, recuperaLocal } from './sensitive';
 
 function Account() {
+	const [paisesIniciais, setPaisesIniciais] = useState(['']);
 	const [testeSenha, setTesteSenha] = useState(['']);
     const [recover, setRecover] = useState(false);
     const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')) || false);
@@ -15,556 +12,16 @@ function Account() {
     const [loginMessage, setLoginMessage] = useState('');
     const currentPass = localStorage.getItem('pass') || '1946';
     const [pass, setPass] = useState('');
-    const initialCountries = [
-        {
-            name: "c2",
-            pass: 'carimbo',
-            position: [ -2.7562580015438476 , -48.17132509212502 ],
-            marker: 'locked-point',
-            id: '0',
-        },
-        {
-            name: "c1",
-            pass: 'catarina',
-            position: [ -34.88204066721371 , -58.53371685995923 ],
-            marker: 'locked-point',
-        },
-        {
-            name: "c3",
-            pass: 'mae jemison',
-            position: [ 33.71432359567805 , -86.95083968378019 ],
-            marker: 'locked-point',
-        },
-        {
-            name: "c4",
-            pass: 'marie curie',
-            position: [ 52.226935156019415 , 21.00532683694275 ],
-            marker: 'locked-point',
-        },
-        {
-            name: "c5",
-            pass: 'helio',
-            position: [ 41.00823543738099 , 28.964718023163034 ],
-            marker: 'locked-point',
-        },
-        {
-            name: "c6",
-            pass: 'janaina',
-            position: [ -25.96396503793443 , 32.57084229018247 ],
-            marker: 'locked-point',
-        },
-        {
-            name: "c7",
-            pass: 'sadalsuud',
-            position: [ 21.41860157679805 , 39.83525706418852 ],
-            marker: 'locked-point',
-        },
-        {
-            name: "c9",
-            pass: 'tamil',
-            position: [ 21.16301794100615 , 79.60419371933031 ],
-            marker: 'locked-point',
-        },
-        {
-            name: "c8",
-            pass: 'pustaha',
-            position: [ -0.396793751120472 , 101.92963933255506 ],
-            marker: 'locked-point',
-        },
-        {
-            name: "c10",
-            pass: 'darvaza',
-            position: [ 39.4008965162013 , 58.422772177048984 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_1',
-            pass: '!#@#$%TREDSS$S$#@_1',
-            position: [ 26.632641512594077 , 1.4546132987476403 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_2',
-            pass: '!#@#$%TREDSS$S$#@_2',
-            position: [ 26.632641512594077 , 18.33524785782504 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_3',
-            pass: '!#@#$%TREDSS$S$#@_3',
-            position: [ 19.189733290810548 , 12.356689784818478 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_4',
-            pass: '!#@#$%TREDSS$S$#@_4',
-            position: [ 19.521513392617045 , -7.689063754085944 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_5',
-            pass: '!#@#$%TREDSS$S$#@_5',
-            position: [ 19.189733290810548 , 12.356689784818478 ],
-            marker: 'locked-point',
-        },    
-        {
-            name: '!#@#$%TREDSS$S$#@_6',
-            pass: '!#@#$%TREDSS$S$#@_6',
-            position: [ 8.624792027101648 , 7.433171371754242 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_7',
-            pass: '!#@#$%TREDSS$S$#@_7',
-            position: [ 16.174768203912432 , 19.390287517767366 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_1654',
-            pass: '!#@#$%TREDSS$S$#@_1654',
-            position: [ 18.19041252132594 , 30.644043890485687 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_8',
-            pass: '!#@#$%TREDSS$S$#@_8',
-            position: [ 0.2177953534095677 , 38.38100139672946 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_9',
-            pass: '!#@#$%TREDSS$S$#@_9',
-            position: [ -0.8371436179814686 , 22.90708638424187 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_10',
-            pass: '!#@#$%TREDSS$S$#@_10',
-            position: [ -13.373685481252476 , 17.280208197882715 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_11',
-            pass: '!#@#$%TREDSS$S$#@_11',
-            position: [ -7.148371692450134 , 35.21588241690243 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_12',
-            pass: '!#@#$%TREDSS$S$#@_12',
-            position: [ -20.434103202949927 , 15.873488651292941 ],
-            marker: 'locked-point',
-        },  
-        {
-            name: '!#@#$%TREDSS$S$#@_13',
-            pass: '!#@#$%TREDSS$S$#@_13',
-            position: [ 32.81676329084729 , 53.98045617411029 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_14',
-            pass: '!#@#$%TREDSS$S$#@_14',
-            position: [ 39.073632233551585 , -5.277604725984367 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_15',
-            pass: '!#@#$%TREDSS$S$#@_15',
-            position: [ 45.07024674147895 , 1.3163931486552194 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_16',
-            pass: '!#@#$%TREDSS$S$#@_16',
-            position: [ 49.65157390084537 , 4.3935921568203815 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_17',
-            pass: '!#@#$%TREDSS$S$#@_17',
-            position: [ 52.73537574775882 , -1.321206001200599 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_18',
-            pass: '!#@#$%TREDSS$S$#@_18',
-            position: [ 53.26444862624399 , -7.651443960854624 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_19',
-            pass: '!#@#$%TREDSS$S$#@_19',
-            position: [ 46.480444508038836 , 24.878945554034104 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_120',
-            pass: '!#@#$%TREDSS$S$#@_120',
-            position: [ 42.14287638647337 , 21.27422671589778 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_121',
-            pass: '!#@#$%TREDSS$S$#@_121',
-            position: [ 50.94314307711824 , 27.16486481724252 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_122',
-            pass: '!#@#$%TREDSS$S$#@_122',
-            position: [ 57.78669052401942 , 31.297103485349968 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_123',
-            pass: '!#@#$%TREDSS$S$#@_123',
-            position: [ 49.82203026417872 , 38.41862118996076 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_124',
-            pass: '!#@#$%TREDSS$S$#@_124',
-            position: [ -33.018983961452165 , -55.28213603578152 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_125',
-            pass: '!#@#$%TREDSS$S$#@_125',
-            position: [ -26.538790797880235 , -61.17226699195782 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_126',
-            pass: '!#@#$%TREDSS$S$#@_126',
-            position: [ -25.986920692619275 , -69.87559482272577 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_127',
-            pass: '!#@#$%TREDSS$S$#@_127',
-            position: [ -13.267690053568215 , -75.85363818123308 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_128',
-            pass: '!#@#$%TREDSS$S$#@_128',
-            position: [ -20.16703665066246 , -55.457960840443505 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_129',
-            pass: '!#@#$%TREDSS$S$#@_129',
-            position: [ -15.820357387752193 , -63.897551464218495 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_130',
-            pass: '!#@#$%TREDSS$S$#@_130',
-            position: [ -16.15840862631067 , -49.30409267727424 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_131',
-            pass: '!#@#$%TREDSS$S$#@_131',
-            position: [ -21.154141957210545 , -48.60079345862631 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_132',
-            pass: '!#@#$%TREDSS$S$#@_132',
-            position: [ -18.674674357215494 , -43.32604931876694 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_133',
-            pass: '!#@#$%TREDSS$S$#@_133',
-            position: [ -14.121828977494527 , -41.47988886981618 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_134',
-            pass: '!#@#$%TREDSS$S$#@_134',
-            position: [ -7.737747591658753 , -42.09527568613307 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_135',
-            pass: '!#@#$%TREDSS$S$#@_135',
-            position: [ -6.341761518228058 , -67.67778476445103 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_136',
-            pass: '!#@#$%TREDSS$S$#@_136',
-            position: [ 0.8541748948735257 , -72.2492296856625 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_137',
-            pass: '!#@#$%TREDSS$S$#@_137',
-            position: [ 6.117397112628124 , -64.51293828053541 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_138',
-            pass: '!#@#$%TREDSS$S$#@_138',
-            position: [ 5.94254181091021 , -75.50198857190908 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_139',
-            pass: '!#@#$%TREDSS$S$#@_139',
-            position: [ 13.133547639243824 , -84.90861562132497 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_140',
-            pass: '!#@#$%TREDSS$S$#@_140',
-            position: [ 17.03736828807726 , -97.56800155698745 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_141',
-            pass: '!#@#$%TREDSS$S$#@_141',
-            position: [ 25.59494707493489 , -103.62924252566651 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_142',
-            pass: '!#@#$%TREDSS$S$#@_142',
-            position: [ 1.5666957834710236 , -62.26954213179803 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_143',
-            pass: '!#@#$%TREDSS$S$#@_143',
-            position: [ -9.90022104310456 , -62.92888514928045 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_144',
-            pass: '!#@#$%TREDSS$S$#@_144',
-            position: [ -1.8302436713703438 , -55.08536925902233 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_145',
-            pass: '!#@#$%TREDSS$S$#@_145',
-            position: [ -10.181688193568593 , -54.579484692730546 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_16543',
-            pass: '!#@#$%TREDSS$S$#@_16543',
-            position: [ -11.71171861292591 , -49.25637988651304 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_146',
-            pass: '!#@#$%TREDSS$S$#@_146',
-            position: [ 32.0727383720459 , -98.96471308601407 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_147',
-            pass: '!#@#$%TREDSS$S$#@_147',
-            position: [ 40.821498022901366 , -93.42623173916174 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_148',
-            pass: '!#@#$%TREDSS$S$#@_148',
-            position: [ 38.86476845202661 , -105.99770527249326 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_149',
-            pass: '!#@#$%TREDSS$S$#@_149',
-            position: [ 41.28543255648675 , -119.62412763379662 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_150',
-            pass: '!#@#$%TREDSS$S$#@_150',
-            position: [ 48.14341759936915 , -111.3603618146836 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_151',
-            pass: '!#@#$%TREDSS$S$#@_151',
-            position: [ 53.52001545578233 , -126.92085702726877 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_152',
-            pass: '!#@#$%TREDSS$S$#@_151',
-            position: [ 57.40351109890264 , -114.61312070093022 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_153',
-            pass: '!#@#$%TREDSS$S$#@_153',
-            position: [ 57.78044406128804 , -98.7888882813521 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_154',
-            pass: '!#@#$%TREDSS$S$#@_154',
-            position: [ 65.89910875348906 , -135.09671044405076 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_155',
-            pass: '!#@#$%TREDSS$S$#@_155',
-            position: [ 53.51959250864753 , -88.67896201328831 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_156',
-            pass: '!#@#$%TREDSS$S$#@_156',
-            position: [ 65.89910875348906 , -135.09671044405076 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_157',
-            pass: '!#@#$%TREDSS$S$#@_157',
-            position: [ 70.2212510150219 , -108.63507734242295 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_158',
-            pass: '!#@#$%TREDSS$S$#@_158',
-            position: [ 68.5185706255188 , -156.9868986244672 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_159',
-            pass: '!#@#$%TREDSS$S$#@_1159',
-            position: [ 40.70133342711337 , 15.867306638838514 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_160',
-            pass: '!#@#$%TREDSS$S$#@_160',
-            position: [ 44.35901640581488 , 6.328810985926184 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_161',
-            pass: '!#@#$%TREDSS$S$#@_161',
-            position: [ 49.62823833723492 , 10.900255907137627 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_162',
-            pass: '!#@#$%TREDSS$S$#@_162',
-            position: [ 53.15481961640661 , 9.602638769186703 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_163',
-            pass: '!#@#$%TREDSS$S$#@_163',
-            position: [ 58.96089775920456 , 14.420029488691076 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_164',
-            pass: '!#@#$%TREDSS$S$#@_164',
-            position: [ 64.21685084260126 , 29.365137884959307 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_165',
-            pass: '!#@#$%TREDSS$S$#@_165',
-            position: [ 63.98645978875032 , 53.27731131898847 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_166',
-            pass: '!#@#$%TREDSS$S$#@_166',
-            position: [ 49.5646199018536 , 72.44221502714414 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_167',
-            pass: '!#@#$%TREDSS$S$#@_167',
-            position: [ 21.86845580392967 , 96.88186287515924 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_168',
-            pass: '!#@#$%TREDSS$S$#@_168',
-            position: [ 45.40908788682656 , 103.56320545231442 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_169',
-            pass: '!#@#$%TREDSS$S$#@_169',
-            position: [ 65.63232575205068 , 95.65108924252539 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_170987',
-            pass: '!#@#$%TREDSS$S$#@_170987',
-            position: [ -41.880230356858966 , -69.9232532204971 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_170',
-            pass: '!#@#$%TREDSS$S$#@_170',
-            position: [ 65.26705614674772 , 124.66218201175191 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_171',
-            pass: '!#@#$%TREDSS$S$#@_171',
-            position: [ 51.02470387198721 , 136.2666191194425 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_172',
-            pass: '!#@#$%TREDSS$S$#@_172',
-            position: [ 36.11511053224531 , 138.9025103308649 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_173',
-            pass: '!#@#$%TREDSS$S$#@_173',
-            position: [ 36.11511053224531 , 127.64972283249827 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_174',
-            pass: '!#@#$%TREDSS$S$#@_174',
-            position: [ -4.824159406443541 , 139.07833513552688 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_175',
-            pass: '!#@#$%TREDSS$S$#@_175',
-            position: [ -27.139264982603663 , 119.21013220872325 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_176',
-            pass: '!#@#$%TREDSS$S$#@_176',
-            position: [ -26.668874436419653 , 148.04540017328782 ],
-            marker: 'locked-point',
-        }, 
-        {
-            name: '!#@#$%TREDSS$S$#@_177',
-            pass: '!#@#$%TREDSS$S$#@_177',
-            position: [ -44.28226556527221 , 170.0235007560352 ],
-            marker: 'locked-point',
-        }, 
-    ];
-    const countries = initialCountries;
+    
+	let paises = [];
     const errorSound = document.getElementById('audio');
     const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
+	let dafuq = 0;
 	
     
 	useEffect(() => {
 		getTesteSenha();
+		getPaisesIniciais();
     }, []);
         
 
@@ -573,14 +30,31 @@ function Account() {
 		setTesteSenha(data);
 	}
 	
+	async function getPaisesIniciais(){
+		const { data } = await supabase.from('points').select('name, pass, position');
+		setPaisesIniciais(data);		
+	}
+	
+	
+	function configuraPaises(){
+		if(paisesIniciais.length > 1 ){
+			paisesIniciais.forEach((element, i) => {
+				let posicoes = String(element.position).split(",");
+				let positionX = parseFloat(String(posicoes[0]).replace(/[^0-9.+-]/g, ''));
+				let positionY = parseFloat(String(posicoes[1]).replace(/[^0-9.+-]/g, ''));			
+				paises.push({ id:i, name:element.name, pass:element.pass,  position:[positionX, positionY], marker:"locked-point"});
+			});
+		}
+	}
 
     const handleRecover = () => {
         setPass('');
         setRecover(true);
     }
 
-    const getPath = () => {    
-        const checkpoints = JSON.parse(localStorage.getItem('checkpoints'));
+    const getPath = () => {
+		guardaLocal('checkpoints', testeSenha);
+		
         let path = [];
 		
 		
@@ -589,7 +63,6 @@ function Account() {
                 path = String(elemento.estado).split(',');
             }
         })
-        console.log(path);
         let last = false;
         let unlocked = [];
         paths.forEach((array, i) => {
@@ -601,19 +74,19 @@ function Account() {
                     if (!last) {
                         unlocked.push(country);
                         if (path[i].includes(country)) {
-                            console.log(path[i]);
                             last = true;
                         }               
                     }
                 })
             }
         })
-        countries.forEach(country => {
+		configuraPaises();
+        paises.forEach(country => {
             if (unlocked.includes(country.name)) {
                 country.marker = 'unlocked-point';
             }
         })
-        localStorage.setItem('countries', JSON.stringify(countries));
+		guardaLocal('countries', paises);
         localStorage.setItem('pass', pass);
         location.reload();
 		
@@ -641,8 +114,9 @@ function Account() {
     const handleLogin = () => {
         if (recover) {
             if (pass === '1946') {
-                if (!localStorage.getItem('countries')) {
-                    localStorage.setItem('countries', JSON.stringify(countries));
+				recupera = recuperaLocal('countries');
+                if (!recupera) {
+					guardaLocal('countries', countries);
                 }
                 setLoginMessage('Agora sim! Preparando login...');
                 setTimeout(function() {
@@ -677,9 +151,10 @@ function Account() {
             } else {
                 if (pass === '1946' || existeSenha(pass)) {
                     if (pass === '1946') {
-                        if (!localStorage.getItem('countries')) {
-                            localStorage.setItem('countries', JSON.stringify(countries));
-                        }                   
+						recupera = recuperaLocal('countries');
+						if (!recupera) {
+							guardaLocal('countries', countries);
+						}					
                     } else {
                         getPath();
                     }
@@ -719,7 +194,6 @@ function Account() {
     const handleViewPass = () => {
         setShowPass(!showPass);
     }
-
 
     return (
         <div className={auth ? 'account-page-auth' : 'account-page'}>

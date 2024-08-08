@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './Messages.css'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { remove } from "./slice";
+import { guardaLocal, recuperaLocal } from './sensitive';
+
 
 function Messages() {
     const dispatch = useDispatch();
     const [current, setCurrent] = useState(-2);
     const newMessages = useSelector(state => state.message.message);
-    const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
+	const [countries, setCountries] = useState([]);
+
+	useEffect(() => {
+		let recuperado = recuperaLocal('countries');
+		if(recuperado){
+			setCountries(recuperado);
+		}
+    }, []);
 
     const getUnlocked = () => {
         if (countries) {
@@ -25,11 +34,16 @@ function Messages() {
     const unlocked = countries ? getUnlocked() : [];
 
     window.addEventListener('news', () => {
-        setCountries(JSON.parse(localStorage.getItem('countries')));
+		let recuperado = recuperaLocal('countries');
+		if(!recuperado)
+			setCountries(recuperado);
+		else
+			console.log("erro ao recuperar paises para chamar window.addEventlistener em Messages.jsx")
+		
     });
 
     const openMessage = (countryName, message) => {
-        console.log(countryName);
+        //console.log(countryName);
         dispatch(remove(countryName));
         setCurrent(message)
         setPreview(false);
