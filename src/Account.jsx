@@ -17,9 +17,8 @@ function Account() {
     const [loginMessage, setLoginMessage] = useState('');
     const currentPass = localStorage.getItem('pass') || '1946';
     const [pass, setPass] = useState('');
-
+   
 	let countries = [];
-
 	
     const errorSound = document.getElementById('audio');
     const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
@@ -28,6 +27,7 @@ function Account() {
 	useEffect(() => {
 		getPasses();
 		getPaisesIniciais();
+
     }, []);
         
 
@@ -41,10 +41,13 @@ function Account() {
 		setPaisesIniciais(data);
 	}
 	
+	
 	function configuraCountries(){
+
 		if(paisesIniciais.length > 1 ){
 			paisesIniciais.forEach((element, i) => {
 				let posicoes = String(element.position).split(",");
+
 				let positionX = parseFloat(String(posicoes[0]).replace(/[^0-9.+-]/g, ''));
 				let positionY = parseFloat(String(posicoes[1]).replace(/[^0-9.+-]/g, ''));
 				
@@ -62,9 +65,11 @@ function Account() {
     }
 
     const getPath = () => {
+
 		console.log("getPath() em Account.jsx");
-		
+
         let path = [];
+		
 		
 		passes.forEach(elemento => {
 			console.log(String(elemento.senha) + " ? " + pass + " = " +  (String(elemento.senha) == pass));
@@ -97,13 +102,11 @@ function Account() {
                 country.marker = 'unlocked-point';
             }
         })
-        
+
 		console.log(countries);
 		guardaLocal('countries', countries);
         localStorage.setItem('pass', pass);
         location.reload();
-		
-		
     }
 
     const logIn = () => {
@@ -174,7 +177,7 @@ function Account() {
 							console.log("countries");
 							console.log(countries);
 							guardaLocal("countries", countries);
-						}	
+						}			
                     } else {
                         getPath();
                     }

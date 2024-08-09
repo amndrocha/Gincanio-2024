@@ -17,7 +17,7 @@ function Map(testando) {
     const [dark, setDark] = useState(false);
     const [countryName, setCountryName] = useState('');
     const [pass, setPass] = useState('');
-    const [input, setInput] = useState('');	
+    const [input, setInput] = useState('');
 	const [countries, setCountries] = useState([]);
 	let checkpoints = [];
 	
@@ -33,6 +33,8 @@ function Map(testando) {
 		}
     }, []);
 
+
+    /// ATUALIZAR O COUNTRIES DE ACORDO COM A SENHA AO LOGAR
 
     const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
     const allCountries = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"];
@@ -94,10 +96,12 @@ function Map(testando) {
     const password = useSelector(state => state.message.pass);
 
     function isEqual(arr1, arr2) {
+        // Check if the arrays have the same length
         if (arr1.length !== arr2.length) {
             return false;
         }
     
+        // Check if all elements are equal
         for (let i = 0; i < arr1.length; i++) {
             if (arr1[i] !== arr2[i]) {
                 return false;
@@ -117,16 +121,19 @@ function Map(testando) {
 		if(recuperado){
 			checkpoints = recuperado;
 		}
-		
+
         const unlocked = getUnlocked(); 
 		
+		//console.log("checkpoints.length: " + checkpoints.length);
         for (let i = 0; i < checkpoints.length; i++) {
-            const checkpoint = checkpoints[i];
-			
+			//const 
+            const checkpoint = checkpoints[i]; //local
+
 			let checkpointAsString = String(checkpoint.estado);
 			let compara = checkpointAsString.split(',');
-
+			
             if (isEqual(compara, unlocked)) {
+			
                 dispatch(changePass(checkpoint.senha));
             }
         }
@@ -136,6 +143,9 @@ function Map(testando) {
         updatePassword();
         window.dispatchEvent(new Event('pass-changed'));
     });
+
+
+    
 
     const fakeLoading = () => {
         setLoading(true);
@@ -179,6 +189,7 @@ function Map(testando) {
                         dispatch(add(country.name));
                         updatePassword();
 						guardaLocal('countries', countries);
+                        //localStorage.setItem('countries', JSON.stringify(countries)); // Encriptar isso aqui
                         window.dispatchEvent(new Event('news'));
                         if (pass == 'darvaza') {
                             window.dispatchEvent(new Event('finish'));
