@@ -13,7 +13,7 @@ function App() {
   const newMessages = useSelector(state => state.message.message);
   const [showPass, setShowPass] = useState(false);
   const [wrongPass, setWrongPass] = useState(false);
-  const [ending, setEnding] = useState(false)
+  const [ending, setEnding] = useState(false);
   const password = useSelector(state => state.message.pass);
 
 
@@ -68,7 +68,7 @@ function App() {
     setShowPass(false);
     setWrongPass(false);
 
-  }
+  }  
 
   return (
     <div>  
@@ -84,10 +84,11 @@ function App() {
           <div className='navlink' onClick={() => handlePageChange('account')}>Conta</div>
       </div>       
       <div className='content'>
-        <span className={current == 'map' ? 'visible' : 'none'}><Map/></span>
-        <span className={current == 'account' ? 'visible' : 'none'}><Account/></span>
-        <span className={current == 'dossiess' ? 'visible' : 'none'}><Dossies/></span>
-        <span className={current == 'messages' ? 'visible' : 'none'}><Messages/></span>
+	  
+        <span className={current == 'map' ? 'visible' : 'none'}><Map /></span>
+        <span className={current == 'account' ? 'visible' : 'none'}><Account /></span>
+        <span className={current == 'dossiess' ? 'visible' : 'none'}><Dossies /></span>
+        <span className={current == 'messages' ? 'visible' : 'none'}><Messages /></span>
         <span className={current == '' ? 'visible' : 'none'}></span>          
       </div>
        

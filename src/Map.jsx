@@ -5,6 +5,7 @@ import { renderToString } from 'react-dom/server';
 import './Map.css';
 import { useDispatch, useSelector } from "react-redux";
 import { add, changePass } from "./slice";
+//import CryptoJS from "react-native-crypto-js";
 import { guardaLocal, recuperaLocal } from './sensitive';
 
 
@@ -16,9 +17,8 @@ function Map(testando) {
     const [dark, setDark] = useState(false);
     const [countryName, setCountryName] = useState('');
     const [pass, setPass] = useState('');
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState('');	
 	const [countries, setCountries] = useState([]);
-
 	let checkpoints = [];
 	
 	useEffect(() => {
@@ -32,6 +32,7 @@ function Map(testando) {
 			checkpoints = recuperado;
 		}
     }, []);
+
 
     const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
     const allCountries = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"];
@@ -106,11 +107,27 @@ function Map(testando) {
         return true;
     }
     const updatePassword = () => {
+		
+		let recuperado = recuperaLocal('countries');
+		if(recuperado){
+			setCountries(recuperado);
+		}
+		
+		recuperado = recuperaLocal('checkpoints');
+		if(recuperado){
+			checkpoints = recuperado;
+		}
+		
         const unlocked = getUnlocked(); 
+		
         for (let i = 0; i < checkpoints.length; i++) {
             const checkpoint = checkpoints[i];
-            if (isEqual(checkpoint.path, unlocked)) {
-                dispatch(changePass(checkpoint.password));
+			
+			let checkpointAsString = String(checkpoint.estado);
+			let compara = checkpointAsString.split(',');
+
+            if (isEqual(compara, unlocked)) {
+                dispatch(changePass(checkpoint.senha));
             }
         }
     };
@@ -119,9 +136,6 @@ function Map(testando) {
         updatePassword();
         window.dispatchEvent(new Event('pass-changed'));
     });
-
-
-    
 
     const fakeLoading = () => {
         setLoading(true);
@@ -155,10 +169,11 @@ function Map(testando) {
 
     const checkPass = (e) => {
         e.preventDefault();
-        //console.log(checkPrevious());
+        console.log(checkPrevious());
         if (pass.includes(clean(input)) && input != '') {
             countries.map((country) => {
                 if (country.name == countryName && pass.includes(country.pass)) {
+                    console.log('entrou');
                     if (checkPrevious()) {
                         country.marker = dark ? "dark-unlocked-point" : "unlocked-point";
                         dispatch(add(country.name));
@@ -216,7 +231,7 @@ function Map(testando) {
     const LocationFinderDummy = () => {
         const map = useMapEvents({
             click(e) {
-                //console.log('[', e.latlng.lat,',',e.latlng.lng,']');
+                console.log('[', e.latlng.lat,',',e.latlng.lng,']');
             },
         });
         return null;

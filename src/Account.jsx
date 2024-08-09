@@ -1,49 +1,58 @@
 import { useEffect, useState } from 'react';
 import './Account.css';
 import { supabase } from './supabase';
+//import CryptoJS from "react-native-crypto-js";
 import { guardaLocal, recuperaLocal } from './sensitive';
 
 function Account() {
 	const [paisesIniciais, setPaisesIniciais] = useState(['']);
-	const [testeSenha, setTesteSenha] = useState(['']);
+	//copio do banco, não guardo na localStorage
+	
+	const [passes, setPasses] = useState(['']);
+	//guardo em checkpoints na localStorage
+	
     const [recover, setRecover] = useState(false);
     const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')) || false);
     const [attempts, setAttempts] = useState(0);
     const [loginMessage, setLoginMessage] = useState('');
     const currentPass = localStorage.getItem('pass') || '1946';
     const [pass, setPass] = useState('');
-    
-	let paises = [];
+
+	let countries = [];
+
+	
     const errorSound = document.getElementById('audio');
     const paths = [["c1", "c2", "c3", "c4", "c5"], ["c6", "c7"],["c8", "c9"]];
-	let dafuq = 0;
 	
     
 	useEffect(() => {
-		getTesteSenha();
+		getPasses();
 		getPaisesIniciais();
     }, []);
         
 
-    async function getTesteSenha(){
-		const { data } = await supabase.from('passes').select('senha, estado');
-		setTesteSenha(data);
+    async function getPasses(){
+		const { data } = await supabase.from('senhas').select('senha, estado');
+		setPasses(data);
 	}
 	
 	async function getPaisesIniciais(){
 		const { data } = await supabase.from('points').select('name, pass, position');
-		setPaisesIniciais(data);		
+		setPaisesIniciais(data);
 	}
 	
-	
-	function configuraPaises(){
+	function configuraCountries(){
 		if(paisesIniciais.length > 1 ){
 			paisesIniciais.forEach((element, i) => {
 				let posicoes = String(element.position).split(",");
 				let positionX = parseFloat(String(posicoes[0]).replace(/[^0-9.+-]/g, ''));
-				let positionY = parseFloat(String(posicoes[1]).replace(/[^0-9.+-]/g, ''));			
-				paises.push({ id:i, name:element.name, pass:element.pass,  position:[positionX, positionY], marker:"locked-point"});
+				let positionY = parseFloat(String(posicoes[1]).replace(/[^0-9.+-]/g, ''));
+				
+				countries.push({ id:i, name:element.name, pass:element.pass,  position:[positionX, positionY], marker:"locked-point"});
 			});
+		}
+		else {
+			console.log("Nao carregou o initialCountries do banco ainda");
 		}
 	}
 
@@ -53,16 +62,18 @@ function Account() {
     }
 
     const getPath = () => {
-		guardaLocal('checkpoints', testeSenha);
+		console.log("getPath() em Account.jsx");
 		
         let path = [];
 		
-		
-		testeSenha.forEach(elemento => {
-            if (String(elemento.senha) == pass) {				
+		passes.forEach(elemento => {
+			console.log(String(elemento.senha) + " ? " + pass + " = " +  (String(elemento.senha) == pass));
+            if (String(elemento.senha) == pass) {
+				console.log(String(elemento.estado).split(','));
                 path = String(elemento.estado).split(',');
             }
         })
+        console.log(path);
         let last = false;
         let unlocked = [];
         paths.forEach((array, i) => {
@@ -74,19 +85,21 @@ function Account() {
                     if (!last) {
                         unlocked.push(country);
                         if (path[i].includes(country)) {
+                            console.log(path[i]);
                             last = true;
                         }               
                     }
                 })
             }
         })
-		configuraPaises();
-        paises.forEach(country => {
+        countries.forEach(country => {
             if (unlocked.includes(country.name)) {
                 country.marker = 'unlocked-point';
             }
         })
-		guardaLocal('countries', paises);
+        
+		console.log(countries);
+		guardaLocal('countries', countries);
         localStorage.setItem('pass', pass);
         location.reload();
 		
@@ -103,8 +116,8 @@ function Account() {
     }
     
 	const existeSenha = (pass) => {
-		for( let i=0; i < testeSenha.length ; i++ ){	
-			if(testeSenha[i].senha === pass){
+		for( let i=0; i < passes.length ; i++ ){	
+			if(passes[i].senha === pass){
 				return true;
 			}	
 		}
@@ -112,6 +125,8 @@ function Account() {
 	}
 
     const handleLogin = () => {
+		if(countries.length <= 1) configuraCountries();
+		guardaLocal('checkpoints', passes);
         if (recover) {
             if (pass === '1946') {
 				recupera = recuperaLocal('countries');
@@ -150,11 +165,16 @@ function Account() {
                 setLoginMessage('Por favor, insira uma senha.');              
             } else {
                 if (pass === '1946' || existeSenha(pass)) {
+//					if (!pass === '1946') {  Sei la por que mas estava assim '-.-
                     if (pass === '1946') {
-						recupera = recuperaLocal('countries');
+						
+						let recupera = recuperaLocal('countries');
+						console.log("recupera: " + recupera);
 						if (!recupera) {
-							guardaLocal('countries', countries);
-						}					
+							console.log("countries");
+							console.log(countries);
+							guardaLocal("countries", countries);
+						}	
                     } else {
                         getPath();
                     }

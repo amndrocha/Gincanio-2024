@@ -3,6 +3,7 @@ import './Messages.css'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { remove } from "./slice";
+//import CryptoJS from "react-native-crypto-js";
 import { guardaLocal, recuperaLocal } from './sensitive';
 
 
@@ -10,6 +11,7 @@ function Messages() {
     const dispatch = useDispatch();
     const [current, setCurrent] = useState(-2);
     const newMessages = useSelector(state => state.message.message);
+    //const [countries, setCountries] = useState(JSON.parse(localStorage.getItem('countries')) || []);
 	const [countries, setCountries] = useState([]);
 
 	useEffect(() => {
@@ -18,7 +20,67 @@ function Messages() {
 			setCountries(recuperado);
 		}
     }, []);
+	/*
+	function guardaLocal(label, value){
+		
+		const chave = "RuivaLinda";
+		*/
+		/*
+		console.log("JSON.stringify(value)");
+		console.log(JSON.stringify(value));
+		console.log("value");
+		console.log(value);
+		console.log("chave");
+		console.log(chave);
+		*/
+		//let encriptado = CryptoJS.AES.encrypt(value, chave);
+		//console.log("encriptado");
+		//console.log(encriptado);
+		/*
+		let encriptado = CryptoJS.AES.encrypt(JSON.stringify(value), chave);
+		
+		console.log("CryptoJS.AES.encrypt(JSON.stringify(value), chave)");
+		console.log(encriptado);
+		console.log("fim");
+		*/
+		
+		/*
+        localStorage.setItem('label', JSON.stringify(encriptado)); // Encriptar isso aqui
+		
+		var encriptado = CryptoJS.AES.encrypt(value, chave);
+		//console.log(decriptado.toString(CryptoJS.enc.Utf8));
 
+		localStorage.setItem('tudo', encriptado);
+		var recuperado = localStorage.getItem('tudo');
+		var decriptado = CryptoJS.AES.decrypt(recuperado, chave);
+		console.log(decriptado.toString(CryptoJS.enc.Utf8));
+*/
+		//localStorage.setItem(label, JSON.stringify(value)); // Encriptar isso aqui
+	
+/*
+        localStorage.setItem(label, encriptado); 
+	}
+	
+	
+	
+	function recuperaLocal(label){
+			const chave = "RuivaLinda";
+		
+			let recuperado = localStorage.getItem(label)
+			if(!recuperado) return false;
+			
+			console.log("recuperado");
+			console.log(recuperado);
+			let decriptado = CryptoJS.AES.decrypt(recuperado, chave);
+			console.log("decriptado");
+			console.log(decriptado);
+			let recodificado = decriptado.toString(CryptoJS.enc.Utf8);
+			let interpretado = JSON.parse(recodificado);
+			console.log("interpretado");
+			console.log(interpretado);
+			return interpretado;
+	}
+*/
     const getUnlocked = () => {
         if (countries) {
             const unlockedCountries = countries.filter(country => 
@@ -35,15 +97,16 @@ function Messages() {
 
     window.addEventListener('news', () => {
 		let recuperado = recuperaLocal('countries');
-		if(!recuperado)
+		if(recuperado)
 			setCountries(recuperado);
 		else
 			console.log("erro ao recuperar paises para chamar window.addEventlistener em Messages.jsx")
 		
+        //setCountries(JSON.parse(localStorage.getItem('countries')));
     });
 
     const openMessage = (countryName, message) => {
-        //console.log(countryName);
+        console.log(countryName);
         dispatch(remove(countryName));
         setCurrent(message)
         setPreview(false);
@@ -77,11 +140,11 @@ function Messages() {
                         <div className="dossie-title">
                             De:
                         </div>
-                        agente242
+                        agente241
                         <div className="dossie-title">
                             Para:
                         </div>
-                        agente242
+                        agente241
                         <div className="dossie-title" style={{color: 'lime'}}>.</div>
                         <br/>
                         Parabéns por ter nos seguido até aqui, calouro. Sou eu, Viktor, e estou correndo riscos ao acessar esse sistema, mas estou precisando desesperadamente de ajuda. 
@@ -118,7 +181,7 @@ function Messages() {
                             <br/><br/>
                             TEMOS TODOS OS FRAGMENTOS
                             <br/><br/>
-                            O QUE ESTÃ ACONT3CENDO, AGENTE242?
+                            O QUE ESTÃ ACONT3CENDO, AGENTE241?
                             <br/><br/>
                             VOCÃ ESTÃ SE COM~NICANDO COM O IN´_MIG´?
                             <br/><br/>
@@ -196,7 +259,7 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
                     </div>
                     <br/>
                     <div className="dossie-title" style={{textAlign: 'cente'}}>
-                        Agente242, nossos técnicos estão finalmente aprendendo como esses códigos funcionam. A mensagem parece falar de números. Que sistema numérico é esse e onde foi inventado?
+                        Agente241, nossos técnicos estão finalmente aprendendo como esses códigos funcionam. A mensagem parece falar de números. Que sistema numérico é esse e onde foi inventado?
                         
                     </div>
                     </>
@@ -222,7 +285,7 @@ Localizamos Bruno num albergue em Medan, no Sumatra e interceptamos o telegrama 
                     <>
 Aqui está a íntegra do telegrama que você decifrou.
                     <br/><br/>
-                    Parabéns pelo belo trabalho, agente242.
+                    Parabéns pelo belo trabalho, agente241.
                     <br/><br/>
                     <div className="intercepted-message">
                         O LUAR VISTO DE DENTRO DO RELOGIO MAIOR 
@@ -238,7 +301,7 @@ Aqui está a íntegra do telegrama que você decifrou.
                     <br/><br/>
 
                     <div className="dossie-title" style={{textAlign: 'center'}}>
-                        A investigação parece estar num beco sem saída, agente242.  Os Máximo estão se aproximando perigosamente de nossa base. Em breve teremos que tomar medidas drásticas.
+                        A investigação parece estar num beco sem saída, agente241.  Os Máximo estão se aproximando perigosamente de nossa base. Em breve teremos que tomar medidas drásticas.
                     </div>
                     </>
                 )
@@ -261,7 +324,7 @@ Aqui está a íntegra do telegrama que você decifrou.
             } else {
                 return (
                     <>
-Bom trabalho, agente242!
+Bom trabalho, agente241!
                     <br/><br/>
                     A pista sobre a agência de correios em Maputo nos levou até esse outro telegrama:
                     <br/><br/>
@@ -365,7 +428,7 @@ Recebemos novas transmissão de nosso spyware.
                     {arrowLeft} CONNECTION LOST {arrowRight}
                     </div>
                     <br/>
-                    <div className="dossie-title" style={{textAlign: 'center'}}>Agente242, determine o nome e a origem desse documento para que possamos continuar as investigações.</div>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>Agente241, determine o nome e a origem desse documento para que possamos continuar as investigações.</div>
                     <br/>
                     <img style={{width: '100%'}} src='./img/egdfged.png'/>
                     </>
@@ -407,7 +470,7 @@ Interceptamos uma mensagem de Janaina para Catarina. Eles precisam ser contidos
                     </div>
                     <br/><br/>
                     <div className="dossie-title" style={{textAlign: 'center'}}>IMPORTANTE</div>
-                    Agente242, estamos convencidos de que os irmãos Máximo estão prestes a cometer um atentado grave contra nós! Já entendeu de que aldeia eles estão falando?! Pois é!
+                    Agente241, estamos convencidos de que os irmãos Máximo estão prestes a cometer um atentado grave contra nós! Já entendeu de que aldeia eles estão falando?! Pois é!
                     <br/><br/>
                     Ignore todas as recomendações anteriores e, se encontrá-los, USE FORÇA LETAL.
                     </>
@@ -514,7 +577,7 @@ Aqui está a íntegra do telegrama que você decifrou.
                     </div>
                     <br/>
                     <div className="dossie-title" style={{textAlign: 'center'}}>
-                        O que você decifrou com o sistema Tamil, agente242? Você não está nos escondendo algo, está?
+                        O que você decifrou com o sistema Tamil, agente241? Você não está nos escondendo algo, está?
                     </div>
                     </>
                 )
@@ -555,7 +618,7 @@ A transcrição abaixo parece ser do grupo que os irmãos Máximo mantém para s
                         Janaína {arrowRight} Bruno, olha a hora, você vai perder o seu vôo… (de novo)
                     </div>
                     <br/><br/>
-                    <div className="dossie-title" style={{textAlign: 'center'}}>Acho que vamos precisar de mais informações antes de decifrar essa, agente242. Boa sorte.</div>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>Acho que vamos precisar de mais informações antes de decifrar essa, agente241. Boa sorte.</div>
                     </>
                 )
             }
@@ -577,7 +640,7 @@ A transcrição abaixo parece ser do grupo que os irmãos Máximo mantém para s
             } else {
                 return (
                     <>
-Estimado agente242,
+Estimado agente241,
                 <br/><br/>
                 Como gostaríamos que todo investigado fosse tão descuidado quanto Catarina! Encontramos mais algumas mensagens escritas por Catarina em seu diário virtual, enquanto ela esteve na Polônia:
                 <br/><br/>
@@ -622,7 +685,7 @@ Estimado agente242,
             } else {
                 return (
                     <>
-Prezado agente242,
+Prezado agente241,
                     <br/><br/> Você conseguiu mais uma vez! Graças à sua descoberta, conseguimos interceptar o seguinte texto, escrito pela Catarina em seu diário virtual enquanto ela utilizava uma rede wifi pública no Alabama:
                     <br/><br/>
                     <div className="intercepted-message">
@@ -650,7 +713,7 @@ Prezado agente242,
                     <div style={{display: 'flex'}}>
                         <span className={newMessages && newMessages.includes("c3") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                        Aqui está a íntegra do telegrama que você decifrou. Parabéns pelo belo trabalho, agente242.
+                        Aqui está a íntegra do telegrama que você decifrou. Parabéns pelo belo trabalho, agente241.
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
@@ -658,8 +721,8 @@ Prezado agente242,
             } else {
                 return (
                     <>
-Prezado agente242,
-                    <br/><br/> Aqui está a íntegra do telegrama que você decifrou. Parabéns pelo belo trabalho, agente242.
+Prezado agente241,
+                    <br/><br/> Aqui está a íntegra do telegrama que você decifrou. Parabéns pelo belo trabalho, agente241.
                     <br/><br/>
                     <div className="intercepted-message">
                         MINHA QUERIDA IRMA. 
@@ -688,7 +751,7 @@ Prezado agente242,
                     <div style={{display: 'flex'}}>
                         <span className={newMessages && newMessages.includes("c2") ? 'new-icon' : 'none'}>((NEW)) </span>
                         <div style={{textOverflow: 'ellipsis', width: '100%', overflow: 'hidden'}}>
-                            Excelente trabalho, agente242. Parece que Catarina esteve mesmo no Brasil.    
+                            Excelente trabalho, agente241. Parece que Catarina esteve mesmo no Brasil.    
                         </div>
                         <div className="mobile-icon"></div>
                     </div>
@@ -696,7 +759,7 @@ Prezado agente242,
             } else {
                 return (
                     <>
-Excelente trabalho, agente242. 
+Excelente trabalho, agente241. 
                 <br/><br/>Parece que Catarina esteve mesmo no Brasil. Sabendo disso, invadimos o banco de dados dos Correios brasileiros e encontramos esse estranho telegrama, deixado para Catarina enquanto ela esteve em Belém:
                 <br/><br/>
                 <div className="intercepted-message"
@@ -758,7 +821,7 @@ Excelente trabalho, agente242.
                 </div>
 
                 <br/>
-                <div className="dossie-title-center">Decifre esse mensagem, agente242. Vamos tentar alcançá-los.</div>
+                <div className="dossie-title-center">Decifre esse mensagem, agente241. Vamos tentar alcançá-los.</div>
                     </>
                 )
             }
@@ -779,7 +842,7 @@ Excelente trabalho, agente242.
             } else {
                 return (
                     <>
-Caro agente242,
+Caro agente241,
                     <br/><br/>
                     Ficamos felizes em te ver recuperando o tempo perdido.
                     <br/><br/>
