@@ -369,7 +369,7 @@ Recebemos novas transmissão de nosso spyware.
                     {arrowLeft} CONNECTION LOST {arrowRight}
                     </div>
                     <br/>
-                    <div className="dossie-title" style={{textAlign: 'center'}}>Agente242, determine o nome e a origem desse documento para que possamos continuar as investigações.</div>
+                    <div className="dossie-title" style={{textAlign: 'center'}}>Agente242, determine o nome e a origem desse documento para que possamos continuar as investigações. Como Janaína tem certeza que não é original? O documento foi adulterado de alguma forma, agente242?</div>
                     <br/>
                     <img style={{width: '100%'}} src='./img/egdfged.png'/>
                     </>
